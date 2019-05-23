@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates&display=swap" rel="stylesheet">
+
+
+
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+
+  <style>
+    body {
+      background-color: #c3c3c3;
+    }
+
+    input,
+    select {
+      border: none !important;
+      border-bottom: 1px solid black !important;
+      border-radius: 0 !important;
+    }
+
+    .container-fluid {
+      background-color: white;
+      width: 100%;
+      padding: 2%;
+      margin: 2% auto;
+      box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .container-fluid h2 {
+      margin: 3% auto;
+    }
+
+    .container-fluid button {
+      border-radius: 0;
+      width: 100%;
+      margin-top: 30px;
+      border: none;
+    }
+  </style>
+
+  <script type="text/javascript">
+    $("#telefone").mask("(00)00000-0000");
+  </script>
+
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+
+  <title>Minha conta - MeuCarrinho!</title>
+</head>
+
+<body>
+  <nav style="font-family: 'Montserrat Alternates', sans-serif;" class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <i style="color: white; font-size: 40px; padding: 1% 2%" class="fas fa-shopping-cart"></i><a class="navbar-brand"
+      href="#"><span style="font-size: 28px; color: #f34747; font-weight: bold">MEU</span>carrinho</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div style="margin-left: 3%;" class="collapse navbar-collapse" id="navbarText">
+      <ul style="font-size: 19px" class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html"><i class="fas fa-tags"></i>
+
+            Produtos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="carrinho.html"><i class="fas fa-shopping-basket"></i>
+
+            Meu carrinho</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="compra.html"><i class="fas fa-receipt"></i>
+
+            Compra </a>
+        </li>
+        <li class="nav-item active">
+          <a style="color: #f34747;" class="nav-link" href="conta.html"><i class="fas fa-user-cog"></i>
+            Conta</a>
+        </li>
+        <li class="nav-item">
+          <a style="color: black; text-shadow:1px 1px 2px rgba(255,255,255,0.3);"; class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i>
+
+
+
+            Sair</a>
+        </li>
+      </ul>
+      <nav class="navbar navbar-dark bg-dark">
+        <form class="form-inline">
+          <input style="border: none" class="form-control mr-sm-2" type="search" placeholder="Buscar produto"
+            aria-label="Search">
+          <button style="color: white; border-color: white; background-color: #f34747;"
+            class="btn btn-outline-danger my-2 my-sm-0" type="submit"><i class="fas fa-search"></i>
+
+          </button>
+        </form>
+      </nav>
+    </div>
+  </nav>
+
+  <div class="container-fluid col-xs-12 colsm-12 col-md-8 col-lg-4">
+    <h2 style="font-family: 'Montserrat Alternates', sans-serif;"><i class="fas fa-user-cog"></i>Sua conta</h2>
+    <form>
+      <div class="row">
+        <div class="form-group col-lg-12">
+          <label for="exampleFormControlInput1">Nome completo</label>
+          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nome completo">
+        </div>
+        <div class="form-group col-lg-12">
+          <label for="exampleFormControlInput1">E-mail</label>
+          <input type="email" class="form-control" id="Example" placeholder="name@example.com">
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="form-group col-lg-6">
+          <label for="exampleFormControlInput1">Celular</label>
+          <input type="email" class="form-control" id="telefone" placeholder="(00) 00000-0000">
+        </div>
+        <div class="form-group col-lg-6">
+          <label for="exampleFormControlInput1">Senha</label>
+          <input type="password" class="form-control" id="Example" placeholder="********">
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-lg-6">
+          <label for="exampleFormControlInput1">Nova Senha</label>
+          <input type="password" class="form-control" id="Example" placeholder="********">
+        </div>
+        <div class="form-group col-lg-6">
+          <label for="exampleFormControlInput1">Confirme a nova senha </label>
+          <input type="password" class="form-control" id="Example" placeholder="********">
+        </div>
+      </div>
+    </form>
+    <div class="row">
+      <div class="form-group col-lg-4">
+        <button type="button" class="btn btn-secondary">Voltar</button>
+      </div>
+      <div class="form-group col-lg-8">
+        <button style="background-color:#f34747;" type="button" class="btn btn-success">Enviar</button>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>
