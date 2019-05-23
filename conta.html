@@ -23,8 +23,11 @@
     input,
     select {
       border: none !important;
-      border-bottom: 1px solid black !important;
+      border-bottom: 1px solid #f34747 !important;
       border-radius: 0 !important;
+    }
+    .form-control:focus {
+      box-shadow: none;
     }
 
     .container-fluid {
@@ -112,32 +115,32 @@
       <div class="row">
         <div class="form-group col-lg-12">
           <label for="exampleFormControlInput1">Nome completo</label>
-          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nome completo">
+          <input type="text" class="form-control" id="exampleFormControlInput1">
         </div>
         <div class="form-group col-lg-12">
           <label for="exampleFormControlInput1">E-mail</label>
-          <input type="email" class="form-control" id="Example" placeholder="name@example.com">
+          <input type="email" class="form-control" id="Example">
         </div>
 
       </div>
       <div class="row">
         <div class="form-group col-lg-6">
           <label for="exampleFormControlInput1">Celular</label>
-          <input type="email" class="form-control" id="telefone" placeholder="(00) 00000-0000">
+          <input type="email" class="form-control" id="telefone">
         </div>
         <div class="form-group col-lg-6">
           <label for="exampleFormControlInput1">Senha</label>
-          <input type="password" class="form-control" id="Example" placeholder="********">
+          <input type="password" class="form-control" id="Example">
         </div>
       </div>
       <div class="row">
         <div class="form-group col-lg-6">
           <label for="exampleFormControlInput1">Nova Senha</label>
-          <input type="password" class="form-control" id="Example" placeholder="********">
+          <input type="password" class="form-control" id="Example">
         </div>
         <div class="form-group col-lg-6">
           <label for="exampleFormControlInput1">Confirme a nova senha </label>
-          <input type="password" class="form-control" id="Example" placeholder="********">
+          <input type="password" class="form-control" id="Example">
         </div>
       </div>
     </form>
