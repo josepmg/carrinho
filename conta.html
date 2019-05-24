@@ -5,8 +5,8 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+    crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates&display=swap" rel="stylesheet">
 
 
@@ -16,6 +16,9 @@
   <link rel="stylesheet" href="css/bootstrap.min.css">
 
   <style>
+    *:focus{
+      box-shadow:none!important;
+    }
     body {
       background-color: #c3c3c3;
     }
@@ -27,23 +30,19 @@
       border-radius: 0 !important;
     }
 
-    .form-control:focus {
-      box-shadow: none;
-    }
-
     .container-fluid {
       background-color: white;
       width: 100%;
       padding: 2%;
-      margin: 2% auto;
       box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
     }
-    .container-fluid i{
-      margin-right: 8%;
-    }
+    #navbarText{
+        width:100%;
+        text-align: center!important;
+      }
 
     .container-fluid h2 {
-      margin-bottom: 8%;
+      margin: 3% auto;
     }
 
     .container-fluid button {
@@ -52,10 +51,20 @@
       margin-top: 30px;
       border: none;
     }
+    
+    .form-group > .btn:hover{
+      background-color: #f31b1b!important;
+    }
+
+    @media screen and(max-width: 992px) {
+      #navbarText{
+        margin-left:0px!important;
+      }
+    }
   </style>
 
   <script type="text/javascript">
-    $("#telefone").mask("(00)00000-0000");
+    $("#telefone").mask("(00) 00000-0000");
   </script>
 
   <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -63,112 +72,163 @@
   <title>Minha conta - MeuCarrinho!</title>
 </head>
 
+
 <body>
+    <!-- MENU -->
   <nav style="font-family: 'Montserrat Alternates', sans-serif;" class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <i style="color: white; font-size: 40px; padding: 1% 2%" class="fas fa-shopping-cart"></i><a class="navbar-brand"
-      href="#"><span style="font-size: 28px; color: #f34747; font-weight: bold">MEU</span>carrinho</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
-      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <i style="color: white; font-size: 40px; padding: 1% 2%" class="fas fa-shopping-cart"></i>
+    <a class="navbar-brand" href="#">
+      <span style="font-size: 28px; color: #f34747; font-weight: bold">MEU</span>carrinho</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
+      aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div style="margin-left: 3%;" class="collapse navbar-collapse" id="navbarText">
-      <ul style="font-size: 19px" class="navbar-nav mr-auto">
+    <div style="margin-left: 15%;" class="collapse navbar-collapse" id="navbarText">
+      <ul style="font-size: 18px!important" class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="index.html"><i class="fas fa-tags"></i>
+          <a class="nav-link" href="index.html">
+            <i class="fas fa-tags"></i>
 
             Produtos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="carrinho.html"><i class="fas fa-shopping-basket"></i>
+          <a class="nav-link" href="carrinho.html">
+            <i class="fas fa-shopping-basket"></i>
 
             Meu carrinho</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="compra.html"><i class="fas fa-receipt"></i>
+          <a class="nav-link" href="compra.html">
+            <i class="fas fa-receipt"></i>
 
             Compra </a>
         </li>
         <li class="nav-item active">
-          <a style="color: #f34747;" class="nav-link" href="conta.html"><i class="fas fa-user-cog"></i>
+          <a style="color: #f34747;" class="nav-link" href="conta.html">
+            <i class="fas fa-user-cog"></i>
             Conta</a>
         </li>
         <li class="nav-item">
-          <a style="color: black; text-shadow:1px 1px 2px rgba(255,255,255,0.3);"; class="nav-link" href="login.html"><i class="fas fa-sign-out-alt"></i>
+          <a style="color: black;text-shadow: 1px 1px 2px rgba(255,255,255,0.2);" class="nav-link" href="#">
+            <i class="fas fa-sign-out-alt"></i>
 
 
 
             Sair</a>
         </li>
       </ul>
-      <nav class="navbar navbar-dark bg-dark">
-        <form class="form-inline">
-          <input style="border: none" class="form-control mr-sm-2" type="search" placeholder="Buscar produto"
-            aria-label="Search">
-          <button style="color: white; border-color: white; background-color: #f34747;"
-            class="btn btn-outline-danger my-2 my-sm-0" type="submit"><i class="fas fa-search"></i>
-
-          </button>
-        </form>
-      </nav>
     </div>
   </nav>
+  
+  <!-- FIM DO MENU -->
 
-  <div class="container-fluid col-xs-12 colsm-12 col-md-8 col-lg-4">
-    <h2 style="font-size: 30px;font-family: 'Montserrat Alternates', sans-serif;"><i class="fas fa-user-cog"></i>Sua conta</h2>
-    <form>
-      <div class="row">
-        <div class="form-group col-lg-12">
-          <label for="exampleFormControlInput1">Nome completo</label>
-          <input type="text" class="form-control" id="exampleFormControlInput1">
-        </div>
-        <div class="form-group col-lg-12">
-          <label for="exampleFormControlInput1">E-mail</label>
-          <input type="email" class="form-control" id="Example">
-        </div>
+  <!-- FIM DO MENU -->
 
-      </div>
-      <div class="row">
-        <div class="form-group col-lg-6">
-          <label for="exampleFormControlInput1">Celular</label>
-          <input type="email" class="form-control" id="telefone">
-        </div>
-        <div class="form-group col-lg-6">
-          <label for="exampleFormControlInput1">Senha</label>
-          <input type="password" class="form-control" id="Example">
-        </div>
-      </div>
-      <div class="row">
-        <div class="form-group col-lg-6">
-          <label for="exampleFormControlInput1">Nova Senha</label>
-          <input type="password" class="form-control" id="Example">
-        </div>
-        <div class="form-group col-lg-6">
-          <label for="exampleFormControlInput1">Confirme a nova senha </label>
-          <input type="password" class="form-control" id="Example">
-        </div>
-      </div>
-    </form>
+  <div class="container-fluid col-xs-12 colsm-12 col-md-12 col-lg-12">
     <div class="row">
-      <div class="form-group col-lg-4">
-        <button type="button" class="btn btn-secondary">Voltar</button>
+      <div style="border: 1px solid rgba(0,0,0,0.2);box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);" class="esquerda offset-lg-2 col-lg-4">
+        <h2 style="font-family: 'Montserrat Alternates', sans-serif;">
+          <i style="margin-right: 5%;" class="fas fa-user-cog"></i>Sua conta</h2>
+        <form>
+          <div class="row">
+            <div class="form-group col-lg-12">
+              <label for="exampleFormControlInput1">Nome completo</label>
+              <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nome completo">
+            </div>
+            <div class="form-group col-lg-12">
+              <label for="exampleFormControlInput1">E-mail</label>
+              <input type="email" class="form-control" id="Example" placeholder="name@example.com">
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="form-group col-lg-6">
+              <label for="exampleFormControlInput1">Celular</label>
+              <input type="telefone" class="form-control" id="telefone" placeholder="00000-0000">
+            </div>
+            <div class="form-group col-lg-6">
+              <label for="exampleFormControlInput1">Senha</label>
+              <input type="password" class="form-control" id="Example" placeholder="********">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-lg-6">
+              <label for="exampleFormControlInput1">Nova Senha</label>
+              <input type="password" class="form-control" id="Example" placeholder="********">
+            </div>
+            <div class="form-group col-lg-6">
+              <label for="exampleFormControlInput1">Confirme a nova senha </label>
+              <input type="password" class="form-control" id="Example" placeholder="********">
+            </div>
+          </div>
+        </form>
+        <div class="row">
+          <div class="form-group col-lg-4">
+            <button type="button" class="btn btn-secondary">Voltar</button>
+          </div>
+          <div class="form-group col-lg-8">
+            <button style="background-color:#f34747;" type="button" class="btn btn-success">Enviar</button>
+          </div>
+        </div>
       </div>
-      <div class="form-group col-lg-8">
-        <button style="background-color:#f34747;" type="button" class="btn btn-success">Enviar</button>
+      <div style="border: 1px solid rgba(0,0,0,0.2);box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);" class="direita offset-lg-1 col-lg-3">
+        <h2 style="font-family: 'Montserrat Alternates', sans-serif;padding-top:5%;" class="text-center">
+          <i style="margin-left: 5%;" class="fa fa-history" aria-hidden="true"></i>
+          Histórico de compras</h2>
+        <div style="font-size: 15px;margin-bottom: 15px;;border-bottom: 1px solid #f34747" class="history">
+
+          <i style="color:green;" class="fa fa-check" aria-hidden="true"></i>
+          <a style="cursor: pointer; color:blue;">Nº pedido</a> | Nome do usuário | Valor compra: R$ 00,00
+        </div>
+        <div style="font-size: 15px;margin-bottom: 15px;;border-bottom: 1px solid #f34747" class="history">
+
+          <i style="color:green;" class="fa fa-check" aria-hidden="true"></i>
+          <a style="cursor: pointer; color:blue;">Nº pedido</a> | Nome do usuário | Valor compra: R$ 00,00
+        </div>
+        <div style="font-size: 15px;margin-bottom: 15px;;border-bottom: 1px solid #f34747" class="history">
+
+          <i style="color:green;" class="fa fa-check" aria-hidden="true"></i>
+          <a style="cursor: pointer; color:blue;">Nº pedido</a> | Nome do usuário | Valor compra: R$ 00,00
+        </div>
+        <div style="font-size: 15px;margin-bottom: 15px;;border-bottom: 1px solid #f34747" class="history">
+
+          <i style="color:green;" class="fa fa-check" aria-hidden="true"></i>
+          <a style="cursor: pointer; color:blue;">Nº pedido</a> | Nome do usuário | Valor compra: R$ 00,00
+        </div>
+        <div style="font-size: 15px;margin-bottom: 15px;;border-bottom: 1px solid #f34747" class="history">
+
+          <i style="color:green;" class="fa fa-check" aria-hidden="true"></i>
+          <a style="cursor: pointer; color:blue;">Nº pedido</a> | Nome do usuário | Valor compra: R$ 00,00
+        </div>
+        <div style="font-size: 15px;margin-bottom: 15px;;border-bottom: 1px solid #f34747" class="history">
+
+          <i style="color:green;" class="fa fa-check" aria-hidden="true"></i>
+          <a style="cursor: pointer; color:blue;">Nº pedido</a> | Nome do usuário | Valor compra: R$ 00,00
+        </div>
+        <div style="font-size: 15px;margin-bottom: 15px;;border-bottom: 1px solid #f34747" class="history">
+
+          <i style="color:green;" class="fa fa-check" aria-hidden="true"></i>
+          <a style="cursor: pointer; color:blue;">Nº pedido</a> | Nome do usuário | Valor compra: R$ 00,00
+        </div>
+        <div style="font-size: 15px;margin-bottom: 15px;;border-bottom: 1px solid #f34747" class="history">
+
+          <i style="color:green;" class="fa fa-check" aria-hidden="true"></i>
+          <a style="cursor: pointer; color:blue;">Nº pedido</a> | Nome do usuário | Valor compra: R$ 00,00
+        </div>
+
       </div>
     </div>
+  </div>
   </div>
 
 
 
 
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
     crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
 
 </body>
