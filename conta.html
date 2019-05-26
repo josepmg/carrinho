@@ -8,7 +8,9 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
     crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates&display=swap" rel="stylesheet">
-
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
 
 
 
@@ -27,19 +29,25 @@
     select {
       border: none !important;
       border-bottom: 1px solid #f34747 !important;
-      border-radius: 0 !important;
+      border-radius: 5px 5px 0px 0px !important;
+      background-color: #f5eded!important;
     }
 
     .container-fluid {
-      background-color: white;
+      background-color: #c3c3c3;
       width: 100%;
       padding: 2%;
       box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
     }
+
     #navbarText{
         width:100%;
         text-align: center!important;
       }
+
+      #btnConf:hover{
+      background-color: red!important;
+    }
 
     .container-fluid h2 {
       margin: 3% auto;
@@ -51,11 +59,6 @@
       margin-top: 30px;
       border: none;
     }
-    
-    .form-group > .btn:hover{
-      background-color: #f31b1b!important;
-    }
-
     @media screen and(max-width: 992px) {
       #navbarText{
         margin-left:0px!important;
@@ -64,7 +67,7 @@
   </style>
 
   <script type="text/javascript">
-    $("#telefone").mask("00000-0000");
+    $("#celular").mask("(00) 00000-0000");
   </script>
 
   <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -72,9 +75,7 @@
   <title>Minha conta - MeuCarrinho!</title>
 </head>
 
-
 <body>
-    <!-- MENU -->
   <nav style="font-family: 'Montserrat Alternates', sans-serif;" class="navbar navbar-expand-lg navbar-dark bg-dark">
     <i style="color: white; font-size: 40px; padding: 1% 2%" class="fas fa-shopping-cart"></i>
     <a class="navbar-brand" href="#">
@@ -109,7 +110,7 @@
             Conta</a>
         </li>
         <li class="nav-item">
-          <a style="color: black;text-shadow: 1px 1px 2px rgba(255,255,255,0.2);" class="nav-link" href="#">
+          <a style="color: black; text-shadow: .5px .5px 4px rgba(255,255,255,0.4);" class="nav-link" href="#">
             <i class="fas fa-sign-out-alt"></i>
 
 
@@ -119,46 +120,42 @@
       </ul>
     </div>
   </nav>
-  
-  <!-- FIM DO MENU -->
-
-  <!-- FIM DO MENU -->
 
   <div class="container-fluid col-xs-12 colsm-12 col-md-12 col-lg-12">
     <div class="row">
-      <div style="border: 1px solid rgba(0,0,0,0.2);box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);" class="esquerda offset-lg-2 col-lg-4">
+      <div style="background:white;border: 1px solid rgba(0,0,0,0.2);box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);" class="esquerda offset-lg-2 col-lg-4">
         <h2 style="font-family: 'Montserrat Alternates', sans-serif;">
           <i style="margin-right: 5%;" class="fas fa-user-cog"></i>Sua conta</h2>
         <form>
           <div class="row">
             <div class="form-group col-lg-12">
               <label for="exampleFormControlInput1">Nome completo</label>
-              <input type="text" class="form-control" id="exampleFormControlInput1">
+              <input type="text" class="form-control" id="exampleFormControlInput1" >
             </div>
             <div class="form-group col-lg-12">
               <label for="exampleFormControlInput1">E-mail</label>
-              <input type="email" class="form-control" id="Example">
+              <input type="email" class="form-control" id="Example" >
             </div>
 
           </div>
           <div class="row">
             <div class="form-group col-lg-6">
               <label for="exampleFormControlInput1">Celular</label>
-              <input type="telefone" class="form-control" id="telefone">
+              <input type="telefone" class="form-control" id="celular" >
             </div>
             <div class="form-group col-lg-6">
               <label for="exampleFormControlInput1">Senha</label>
-              <input type="password" class="form-control" id="Example">
+              <input type="password" class="form-control" id="Example" >
             </div>
           </div>
           <div class="row">
             <div class="form-group col-lg-6">
               <label for="exampleFormControlInput1">Nova Senha</label>
-              <input type="password" class="form-control" id="Example"">
+              <input type="password" class="form-control" id="Example" ">
             </div>
             <div class="form-group col-lg-6">
               <label for="exampleFormControlInput1">Confirme a nova senha </label>
-              <input type="password" class="form-control" id="Example">
+              <input type="password" class="form-control" id="Example" >
             </div>
           </div>
         </form>
@@ -167,11 +164,11 @@
             <button type="button" class="btn btn-secondary">Voltar</button>
           </div>
           <div class="form-group col-lg-8">
-            <button style="background-color:#f34747;" type="button" class="btn btn-success">Enviar</button>
+            <button id="btnConf"style="background-color:#f34747;" type="button" class="btn btn-success">Enviar</button>
           </div>
         </div>
       </div>
-      <div style="border: 1px solid rgba(0,0,0,0.2);box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);" class="direita offset-lg-1 col-lg-3">
+      <div style="background:white;border: 1px solid rgba(0,0,0,0.2);box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);" class="direita offset-lg-1 col-lg-3">
         <h2 style="font-family: 'Montserrat Alternates', sans-serif;padding-top:5%;" class="text-center">
           <i style="margin-left: 5%;" class="fa fa-history" aria-hidden="true"></i>
           Histórico de compras</h2>

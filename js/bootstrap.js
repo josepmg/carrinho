@@ -4,16 +4,9 @@
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
 
- var botao = document.getElementById('myBtn');
-
- botao.addEventListener("click", function() {
-   console.log('click');
- })
-
- $('#carouselInicio').carousel({
-  interval: 200
+ $('.carousel').carousel({
+  interval: 2000
 })
-
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('jquery'), require('popper.js')) :
   typeof define === 'function' && define.amd ? define(['exports', 'jquery', 'popper.js'], factory) :
