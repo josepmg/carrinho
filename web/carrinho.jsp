@@ -109,25 +109,25 @@
     <div style="margin-left: 15%; justify-content: center;" class="collapse navbar-collapse" id="navbarText">
       <ul style="font-size: 18px" class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="index.html">
+          <a class="nav-link" href="index.jsp">
             <i class="fas fa-tags"></i>
 
             Produtos</a>
         </li>
         <li class="nav-item active">
-          <a style="color: #f34747;" class="nav-link" href="carrinho.html">
+          <a style="color: #f34747;" class="nav-link" href="carrinho.jsp">
             <i class="fas fa-shopping-basket"></i>
 
             Meu carrinho</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="compra.html">
+          <a class="nav-link" href="compra.jsp">
             <i class="fas fa-receipt"></i>
 
             Compra </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="conta.html">
+          <a class="nav-link" href="conta.jsp">
             <i class="fas fa-user-cog"></i>
             Conta</a>
         </li>
