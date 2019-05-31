@@ -13,6 +13,12 @@ import java.util.List;
  */
 public class Pedido {
     
+    public static String ESTADO_REALIZADO = "Realizado";
+    public static String ESTADO_APROVADO = "Aprovado";
+    public static String ESTADO_ENTREGUE = "Entregue";
+    public static String ESTADO_NEGADO = "Negado";
+    
+    
     private int idPedido;
     private List<Item> itensPedido;
     private float valorTotal;
@@ -20,11 +26,12 @@ public class Pedido {
     private String enderecoEntrega;
     private Cartao cartao;
     private String dataCompra;
+    private String estado;
 
     public Pedido() {
     }
 
-    public Pedido(int idPedido, List<Item> itensPedido, float valorTotal, Usuario cliente, String enderecoEntrega, Cartao cartao, String dataCompra) {
+    public Pedido(int idPedido, List<Item> itensPedido, float valorTotal, Usuario cliente, String enderecoEntrega, Cartao cartao, String dataCompra, String estado) {
         this.idPedido = idPedido;
         this.itensPedido = itensPedido;
         this.valorTotal = valorTotal;
@@ -32,6 +39,7 @@ public class Pedido {
         this.enderecoEntrega = enderecoEntrega;
         this.cartao = cartao;
         this.dataCompra = dataCompra;
+        this.estado = estado;
     }
 
     public int getIdPedido() {
@@ -88,6 +96,14 @@ public class Pedido {
 
     public void setDataCompra(String dataCompra) {
         this.dataCompra = dataCompra;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
     
 }

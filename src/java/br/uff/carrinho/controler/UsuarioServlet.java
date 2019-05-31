@@ -35,10 +35,8 @@ public class UsuarioServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        String nomeAcao = request.getParameter("acao");
-        
-        switch(nomeAcao){
+       
+        switch(request.getParameter("acao")){
             case "fazLogin":
                 fazLogin(request, response);
                 break;
