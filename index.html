@@ -25,6 +25,10 @@
       box-shadow: none !important;
     }
 
+    input:focus{
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2)!important;
+        }
+
     .container-fluid {
       padding: 0 !important;
     }
@@ -38,15 +42,26 @@
       text-align: center !important;
     }
 
+    #myCart{
+      position: fixed;
+      bottom: 50px;
+      border: 1px solid black;
+      background: white;
+      padding: 10px 20px;
+      border-radius: 0px 0px 10px 0px;
+      left: -500px;
+    }
+
     #myBtn {
       width: 50px;
       background: #f34747;
       border-radius: 0px 30px 30px 0px;
       position: fixed;
-      bottom: 129px;
       font-size: 20px;
       color: black;
-      left:0px;
+      bottom:168px;
+      left: 0;
+      z-index: 10;
     }
 
     #myBtn:hover {
@@ -112,17 +127,17 @@
   <!-- JS -->
   <script>
     function myFunction(myCart, myBtn) {
-
       var botao = document.getElementById('myCart');
       var botao2 = document.getElementById('myBtn');
-      if (botao.style.left == '-23%') {
+      num = botao.style.left;
+      if (botao.style.left == '-500px') {
         botao.style.transition = '.4s';
         botao.style.left = '0';
         botao2.style.transition = '.45s';
-        botao2.style.left = '18.5%';
+        botao2.style.left = '292px';
       }
       else {
-        botao.style.left = '-23%';
+        botao.style.left = '-500px';
         botao.style.transition = '0.4s';
         botao2.style.left = '0px';
         botao2.style.transition = '0.45s';
@@ -146,7 +161,7 @@
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div style="margin-left: 15%;" class="collapse navbar-collapse" id="navbarText">
+    <div style="margin-left: 15%!important;" class="collapse navbar-collapse" id="navbarText">
       <ul style="font-size: 18px" class="navbar-nav mr-auto">
         <li class="nav-item active">
           <a style="color: #f34747;" class="nav-link" href="index.html">
@@ -498,10 +513,9 @@
     <!-- FIM PRODUTOS -->
 
     <!-- INICIO CARD SUBTOTAL -->
-    <div id="myCart"
-      style="left:-24%;border:0.5px solid black;padding-left: 2%; padding-top:1%;bottom:0; position: fixed; margin-bottom: 2%; width: 250px; border-radius: 0px 0px 5px 0px; background: white;"
+    <div style="box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2)!important;"id="myCart"
       class="subtotal">
-      <span style="font-weight: bold;">Seu carrinho!</span>
+      <span style="font-weight: bold;">Seu carrinho!</span><br>
       <span style="width: 250px;margin-top: 3%; display: inline-block; margin-top: 15%;margin-bottom: 15%;">
         <i style="color: black; font-size: 40px; margin-right: 5%;" class="fas fa-cart-plus"></i>Subtotal: R$ xx,xx
       </span>
