@@ -121,7 +121,7 @@
         }
 
         #recupBtn{
-            width: 280px!important;
+            width: 220px!important;
         }
     </style>
 
@@ -153,10 +153,10 @@
         <div class="modal-dialog" role="document">
             <div style="padding: 30px 10px!important;" class="modal-content">
                 <div class="modal-header">
-                    <h5 style="font-size: 30px!important;"class="modal-title" id="exampleModalLabel"><i style="font-size: 30px!important;"class="fas fa-key"></i>
+                    <h5 style="font-size: 30px!important;"class="modal-title" id="exampleModalLabel"><i style="font-size: 25px!important;"class="fas fa-key"></i>
 
                         Recuperação de senha</h5>
-                    <button style="width:50px!important;font-size: 30px!important;color: black!important;" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button style="width:50px!important;font-size: 25px!important;color: black!important;" type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span style="float:right; color: black!important;" aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -166,23 +166,19 @@
 
     <!-- FORM RECUPERAÇÃO DE SENHA -->
 
-                    <form method="POST">
-                        <div class="row">
-                            <div class="form-group col-lg-12 formGroup">
+                    <form style="justify-content: center"method="POST">
+                            <div class="form-group offset-lg-2 col-lg-7 formGroup">
                                 <label for="exampleFormControlInput1">E-mail</label>
-                                <input type="text" class="form-control" id="exampleFormControlInput1">
+                                <input type="email" class="form-control" id="exampleFormControlInput1">
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-lg-6 formGroup">
-                                <label for="exampleFormControlInput1">Senha</label>
+                            <div class="form-group offset-lg-2 col-lg-7 formGroup">
+                                <label for="exampleFormControlInput1">Nova senha</label>
                                 <input type="telefone" class="form-control" id="celular">
                             </div>
-                            <div class="form-group col-lg-6 formGroup">
+                            <div class="form-group offset-lg-2 col-lg-7 formGroup">
                                 <label for="exampleFormControlInput1">Confirme nova senha</label>
                                 <input type="password" class="form-control" id="Example">
                             </div>
-                        </div>
                     </form>
 
                     <!-- FIM RECUPERAÇÃO DE SENHA -->
@@ -216,11 +212,11 @@
                         <div class="form-group col-lg-12">
                             <label for="exampleFormControlInput1">E-mail</label>
                             <input style="border-bottom: 1px solid #f34747!important;" type="email" class="form-control" id="exampleFormControlInput1"
-                                placeholder="E-mail de login">
+                                >
                         </div>
                         <div class="form-group col-lg-12">
                             <label for="exampleFormControlInput1">Senha</label>
-                            <input style="border-bottom: 1px solid #f34747!important;" type="password" class="form-control" id="Example" placeholder="Senha">
+                            <input style="border-bottom: 1px solid #f34747!important;" type="password" class="form-control" id="Example" >
                             <a data-toggle="modal" data-target="#exampleModal" style="color: #f34747; cursor: pointer; background:none!important;">Esqueceu a senha?</a>
                         </div>
                         <button id="entrar" style="            background:#282725;
@@ -239,27 +235,27 @@
                     <div style="margin: auto;" class="row col-lg-10">
                         <div class="form-group col-lg-6">
                             <label for="exampleFormControlInput1">Nome</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nome">
+                            <input type="text" class="form-control" id="exampleFormControlInput1" >
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="exampleFormControlInput1">Sobrenome</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Sobrenome">
+                            <input type="text" class="form-control" id="exampleFormControlInput1">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="exampleFormControlInput1">E-mail</label>
-                            <input type="password" class="form-control" id="Example" placeholder="E-mail">
+                            <input type="password" class="form-control" id="Example">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="exampleFormControlInput1">Data de Nascimento</label>
-                            <input type="date" class="form-control" id="Example" placeholder="Data">
+                            <input type="date" class="form-control" id="Example">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="exampleFormControlInput1">Senha</label>
-                            <input type="password" class="form-control" id="Example" placeholder="Senha">
+                            <input type="password" class="form-control" id="Example">
                         </div>
                         <div class="form-group col-lg-6 ">
                             <label for="exampleFormControlInput1">Confirma Senha</label>
-                            <input type="password" class="form-control" id="Example" placeholder="Confirme a senha">
+                            <input type="password" class="form-control" id="Example">
                         </div>
                         <button id="cadastrar" style="border: 1px solid white!important;" type="button" class="btn btn-primary btnlogin">Cadastrar</button>
                     </div>
