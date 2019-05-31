@@ -13,28 +13,40 @@ import java.util.List;
  */
 public class Pedido {
     
-    private List<ItemPedido> itensPedido;
+    private int idPedido;
+    private List<Item> itensPedido;
     private float valorTotal;
     private Usuario cliente;
     private String enderecoEntrega;
     private Cartao cartao;
+    private String dataCompra;
 
     public Pedido() {
     }
 
-    public Pedido(List<ItemPedido> itensPedido, float valorTotal, Usuario cliente, String enderecoEntrega, Cartao cartao) {
+    public Pedido(int idPedido, List<Item> itensPedido, float valorTotal, Usuario cliente, String enderecoEntrega, Cartao cartao, String dataCompra) {
+        this.idPedido = idPedido;
         this.itensPedido = itensPedido;
         this.valorTotal = valorTotal;
         this.cliente = cliente;
         this.enderecoEntrega = enderecoEntrega;
         this.cartao = cartao;
+        this.dataCompra = dataCompra;
     }
 
-    public List<ItemPedido> getItensPedido() {
+    public int getIdPedido() {
+        return idPedido;
+    }
+
+    public void setIdPedido(int idPedido) {
+        this.idPedido = idPedido;
+    }
+    
+    public List<Item> getItensPedido() {
         return itensPedido;
     }
 
-    public void setItensPedido(List<ItemPedido> itensPedido) {
+    public void setItensPedido(List<Item> itensPedido) {
         this.itensPedido = itensPedido;
     }
 
@@ -69,6 +81,13 @@ public class Pedido {
     public void setCartao(Cartao cartao) {
         this.cartao = cartao;
     }
-    
+
+    public String getDataCompra() {
+        return dataCompra;
+    }
+
+    public void setDataCompra(String dataCompra) {
+        this.dataCompra = dataCompra;
+    }
     
 }

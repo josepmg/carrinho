@@ -28,7 +28,7 @@ public class UsuarioDAO implements DAO{
     }
     
     @Override
-    public void cria(Object obj) {
+    public int cria(Object obj) {
         Usuario u = (Usuario) obj;
         String sql = "INSERT INTO usuario "
                 + "(nomeCompleto, dataNascimento, apelido, email, senha) "
@@ -37,14 +37,15 @@ public class UsuarioDAO implements DAO{
         try {
             PreparedStatement stmt = this.conn.prepareStatement(sql);
             stmt.setString(1, u.getNomeCompleto());
-            stmt.setLong(2, u.getDataNascimento());
+            stmt.setString(2, u.getDataNascimento());
             stmt.setString(3, u.getApelido());
             stmt.setString(4, u.getEmail());
             stmt.setString(5, u.getSenha());
-
-            stmt.execute();
+            int generatedKey = stmt.executeUpdate();
+            
             stmt.close();
             fechaConexao();
+            return generatedKey;
         } catch (SQLException  e) {
             throw new RuntimeException(e);
         }      
@@ -66,7 +67,7 @@ public class UsuarioDAO implements DAO{
                 usuario = new Usuario(
                         rs.getInt("idUsuario"), 
                         rs.getString("nomeCompleto"), 
-                        rs.getLong("dataNascimento"), 
+                        rs.getString("dataNascimento"), 
                         rs.getString("apelido"), 
                         rs.getString("email"), 
                         rs.getString("senha"));
@@ -96,12 +97,11 @@ public class UsuarioDAO implements DAO{
                     + "senha = ? "
                     + "WHERE idUsuario = ?");
             stmt.setString(1, u.getNomeCompleto());
-            stmt.setLong(2, u.getDataNascimento());
+            stmt.setString(2, u.getDataNascimento());
             stmt.setString(3, u.getApelido());
             stmt.setString(4, u.getEmail());
             stmt.setString(5, u.getSenha());
-            stmt.setString(6, String.valueOf(u.getIdUsuario()));
-            System.out.println(stmt.toString());
+            stmt.setInt(6, u.getIdUsuario());
             stmt.execute();
             stmt.close();
             fechaConexao();
@@ -145,7 +145,7 @@ public class UsuarioDAO implements DAO{
                 usuario = new Usuario(
                         rs.getInt("idUsuario"), 
                         rs.getString("nomeCompleto"), 
-                        rs.getLong("dataNascimento"), 
+                        rs.getString("dataNascimento"), 
                         rs.getString("apelido"), 
                         rs.getString("email"), 
                         rs.getString("senha"));
@@ -157,6 +157,39 @@ public class UsuarioDAO implements DAO{
             
             fechaConexao();
             // Retorna a lista de Usuários do BD
+            return usuario;
+        } catch (SQLException  e) {
+            throw new RuntimeException(e);
+        } 
+    }
+    
+    public Usuario buscaPorEmail(String email){
+        try {
+            // Cria o statment que contém a Query de consulta
+            PreparedStatement stmt = this.conn.prepareStatement("SELECT * FROM usuario WHERE email = ?");
+            stmt.setString(1, email);
+            // Cria uma varíavel para receber o resultado da Query
+            ResultSet rs = stmt.executeQuery();
+            
+            // Cria usuário encontrado
+            Usuario usuario = null;
+            // Verifica se houve algum retorno
+            if (rs.next()){
+                usuario = new Usuario(
+                        rs.getInt("idUsuario"), 
+                        rs.getString("nomeCompleto"), 
+                        rs.getString("dataNascimento"), 
+                        rs.getString("apelido"), 
+                        rs.getString("email"), 
+                        rs.getString("senha"));
+            }
+            // Encerra o ResultSet
+            rs.close();
+            // Encerra o Statment
+            stmt.close();
+            
+            fechaConexao();
+            // Retorna usuario
             return usuario;
         } catch (SQLException  e) {
             throw new RuntimeException(e);
@@ -178,4 +211,6 @@ public class UsuarioDAO implements DAO{
             throw new RuntimeException(ex);
         }
     }
+    
+    
 }

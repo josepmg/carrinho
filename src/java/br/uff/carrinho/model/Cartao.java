@@ -11,21 +11,31 @@ package br.uff.carrinho.model;
  */
 public class Cartao {
     
+    private int idCartao;
     private String numero;
     private String validade;
     private String titular;
-    private String cvv;
+    private String ccv;
     private String bandeira;
 
     public Cartao() {
     }
 
-    public Cartao(String numero, String validade, String titular, String cvv, String bandeira) {
+    public Cartao(int idCartao, String numero, String validade, String titular, String ccv, String bandeira) {
+        this.idCartao = idCartao;
         this.numero = numero;
         this.validade = validade;
         this.titular = titular;
-        this.cvv = cvv;
+        this.ccv = ccv;
         this.bandeira = bandeira;
+    }
+
+    public int getIdCartao() {
+        return idCartao;
+    }
+
+    public void setIdCartao(int idCartao) {
+        this.idCartao = idCartao;
     }
 
     public String getNumero() {
@@ -52,12 +62,12 @@ public class Cartao {
         this.titular = titular;
     }
 
-    public String getCvv() {
-        return cvv;
+    public String getCcv() {
+        return ccv;
     }
 
-    public void setCvv(String cvv) {
-        this.cvv = cvv;
+    public void setCcv(String ccv) {
+        this.ccv = ccv;
     }
 
     public String getBandeira() {

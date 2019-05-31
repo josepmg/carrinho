@@ -9,19 +9,29 @@ package br.uff.carrinho.model;
  *
  * @author JP
  */
-public class ItemPedido {
+public class Item {
     
+    private int idItem;
     private Produto produto;
     private int quantidade;
     private float preco;
 
-    public ItemPedido() {
+    public Item() {
     }
 
-    public ItemPedido(Produto produto, int quantidade, float preco) {
+    public Item(int idItem, Produto produto, int quantidade, float preco) {
+        this.idItem = idItem;
         this.produto = produto;
         this.quantidade = quantidade;
         this.preco = preco;
+    }
+
+    public int getIdItem() {
+        return idItem;
+    }
+
+    public void setIdItem(int idItem) {
+        this.idItem = idItem;
     }
 
     public Produto getProduto() {

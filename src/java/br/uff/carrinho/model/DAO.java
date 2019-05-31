@@ -16,7 +16,7 @@ public interface DAO {
     
     void fechaConexao() throws SQLException;
     
-    void cria(Object obj);
+    int cria(Object obj);
     
     Object busca(int id);
     

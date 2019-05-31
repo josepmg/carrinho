@@ -9,7 +9,7 @@ public class Usuario {
 
     private int idUsuario;
     private String nomeCompleto;
-    private long dataNascimento;
+    private String dataNascimento;
     private String apelido;
     private String email;
     private String senha;
@@ -17,7 +17,7 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String nomeCompleto, long dataNascimento, String apelido, String email, String senha) {
+    public Usuario(String nomeCompleto, String dataNascimento, String apelido, String email, String senha) {
         this.nomeCompleto = nomeCompleto;
         this.dataNascimento = dataNascimento;
         this.apelido = apelido;
@@ -25,7 +25,7 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public Usuario(int idUsuario, String nomeCompleto, long dataNascimento, String apelido, String email, String senha) {
+    public Usuario(int idUsuario, String nomeCompleto, String dataNascimento, String apelido, String email, String senha) {
         this.idUsuario = idUsuario;
         this.nomeCompleto = nomeCompleto;
         this.dataNascimento = dataNascimento;
@@ -50,11 +50,11 @@ public class Usuario {
         this.nomeCompleto = nomeCompleto;
     }
 
-    public long getDataNascimento() {
+    public String getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(long dataNascimento) {
+    public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 

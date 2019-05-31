@@ -5,6 +5,8 @@
  */
 package br.uff.carrinho.controler;
 
+import br.uff.carrinho.model.Usuario;
+import br.uff.carrinho.model.UsuarioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -37,16 +40,19 @@ public class UsuarioServlet extends HttpServlet {
         
         switch(nomeAcao){
             case "fazLogin":
+                fazLogin(request, response);
                 break;
             case "fazLogout":
+                fazLogout(request, response);
                 break;
             case "criaConta":
+                criaUsuario(request, response);
                 break;
             case "trocaSenha":
+                trocaSenha(request, response);
                 break;
             case "alteraDados":
-                break;
-            case "deletaConta":
+                alteraDados(request, response);
                 break;
             default:
                 break;
@@ -91,5 +97,101 @@ public class UsuarioServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    /* ------ */ 
+    /* TESTAR */
+    /* ------ */
+    private void fazLogin(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
+        Usuario usuario = (new UsuarioDAO()).buscaLogin(
+                request.getParameter("email"), 
+                request.getParameter("senha")
+        );
+        
+        if (usuario !=  null){
+            // Salva na session
+            request
+                    .getSession()
+                    .setAttribute("usuarioLogado", usuario);
+            // Redireciona
+            getServletConfig().getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+        } else{
+            response.sendRedirect("/index.jsp");
+        }
+    }
+
+    /* ------ */ 
+    /* TESTAR */
+    /* ------ */
+    private void fazLogout(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        request.getSession().invalidate();
+        response.sendRedirect("index.jsp");
+    }
+
+    /* ------ */ 
+    /* TESTAR */
+    /* ------ */
+    private void criaUsuario(HttpServletRequest request, HttpServletResponse response) 
+            throws ServletException, IOException {
+        // Cria um novo usuário com os dados dos Form
+        Usuario usuario = new Usuario(
+                request.getParameter("nomeCompleto"),
+                request.getParameter("dataNascimento"),
+                request.getParameter("apelido"), 
+                request.getParameter("email"), 
+                request.getParameter("senha")
+        );
+
+        // Cria um objeto de acesso ao BD
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        // Chama método para cadastrar usuário
+        usuarioDAO.cria(usuario);
+
+        request.getSession().setAttribute("usuarioLogado", usuario);
+        getServletConfig().getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+    }
+
+    /* ------ */ 
+    /* TESTAR */
+    /* ------ */
+    private void trocaSenha(HttpServletRequest request, HttpServletResponse response) 
+            throws IOException {
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        
+        // Recupera o usuario da session http
+        Usuario usuario = usuarioDAO.buscaPorEmail(request.getParameter("email"));
+        usuario.setSenha(request.getParameter("senha"));
+        
+        // Chama método para cadastrar usuário
+        usuarioDAO.alteraSenha(usuario);
+
+        response.sendRedirect("index.jsp");
+    }
+
+    /* ------ */ 
+    /* TESTAR */
+    /* ------ */
+    private void alteraDados(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        if (request.getSession().getAttribute("usuarioLogado") == null){
+           response.sendRedirect("login.jsp");
+           return;
+       } else{        
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            
+            Usuario usuario = new Usuario(
+                    request.getParameter("nomeCompleto"),
+                    request.getParameter("dataNascimento"),
+                    request.getParameter("apelido"), 
+                    request.getParameter("email"), 
+                    request.getParameter("senha"));
+            usuario.setIdUsuario(Integer.valueOf(request.getParameter("idUsuario")));
+
+            // Chama método para cadastrar usuário
+            usuarioDAO.altera(usuario);
+
+            request.getSession().setAttribute("usuarioLogado", usuario);
+            response.sendRedirect("index.jsp");
+        }
+    }
 
 }
