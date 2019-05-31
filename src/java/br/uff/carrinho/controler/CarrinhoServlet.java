@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author JP
  */
-public class PedidoServlet extends HttpServlet {
+public class CarrinhoServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,17 +29,21 @@ public class PedidoServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        
         switch(request.getParameter("acao")){
-            case "fazPedido":
-                fazPedido(request, response);
+            case "criaCarrinho":
+                criaCarrinho(request, response);
                 break;
-            case "listaPedidos":
-                listaPedidos(request, response);
+            case "deletaCarrinho":
+                deletaCarrinho(request, response);
                 break;
-            case "alteraDados":
-                alteraEstado(request, response);
+            case "adicionaProduto":
+                adicionaProduto(request, response);
+                break;
+            case "alteraQuantidade":
+                alteraQuantidade(request, response);
+                break;
+            case "removeProduto":
+                removeProduto(request, response);
                 break;
             default:
                 break;
