@@ -4,13 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/NetBeansProjects/carrinho/src/java/br/uff/carrinho/model/PedidoDAO.java</file>
-            <file>file:/D:/NetBeansProjects/carrinho/src/java/br/uff/carrinho/model/ItemPedidoDAO.java</file>
-            <file>file:/D:/NetBeansProjects/carrinho/src/java/br/uff/carrinho/model/ItemDAO.java</file>
             <file>file:/D:/NetBeansProjects/carrinho/src/java/br/uff/carrinho/controler/CarrinhoServlet.java</file>
             <file>file:/D:/NetBeansProjects/carrinho/src/java/br/uff/carrinho/controler/PedidoServlet.java</file>
+            <file>file:/D:/NetBeansProjects/carrinho/src/java/br/uff/carrinho/model/Usuario.java</file>
+            <file>file:/D:/NetBeansProjects/carrinho/web/carrinho.jsp</file>
             <file>file:/D:/NetBeansProjects/carrinho/src/java/br/uff/carrinho/model/Pedido.java</file>
-            <file>file:/D:/NetBeansProjects/carrinho/src/java/br/uff/carrinho/model/Item.java</file>
-            <file>file:/D:/NetBeansProjects/carrinho/src/java/br/uff/carrinho/controler/UsuarioServlet.java</file>
+            <file>file:/D:/NetBeansProjects/carrinho/src/java/br/uff/carrinho/model/UsuarioDAO.java</file>
         </group>
     </open-files>
 </project-private>

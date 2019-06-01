@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -142,6 +143,37 @@ public class PedidoDAO implements DAO{
             fechaConexao();
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public Object listaPorUsuario(Usuario u) {
+        try {
+            String sql = "SELECT * FROM pedido WHERE idUsuario = ?";
+            PreparedStatement stmt = this.conn.prepareStatement(sql);
+            stmt.setInt(1, u.getIdUsuario());
+            ResultSet rs = stmt.executeQuery();
+            
+            List<Pedido> listaPedidos = new ArrayList<>();
+            if(rs.next()){
+                listaPedidos.add(
+                        new Pedido(
+                                rs.getInt("idPedido"), 
+                                (List<Item>) (new ItemPedidoDAO()).buscaPorPedido(rs.getInt("idPedido")),
+                                rs.getFloat("valorTotal"),
+                                (Usuario)(new UsuarioDAO()).busca(rs.getInt("idUsuario")),
+                                rs.getString("enderecoEntrega"),
+                                (Cartao)(new CartaoDAO()).busca(rs.getInt("idCartao")),
+                                rs.getString("dataCompra"),
+                                rs.getString("estado")
+                        ));
+            }
+            
+            rs.close();
+            stmt.close();
+            fechaConexao();
+            return listaPedidos;
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
         }
     }
     

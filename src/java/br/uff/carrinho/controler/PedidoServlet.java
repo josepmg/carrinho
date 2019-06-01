@@ -5,8 +5,14 @@
  */
 package br.uff.carrinho.controler;
 
+import br.uff.carrinho.model.Item;
+import br.uff.carrinho.model.Pedido;
+import br.uff.carrinho.model.PedidoDAO;
+import br.uff.carrinho.model.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -84,5 +90,60 @@ public class PedidoServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    /* ------ */
+    /* TESTAR */
+    /* ------ */
+    private void fazPedido(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
+        // Verifica se há um usuario logado
+        if (request.getSession().getAttribute("usuarioLogado") == null){
+           response.sendRedirect("login.jsp");
+           return;
+        } else{
+            // Recupera o usuário logado
+            Usuario usuarioLogado = (Usuario) request.getSession().getAttribute("usuarioLogado");
+            
+            // Recupera carrinho
+            Pedido carrinho = (Pedido) request.getSession().getAttribute("carrinho");
+            // Verifica se o carrinho esta vazio
+            if (carrinho == null || (carrinho.getItensPedido()).isEmpty()){
+                response.sendRedirect("carrinho.jsp");
+                return;
+            } 
+            // Se não tivr vazio (nulo ou sem itens
+            else{
+                // Cria um novo pedido no banco de dados
+                (new PedidoDAO()).cria(carrinho);
+                // Esvazia o carrinho na sessao Http (remove o atributo)
+                request.getSession().removeAttribute("carrinho");
+                // Vai para tela com todos os pedidos do usuario
+                listaPedidos(request, response);
+//                // Adiciona a lista de pedidos do usuario logado
+//                request.getSession().setAttribute("pedidos", (new PedidoDAO().listaPorUsuario(usuarioLogado)));
+//                // Troca de tela pelo Dispatcher (lado servidor)
+//                getServletConfig().getServletContext().getRequestDispatcher("/conta.jsp").forward(request, response);
+            }
+        }
+    }
+
+    private void listaPedidos(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
+        if (request.getSession().getAttribute("usuarioLogado") == null){
+           response.sendRedirect("login.jsp");
+           return;
+        } else{
+            // Recupera o usuário logado
+            Usuario usuarioLogado = (Usuario) request.getSession().getAttribute("usuarioLogado");
+            // Adiciona a lista de pedidos do usuario logado
+            request.getSession().setAttribute("pedidos", (new PedidoDAO().listaPorUsuario(usuarioLogado)));
+            // Troca de tela pelo Dispatcher (lado servidor)
+            getServletConfig().getServletContext().getRequestDispatcher("/conta.jsp").forward(request, response);
+        }
+    }
+
+    private void alteraEstado(HttpServletRequest request, HttpServletResponse response) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }

@@ -13,25 +13,28 @@ public class Usuario {
     private String apelido;
     private String email;
     private String senha;
+    private Cartao cartao;
 
     public Usuario() {
     }
 
-    public Usuario(String nomeCompleto, String dataNascimento, String apelido, String email, String senha) {
+    public Usuario(String nomeCompleto, String dataNascimento, String apelido, String email, String senha, Cartao cartao) {
         this.nomeCompleto = nomeCompleto;
         this.dataNascimento = dataNascimento;
         this.apelido = apelido;
         this.email = email;
         this.senha = senha;
+        this.cartao = cartao;
     }
 
-    public Usuario(int idUsuario, String nomeCompleto, String dataNascimento, String apelido, String email, String senha) {
+    public Usuario(int idUsuario, String nomeCompleto, String dataNascimento, String apelido, String email, String senha, Cartao cartao) {
         this.idUsuario = idUsuario;
         this.nomeCompleto = nomeCompleto;
         this.dataNascimento = dataNascimento;
         this.apelido = apelido;
         this.email = email;
         this.senha = senha;
+        this.cartao = cartao;
     }
 
     public int getIdUsuario() {
@@ -81,5 +84,13 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }   
-    
+
+    public Cartao getCartao() {
+        return cartao;
+    }
+
+    public void setCartao(Cartao cartao) {
+        this.cartao = cartao;
+    }
+   
 }
