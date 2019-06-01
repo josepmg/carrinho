@@ -9,16 +9,6 @@
     integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      background-color: #c3c3c3 !important;
-    }
-
-    .container {
-      background-color: #c3c3c3 !important;
-    }
-  </style>
-
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -28,13 +18,27 @@
 
   <title>Meu carrinho - MeuCarrinho!</title>
 
-  <!-- INICIO PAGINA DE ESTILO -->
 
+    <!-- INICIO PAGINA DE ESTILO -->
   <style>
+    body {
+      background-color: #c3c3c3 !important;
+    }
+
+    .container-fluid {
+      background-color: white !important;
+      height:auto!important;
+    }
+
+    .box {
+      justify-content: center !important;
+    }
+
     @media screen and (max-width:600px) {
-      .fundoProdutos {
+      .container-fluid {
         width: 100% !important;
         padding: 0;
+        height: 100%;
       }
 
       .box {
@@ -50,9 +54,10 @@
     }
 
     @media screen and (max-width:768px) {
-      .fundoProdutos {
+      .container-fluid {
         width: 100% !important;
         padding: 0;
+        height: 100%;
       }
 
       .box {
@@ -62,17 +67,14 @@
     }
 
     @media screen and (max-width:992px) {
-      .container {
-        width: 100%;
-      }
-
       .fundoHome {
         width: 100% !important;
       }
 
-      .fundoProdutos {
+      .container-fluid {
         width: 100% !important;
         padding: 0;
+        height: 100%!important;
       }
 
       .box {
@@ -173,11 +175,7 @@
 
   <!-- INICIO PRODUTOS -->
 
-  <div style="padding:0!important; " class="container">
-    <div class="fundoHome">
-      <div
-        style="width:100%; height: 100vh; background-color: white; padding-top: 1%;margin-top: 5%!important; padding-bottom: 5%;box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);"
-        class="fundoProdutos">
+  <div style="padding:0!important;margin:0x!important " class="container-fluid">
         <h2 style="font-family: 'Montserrat Alternates', sans-serif; padding-top: 2%; margin-left: 15%;">
           <i class="fas fa-shopping-basket"></i>
           Meu Carrinho</h2>
@@ -185,8 +183,8 @@
 
           <!-- PRODUTO -->
 
-          <div style="border: 1px solid black; height: 150px; margin-left: 5px; background-color: white;"
-            class="col-xs-10 col-sm-5 col-md-4 col-lg-2 box">
+          <div style="border: 1px solid black;width:300px; height: 150px; margin-left: 5px; background-color: white;"
+            class="col-sm-6 col-md-2 col-lg-2 box">
             Produto 1 - x quantd.
             <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
               class="btn btn-danger">
@@ -198,7 +196,7 @@
           <!-- PRODUTO -->
 
           <div style="border: 1px solid black;width:300px; height: 150px; margin-left: 5px; background-color: white;"
-            class="col-xs-10 col-sm-6 col-sm-6 col-md-4 col-lg-2 box">
+            class="col-xs-10 col-sm-6 col-sm-6 col-md-2 col-lg-2 box">
             Produto 2 - x quantd.
             <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
               class="btn btn-danger">
@@ -210,7 +208,7 @@
           <!-- PRODUTO -->
 
           <div style="border: 1px solid black;width:300px; height: 150px; margin-left: 5px; background-color: white;"
-            class="col-xs-10 col-sm-6 col-sm-6 col-md-4 col-lg-2 box">
+            class="col-xs-10 col-sm-6 col-sm-6 col-md-2 col-lg-2 box">
             Produto 3 - x quantd.
             <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
               class="btn btn-danger">
@@ -222,7 +220,7 @@
           <!-- PRODUTO -->
 
           <div style="border: 1px solid black;width:300px; height: 150px; margin-left: 5px; background-color: white;"
-            class="col-xs-10 col-sm-6 col-sm-6 col-md-4 col-lg-2 box">
+            class="col-xs-10 col-sm-6 col-sm-6 col-md-2 col-lg-2 box">
             Produto 4 - x quantd.
             <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
               class="btn btn-danger">
@@ -236,7 +234,7 @@
 
         <div style="margin-top: 1%;" class="row justify-content-md-center">
           <div style="border: 1px solid black;width:300px; height: 150px; margin-left: 5px; background-color: white;"
-            class="col-xs-10 col-sm-6 col-sm-6 col-md-4 col-lg-2 box">
+            class="col-xs-10 col-sm-6 col-sm-6 col-md-2 col-lg-2 box">
             Produto 5 - x quantd.
             <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
               class="btn btn-danger">
@@ -248,7 +246,7 @@
           <!-- PRODUTO -->
 
           <div style="border: 1px solid black;width:300px; height: 150px;margin-left: 5px; background-color: white;"
-            class="col-xs-10 col-sm-6 col-sm-6 col-md-4 col-lg-2 box">
+            class="col-xs-10 col-sm-6 col-sm-6 col-md-2 col-lg-2 box">
             Produto 6 - x quantd.
             <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
               class="btn btn-danger">
@@ -260,7 +258,7 @@
           <!-- PRODUTO -->
 
           <div style="border: 1px solid black;width:300px; height: 150px;margin-left: 5px; background-color: white;"
-            class="col-xs-10 col-sm-6col-sm-6 col-md-4 col-lg-2 box">
+            class="col-xs-10 col-sm-6col-sm-6 col-md-2 col-lg-2 box">
             Produto 7 - x quantd.
             <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
               class="btn btn-danger">
@@ -272,7 +270,7 @@
           <!-- PRODUTO -->
 
           <div style="border: 1px solid black;width:300px; height: 150px;margin-left: 5px; background-color: white;"
-            class=" col-xs-10 col-sm-6 col-sm-6 col-md-4 col-lg-2 box">
+            class=" col-xs-10 col-sm-6 col-sm-6 col-md-2 col-lg-2 box">
             Produto 8 - x quantd.
             <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
               class="btn btn-danger">
@@ -286,7 +284,7 @@
 
         <div style="margin-top: 1%; " class="row justify-content-md-center">
           <div style="border: 1px solid black;width:300px; height: 150px; margin-left: 5px; background-color: white;"
-            class="col-sm-6 col-md-4 col-lg-2 box">
+            class="col-sm-6 col-md-2 col-lg-2 box">
             Produto 9 - x quantd.
             <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
               class="btn btn-danger">
@@ -298,7 +296,7 @@
           <!-- PRODUTO -->
 
           <div style="border: 1px solid black;width:300px; height: 150px; margin-left: 5px; background-color: white;"
-            class="col-xs-10 col-sm-6 col-sm-6 col-md-4 col-lg-2 box">
+            class="col-xs-10 col-sm-6 col-sm-6 col-md-2 col-lg-2 box">
             Produto 10 - x quantd.
             <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
               class="btn btn-danger">
@@ -310,7 +308,7 @@
           <!-- PRODUTO -->
 
           <div style="border: 1px solid black;width:300px; height: 150px; margin-left: 5px; background-color: white;"
-            class="col-xs-10 col-sm-6 col-sm-6 col-md-4 col-lg-2 box">
+            class="col-xs-10 col-sm-6 col-sm-6 col-md-2 col-lg-2 box">
             Produto 11 - x quantd.
             <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
               class="btn btn-danger">
@@ -322,7 +320,7 @@
           <!-- PRODUTO -->
 
           <div style="border: 1px solid black;width:300px; height: 150px; margin-left: 5px; background-color: white;"
-            class="col-xs-10 col-sm-6 col-sm-6 col-md-4 col-lg-2 box">
+            class="col-xs-10 col-sm-6 col-sm-6 col-md-2 col-lg-2 box">
             Produto 10 - x quantd.
             <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
               class="btn btn-danger">
@@ -331,8 +329,6 @@
             </button>
           </div>
         </div>
-      </div>
-    </div>
   </div>
 
   <!-- FIM PRODUTOS -->
