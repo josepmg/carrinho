@@ -9,17 +9,22 @@
     integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates&display=swap" rel="stylesheet">
 
-
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="css/bootstrap.min.css">
 
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
 
   <link rel="stylesheet" type="text/css" href="css/style.css">
 
   <title>Meu carrinho - MeuCarrinho!</title>
 
 
-    <!-- INICIO PAGINA DE ESTILO -->
+  <!-- INICIO PAGINA DE ESTILO -->
   <style>
     body {
       background-color: #c3c3c3 !important;
@@ -27,11 +32,20 @@
 
     .container-fluid {
       background-color: white !important;
-      height:auto!important;
+      height: auto !important;
     }
 
     .box {
       justify-content: center !important;
+    }
+
+    #btnConf {
+      width: 273px;
+      margin-left: 15px;
+    }
+
+    #Voltar {
+      width: 150px;
     }
 
     @media screen and (max-width:600px) {
@@ -74,7 +88,7 @@
       .container-fluid {
         width: 100% !important;
         padding: 0;
-        height: 100%!important;
+        height: 100% !important;
       }
 
       .box {
@@ -94,9 +108,104 @@
 
   <!-- FIM PAGINA DE ESTILO -->
 
+  <!-- JS -->
+  <script type="text/javascript">
+    $("#cpf").mask("000.000.000-00");
+  </script>
+  <script type="text/javascript">
+    $("#cartao").mask("0000.0000.0000.0000");
+  </script>
+  <script type="text/javascript">
+    $("#cv").mask("000");
+  </script>
+  <!-- Fim JS -->
 </head>
 
 <body>
+
+  <!-- MODAL COMPRA -->
+
+  <div  class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+
+      <div style="padding: 15px 10px!important;" class="modal-content">
+        <div class="modal-header">
+          <h2 style="width: 300px;font-family: 'Montserrat Alternates', sans-serif;font-size: 30px;">
+            <i style="font-size: 30px;margin-right: 5%;" class="fas fa-receipt"></i>Dados da compra</h2>
+          <button
+            style="margin-left: 0px!important;width:50px!important;font-size: 25px!important;color: black!important;"
+            type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span style="float:right; color: black!important;" aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <!-- FIM MODAL COMPRA -->
+
+          <!-- FORM COMPRA -->
+
+
+          <form>
+            <div class="row">
+              <div class="form-group col-lg-6">
+                <label for="exampleFormControlInput1">Número do cartão</label>
+                <input type="email" class="form-control" id="cartao">
+              </div>
+              <div class="form-group col-lg-6">
+                <label for="exampleFormControlInput1">Validade</label>
+                <input type="month" class="form-control" id="exampleFormControlInput1">
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-lg-9">
+                <label for="exampleFormControlInput1">Nome completo</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1">
+              </div>
+              <div class="form-group col-lg-3">
+                <label for="exampleFormControlInput1">CV</label>
+                <input type="email" class="form-control" id="cv">
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-lg-6">
+                <label for="exampleFormControlInput1">Data de nascimento</label>
+                <input type="date" class="form-control" id="datanasc">
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-lg-7">
+                <label for="exampleFormControlInput1">CPF </label>
+                <input type="text" class="form-control" id="cpf">
+              </div>
+              <div class="form-group col-lg-5">
+                <label for="exampleFormControlSelect1">Parcelas</label>
+                <select class="form-control" id="exampleFormControlSelect1">
+                  <option>x1 R$ 00,00</option>
+                  <option>x2 R$ 00,00</option>
+                  <option>x3 R$ 00,00</option>
+                  <option>x4 R$ 00,00</option>
+                  <option>x5 R$ 00,00</option>
+                </select>
+              </div>
+            </div>
+          </form>
+          <div class="row">
+            <div class="form-group col-lg-4">
+              <button id="Voltar" type="button" class="btn btn-secondary"class="close" data-dismiss="modal" aria-label="Close">Voltar</button>
+            </div>
+            <div class="form-group col-lg-8">
+              <button id="btnConf" 
+                style="background-color:#f34747; color: white" type="button" class="btn" class="close" data-dismiss="modal" aria-label="Close"><a>Confirmar</a></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- FIM RECUPERAÇÃO DE SENHA -->
+
+      </div>
+    </div>
+  </div>
 
   <!-- INICIO MENU -->
 
@@ -123,18 +232,12 @@
             Meu carrinho</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="compra.html">
-            <i class="fas fa-receipt"></i>
-
-            Compra </a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="conta.html">
             <i class="fas fa-user-cog"></i>
             Conta</a>
         </li>
         <li class="nav-item">
-          <a style="color: black;" class="nav-link" href="#">
+          <a style="color: black;" class="nav-link" href="login.html">
             <i class="fas fa-sign-out-alt"></i>
 
 
@@ -176,159 +279,160 @@
   <!-- INICIO PRODUTOS -->
 
   <div style="padding:0!important;margin:0x!important " class="container-fluid">
-        <h2 style="font-family: 'Montserrat Alternates', sans-serif; padding-top: 2%; margin-left: 15%;">
-          <i class="fas fa-shopping-basket"></i>
-          Meu Carrinho</h2>
-        <div style="margin-top: 4%;" class="row justify-content-md-center">
+    <h2 style="font-family: 'Montserrat Alternates', sans-serif; padding-top: 2%; margin-left: 15%;">
+      <i class="fas fa-shopping-basket"></i>
+      Meu Carrinho</h2>
+    <div style="margin-top: 4%;" class="row justify-content-md-center">
 
-          <!-- PRODUTO -->
+      <!-- PRODUTO -->
 
-          <div style="border: 1px solid black;width:300px; height: 300px!important; margin-left: 5px; background-color: white;"
-            class="col-sm-6 col-md-2 col-lg-2 box">
-            Produto 1 - x quantd.
-            <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-              class="btn btn-danger">
-              <i class="fas fa-minus"></i>
+      <div
+        style="border: 1px solid black;width:300px; height: 300px!important; margin-left: 5px; background-color: white;"
+        class="col-sm-6 col-md-2 col-lg-2 box">
+        Produto 1 - x quantd.
+        <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button" class="btn btn-danger">
+          <i class="fas fa-minus"></i>
 
-            </button>
-          </div>
+        </button>
+      </div>
 
-          <!-- PRODUTO -->
+      <!-- PRODUTO -->
 
-          <div style="border: 1px solid black;width:300px; height: 300px!important; margin-left: 5px; background-color: white;"
-            class="col-xs-10 col-sm-6 col-sm-6 col-md-2 col-lg-2 box">
-            Produto 2 - x quantd.
-            <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-              class="btn btn-danger">
-              <i class="fas fa-minus"></i>
+      <div
+        style="border: 1px solid black;width:300px; height: 300px!important; margin-left: 5px; background-color: white;"
+        class="col-xs-10 col-sm-6 col-sm-6 col-md-2 col-lg-2 box">
+        Produto 2 - x quantd.
+        <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button" class="btn btn-danger">
+          <i class="fas fa-minus"></i>
 
-            </button>
-          </div>
+        </button>
+      </div>
 
-          <!-- PRODUTO -->
+      <!-- PRODUTO -->
 
-          <div style="border: 1px solid black;width:300px; height: 300px!important; margin-left: 5px; background-color: white;"
-            class="col-xs-10 col-sm-6 col-sm-6 col-md-2 col-lg-2 box">
-            Produto 3 - x quantd.
-            <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-              class="btn btn-danger">
-              <i class="fas fa-minus"></i>
+      <div
+        style="border: 1px solid black;width:300px; height: 300px!important; margin-left: 5px; background-color: white;"
+        class="col-xs-10 col-sm-6 col-sm-6 col-md-2 col-lg-2 box">
+        Produto 3 - x quantd.
+        <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button" class="btn btn-danger">
+          <i class="fas fa-minus"></i>
 
-            </button>
-          </div>
+        </button>
+      </div>
 
-          <!-- PRODUTO -->
+      <!-- PRODUTO -->
 
-          <div style="border: 1px solid black;width:300px; height: 300px!important; margin-left: 5px; background-color: white;"
-            class="col-xs-10 col-sm-6 col-sm-6 col-md-2 col-lg-2 box">
-            Produto 4 - x quantd.
-            <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-              class="btn btn-danger">
-              <i class="fas fa-minus"></i>
+      <div
+        style="border: 1px solid black;width:300px; height: 300px!important; margin-left: 5px; background-color: white;"
+        class="col-xs-10 col-sm-6 col-sm-6 col-md-2 col-lg-2 box">
+        Produto 4 - x quantd.
+        <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button" class="btn btn-danger">
+          <i class="fas fa-minus"></i>
 
-            </button>
-          </div>
-        </div>
+        </button>
+      </div>
+    </div>
 
-        <!-- PRODUTO -->
+    <!-- PRODUTO -->
 
-        <div style="margin-top: 1%;" class="row justify-content-md-center">
-          <div style="border: 1px solid black;width:300px; height: 300px!important; margin-left: 5px; background-color: white;"
-            class="col-xs-10 col-sm-6 col-sm-6 col-md-2 col-lg-2 box">
-            Produto 5 - x quantd.
-            <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-              class="btn btn-danger">
-              <i class="fas fa-minus"></i>
+    <div style="margin-top: 1%;" class="row justify-content-md-center">
+      <div
+        style="border: 1px solid black;width:300px; height: 300px!important; margin-left: 5px; background-color: white;"
+        class="col-xs-10 col-sm-6 col-sm-6 col-md-2 col-lg-2 box">
+        Produto 5 - x quantd.
+        <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button" class="btn btn-danger">
+          <i class="fas fa-minus"></i>
 
-            </button>
-          </div>
+        </button>
+      </div>
 
-          <!-- PRODUTO -->
+      <!-- PRODUTO -->
 
-          <div style="border: 1px solid black;width:300px; height: 300px!important;margin-left: 5px; background-color: white;"
-            class="col-xs-10 col-sm-6 col-sm-6 col-md-2 col-lg-2 box">
-            Produto 6 - x quantd.
-            <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-              class="btn btn-danger">
-              <i class="fas fa-minus"></i>
+      <div
+        style="border: 1px solid black;width:300px; height: 300px!important;margin-left: 5px; background-color: white;"
+        class="col-xs-10 col-sm-6 col-sm-6 col-md-2 col-lg-2 box">
+        Produto 6 - x quantd.
+        <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button" class="btn btn-danger">
+          <i class="fas fa-minus"></i>
 
-            </button>
-          </div>
+        </button>
+      </div>
 
-          <!-- PRODUTO -->
+      <!-- PRODUTO -->
 
-          <div style="border: 1px solid black;width:300px; height: 300px!important;margin-left: 5px; background-color: white;"
-            class="col-xs-10 col-sm-6col-sm-6 col-md-2 col-lg-2 box">
-            Produto 7 - x quantd.
-            <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-              class="btn btn-danger">
-              <i class="fas fa-minus"></i>
+      <div
+        style="border: 1px solid black;width:300px; height: 300px!important;margin-left: 5px; background-color: white;"
+        class="col-xs-10 col-sm-6col-sm-6 col-md-2 col-lg-2 box">
+        Produto 7 - x quantd.
+        <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button" class="btn btn-danger">
+          <i class="fas fa-minus"></i>
 
-            </button>
-          </div>
+        </button>
+      </div>
 
-          <!-- PRODUTO -->
+      <!-- PRODUTO -->
 
-          <div style="border: 1px solid black;width:300px; height: 300px!important;margin-left: 5px; background-color: white;"
-            class=" col-xs-10 col-sm-6 col-sm-6 col-md-2 col-lg-2 box">
-            Produto 8 - x quantd.
-            <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-              class="btn btn-danger">
-              <i class="fas fa-minus"></i>
+      <div
+        style="border: 1px solid black;width:300px; height: 300px!important;margin-left: 5px; background-color: white;"
+        class=" col-xs-10 col-sm-6 col-sm-6 col-md-2 col-lg-2 box">
+        Produto 8 - x quantd.
+        <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button" class="btn btn-danger">
+          <i class="fas fa-minus"></i>
 
-            </button>
-          </div>
-        </div>
+        </button>
+      </div>
+    </div>
 
-        <!-- PRODUTO -->
+    <!-- PRODUTO -->
 
-        <div style="margin-top: 1%; " class="row justify-content-md-center">
-          <div style="border: 1px solid black;width:300px; height: 300px!important; margin-left: 5px; background-color: white;"
-            class="col-sm-6 col-md-2 col-lg-2 box">
-            Produto 9 - x quantd.
-            <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-              class="btn btn-danger">
-              <i class="fas fa-minus"></i>
+    <div style="margin-top: 1%; " class="row justify-content-md-center">
+      <div
+        style="border: 1px solid black;width:300px; height: 300px!important; margin-left: 5px; background-color: white;"
+        class="col-sm-6 col-md-2 col-lg-2 box">
+        Produto 9 - x quantd.
+        <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button" class="btn btn-danger">
+          <i class="fas fa-minus"></i>
 
-            </button>
-          </div>
+        </button>
+      </div>
 
-          <!-- PRODUTO -->
+      <!-- PRODUTO -->
 
-          <div style="border: 1px solid black;width:300px; height: 300px!important; margin-left: 5px; background-color: white;"
-            class="col-xs-10 col-sm-6 col-sm-6 col-md-2 col-lg-2 box">
-            Produto 10 - x quantd.
-            <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-              class="btn btn-danger">
-              <i class="fas fa-minus"></i>
+      <div
+        style="border: 1px solid black;width:300px; height: 300px!important; margin-left: 5px; background-color: white;"
+        class="col-xs-10 col-sm-6 col-sm-6 col-md-2 col-lg-2 box">
+        Produto 10 - x quantd.
+        <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button" class="btn btn-danger">
+          <i class="fas fa-minus"></i>
 
-            </button>
-          </div>
+        </button>
+      </div>
 
-          <!-- PRODUTO -->
+      <!-- PRODUTO -->
 
-          <div style="border: 1px solid black;width:300px; height: 300px!important; margin-left: 5px; background-color: white;"
-            class="col-xs-10 col-sm-6 col-sm-6 col-md-2 col-lg-2 box">
-            Produto 11 - x quantd.
-            <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-              class="btn btn-danger">
-              <i class="fas fa-minus"></i>
+      <div
+        style="border: 1px solid black;width:300px; height: 300px!important; margin-left: 5px; background-color: white;"
+        class="col-xs-10 col-sm-6 col-sm-6 col-md-2 col-lg-2 box">
+        Produto 11 - x quantd.
+        <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button" class="btn btn-danger">
+          <i class="fas fa-minus"></i>
 
-            </button>
-          </div>
+        </button>
+      </div>
 
-          <!-- PRODUTO -->
+      <!-- PRODUTO -->
 
-          <div style="border: 1px solid black;width:300px; height: 300px!important; margin-left: 5px; background-color: white;"
-            class="col-xs-10 col-sm-6 col-sm-6 col-md-2 col-lg-2 box">
-            Produto 10 - x quantd.
-            <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-              class="btn btn-danger">
-              <i class="fas fa-minus"></i>
+      <div
+        style="border: 1px solid black;width:300px; height: 300px!important; margin-left: 5px; background-color: white;"
+        class="col-xs-10 col-sm-6 col-sm-6 col-md-2 col-lg-2 box">
+        Produto 10 - x quantd.
 
-            </button>
-          </div>
-        </div>
+        <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button" class="btn btn-danger">
+          <i class="fas fa-minus"></i>
+
+        </button>
+      </div>
+    </div>
   </div>
 
   <!-- FIM PRODUTOS -->
@@ -342,8 +446,9 @@
       <i style="color: black; font-size: 40px" class="fas fa-cart-plus"></i>Subtotal: R$ xx,xx
     </span>
     <button
-      style="float: right; font-size: 14px; padding:5px; color: black; margin-top: 10%!important; bottom: 5%;display: inline-block;"
-      class="btn btn btn-success my-2 my-sm-0" type="submit">Finalizar</button>
+      style="margin-left: 33%; font-size: 14px; padding:5px; color: black; margin-top: 10%!important; bottom: 5%;display: inline-block;"
+      class="btn btn btn-success my-2 my-sm-0" type="submit"><a data-toggle="modal"
+        data-target="#exampleModal">Finalizar</a></button>
   </div>
 
   <!-- FIM SUBTOTAL -->
