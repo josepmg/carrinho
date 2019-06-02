@@ -34,11 +34,11 @@
       background-color: #c3c3c3;
     }
 
-    input:focus{
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2)!important;
-        }
+    input:focus {
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2) !important;
+    }
 
-    input{
+    input {
       border: none !important;
       border-bottom: 1px solid #f34747 !important;
       border-radius: 5px 5px 0px 0px !important;
@@ -80,14 +80,54 @@
       border: none;
     }
 
-    .container-fluid > row {
-      height: 100%!important;
+    .container-fluid>row {
+      height: 100% !important;
+    }
+
+    .logo {
+      min-width: 300px;
     }
 
     @media screen and(max-width: 992px) {
       #navbarText {
         margin-left: 0px !important;
       }
+      .navbar > .logo {
+        margin-left: 35%;
+      }
+    }
+
+    @media screen and (max-width:768px) {
+      .container-fluid {
+        width: 100% !important;
+        padding: 0;
+        height: 100%;
+      }
+
+      .box {
+        margin-bottom: 5% !important;
+        justify-content: center !important;
+      }
+    }
+
+    @media screen and (max-width:992px) {
+      .logo {
+        margin-left: 35%;
+      }
+    }
+
+    @media screen and (max-width:600px) {
+    .logo {
+      min-width: 300px!important;
+    }
+    }
+
+    
+    @media screen and (max-width: 507px){
+      .logo {
+        font-size: 25px!important;
+      margin-left: 5%!important;
+    }
     }
   </style>
 
@@ -108,47 +148,48 @@
 
 <body>
 
-   <!-- MODAL COMPRA -->
+  <!-- MODAL COMPRA -->
 
-   <div  class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-   aria-labelledby="exampleModalLabel" aria-hidden="true">
-   <div class="modal-dialog" role="document">
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
 
-     <div style="padding: 15px 10px!important;" class="modal-content">
-       <div class="modal-header">
-         <h2 style="width: 300px;font-family: 'Montserrat Alternates', sans-serif;font-size: 30px;">
-           <i style="font-size: 30px;margin-right: 5%;" class="far fa-envelope"></i>Dados enviados</h2>
-         <button
-           style="margin-left: 0px!important;width:50px!important;font-size: 25px!important;color: black!important;"
-           type="button" class="close" data-dismiss="modal" aria-label="Close">
-           <span style="float:right; color: black!important;" aria-hidden="true">&times;</span>
-         </button>
-       </div>
-       <div class="modal-body">
+      <div style="padding: 15px 10px!important;" class="modal-content">
+        <div class="modal-header">
+          <h2 style="width: 300px;font-family: 'Montserrat Alternates', sans-serif;font-size: 30px;">
+            <i style="font-size: 30px;margin-right: 5%;" class="far fa-envelope"></i>Dados enviados</h2>
+          <button
+            style="margin-left: 0px!important;width:50px!important;font-size: 25px!important;color: black!important;"
+            type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span style="float:right; color: black!important;" aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
 
-         <!-- FIM MODAL COMPRA -->
+          <!-- FIM MODAL COMPRA -->
 
-         <!-- FORM COMPRA -->
-        <p style="text-align: center; margin-top: 10px;">Enviado</p>
+          <!-- FORM COMPRA -->
+          <p style="text-align: center; margin-top: 10px;">Enviado</p>
 
-           <div class="form-group col-lg-8">
-             <button id="btnConf" 
-               style="background-color:#f34747; color: white; margin-left: 60%; margin-top: 25px;" type="button" class="btn" class="close" data-dismiss="modal" aria-label="Close"><a>Confirmar</a></button>
-         </div>
-       </div>
+          <div class="form-group col-lg-8">
+            <button id="btnConf" style="background-color:#f34747; color: white; margin-left: 60%; margin-top: 25px;"
+              type="button" class="btn" class="close" data-dismiss="modal" aria-label="Close"><a>Confirmar</a></button>
+          </div>
+        </div>
 
-       <!-- FIM RECUPERAÇÃO DE SENHA -->
+        <!-- FIM RECUPERAÇÃO DE SENHA -->
 
-     </div>
-   </div>
- </div>
+      </div>
+    </div>
+  </div>
 
   <!-- INICIO MENU -->
 
   <nav style="font-family: 'Montserrat Alternates', sans-serif;" class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <i style="color: white; font-size: 40px; padding: 1% 2%" class="fas fa-shopping-cart"></i>
-    <a class="navbar-brand" href="#">
-      <span style="font-size: 28px; color: #f34747; font-weight: bold">MEU</span>carrinho</a>
+    <div class="logo"><i style="color: white; font-size: 40px; padding: 1% 2%"
+        class="fas fa-shopping-cart text-center"></i>
+      <a class="navbar-brand" href="#">
+        <span style="font-size: 28px; color: #f34747; font-weight: bold">MEU</span>carrinho</a></div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -198,27 +239,27 @@
           <div class="row">
             <div class="form-group col-lg-6 col-md-12">
               <label for="exampleFormControlInput1">Nome</label>
-              <input type="text" class="form-control" id="nome"  name="nome">
+              <input type="text" class="form-control" id="nome" name="nome">
             </div>
             <div class="form-group col-lg-6 col-md-12">
               <label for="exampleFormControlInput1">Sobrenome</label>
-              <input type="text" class="form-control" id="sobrenome"  name="sobrenome">
+              <input type="text" class="form-control" id="sobrenome" name="sobrenome">
             </div>
           </div>
           <div class="row">
             <div class="form-group col-lg-6 col-md-12">
               <label for="exampleFormControlInput1">E-mail</label>
-              <input type="email" class="form-control" id="email"  name="email">
+              <input type="email" class="form-control" id="email" name="email">
             </div>
             <div class="form-group col-lg-6 col-md-12">
               <label for="exampleFormControlInput1">Usuário</label>
-              <input type="email" class="form-control" id="user"  name="user">
+              <input type="email" class="form-control" id="user" name="user">
             </div>
           </div>
           <div class="row">
             <div class="form-group col-lg-6 col-md-12">
               <label for="exampleFormControlInput1">Data de Nascimento</label>
-              <input type="date" class="form-control" id="nascimento"  name="nascimento">
+              <input type="date" class="form-control" id="nascimento" name="nascimento">
             </div>
             <div class="form-group col-lg-6 col-md-12">
               <label for="exampleFormControlInput1">Gênero</label>
@@ -230,7 +271,7 @@
                 <option>Fluido</option>
                 <option>Agênero</option>
                 <option>Outro</option>
-            </select>
+              </select>
             </div>
           </div>
           <div class="row">
@@ -249,8 +290,8 @@
             <button type="button" class="btn btn-secondary">Voltar</button>
           </div>
           <div class="form-group col-lg-8">
-            <button id="btnConf" style="background-color:#f34747;" type="button" class="btn btn-success"data-toggle="modal"
-        data-target="#exampleModal">Enviar</button>
+            <button id="btnConf" style="background-color:#f34747;" type="button" class="btn btn-success"
+              data-toggle="modal" data-target="#exampleModal">Enviar</button>
           </div>
         </div>
       </div>
