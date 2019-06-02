@@ -5,8 +5,15 @@
  */
 package br.uff.carrinho.controler;
 
+import br.uff.carrinho.model.Item;
+import br.uff.carrinho.model.Pedido;
+import br.uff.carrinho.model.Produto;
+import br.uff.carrinho.model.ProdutoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
+import java.util.List;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,6 +42,9 @@ public class CarrinhoServlet extends HttpServlet {
                 break;
             case "deletaCarrinho":
                 deletaCarrinho(request, response);
+                break;
+            case "mostraCarrinho":
+                mostraCarrinho(request, response);
                 break;
             case "adicionaProduto":
                 adicionaProduto(request, response);
@@ -88,5 +98,106 @@ public class CarrinhoServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    /* ------ */
+    /* TESTAR */
+    /* ------ */
+    private void criaCarrinho(HttpServletRequest request, HttpServletResponse response) {
+        Pedido carrinho = new Pedido();
+        request.setAttribute("carrinho", carrinho);
+    }
+
+    /* ------ */
+    /* TESTAR */
+    /* ------ */
+    private void deletaCarrinho(HttpServletRequest request, HttpServletResponse response) {
+        request.getSession().removeAttribute("carrinho");
+    }
+    
+    /* ------ */
+    /* TESTAR */
+    /* ------ */
+    private void mostraCarrinho(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+            getServletConfig().getServletContext().getRequestDispatcher("/carrinho.jsp").forward(request, response);
+    }
+
+    /* ------ */
+    /* TESTAR */
+    /* ------ */
+    private void adicionaProduto(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // Recupera carrinho
+        Pedido carrinhoLocal = null;
+        // Verifica se já há um carrinho
+        if(request.getSession().getAttribute("carrinho") == null){
+            carrinhoLocal = new Pedido();
+        } else{
+            carrinhoLocal = (Pedido) request.getSession().getAttribute("carrinho");
+        }
+        
+        System.out.println("Produto:" + request.getParameter("idProduto"));
+        // Adiciona produto ao carrinho
+        carrinhoLocal.adicionaProduto(
+                (Produto) (new ProdutoDAO()).busca(Integer.valueOf(request.getParameter("idProduto")))
+        );
+        
+        // Coloca o carrinho atualziado na sessão
+        request.getSession().setAttribute("carrinho", carrinhoLocal);
+        
+        // Usa o dispatcher pra trocar de tela
+        getServletConfig().getServletContext().getRequestDispatcher("/produtoServlet?acao=listaProdutos").forward(request, response);
+    }
+
+    /* ------ */
+    /* TESTAR */
+    /* ------ */
+    private void alteraQuantidade(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // Verifica se existe um carrinho
+        if(request.getSession().getAttribute("carrinho") == null){
+            getServletConfig().getServletContext().getRequestDispatcher("/carrinho/produtoServlet?acao=listaProdutos").forward(request, response);
+        }
+        
+        Pedido carrinhoLocal = (Pedido) request.getSession().getAttribute("carrinho");
+
+        // Recupera posição do item no array do pedido
+        int itemPos = Integer.valueOf(request.getParameter("itemPos"));
+        // Recupera quantidade informada no form
+        int qntItem = Integer.valueOf(request.getParameter("qtdItem"));
+        // Altera a quantidade do item
+        ((carrinhoLocal.getItensPedido()).get(itemPos)).setQuantidade(qntItem);
+        
+        // Coloca o carrinho atualziado na sessão
+        request.getSession().setAttribute("carrinho", carrinhoLocal);
+        
+        // Mostra o carrinho
+        mostraCarrinho(request, response);
+    }
+
+    /* ------ */
+    /* TESTAR */
+    /* ------ */
+    private void removeProduto(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // Verifica se existe um carrinho
+        if(request.getSession().getAttribute("carrinho") == null){
+            getServletConfig().getServletContext().getRequestDispatcher("/carrinho/produtoServlet?acao=listaProdutos").forward(request, response);
+        }
+        
+        Pedido carrinhoLocal = (Pedido) request.getSession().getAttribute("carrinho");
+
+        // Recupera posição do item no array do pedido
+        int itemPos = Integer.valueOf(request.getParameter("itemPos"));
+        
+        // Altera a quantidade do item
+        (carrinhoLocal.getItensPedido()).remove(itemPos);
+        
+        // Coloca o carrinho atualziado na sessão
+        request.getSession().setAttribute("carrinho", carrinhoLocal);
+        
+        // Mostra o carrinho
+        mostraCarrinho(request, response);
+    }
 
 }

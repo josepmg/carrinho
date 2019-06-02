@@ -109,38 +109,27 @@
     </button>
     <div style="margin-left: 15%;" class="collapse navbar-collapse" id="navbarText">
       <ul style="font-size: 18px" class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="index.jsp">
-            <i class="fas fa-tags"></i>
-
-            Produtos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="carrinho.jsp">
-            <i class="fas fa-shopping-basket"></i>
-
-            Meu carrinho</a>
-        </li>
-        <li class="nav-item active">
-          <a style="color: #f34747;" class="nav-link" href="compra.jsp">
-            <i class="fas fa-receipt"></i>
-
-            Compra </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="conta.jsp">
-            <i class="fas fa-user-cog"></i>
-            Conta</a>
-        </li>
-        <li class="nav-item">
-          <a style="color: black;text-shadow: .5px .5px 4px rgba(255,255,255,0.4);" class="nav-link" href="#">
-            <i class="fas fa-sign-out-alt"></i>
-
-
-
-            Sair</a>
-        </li>
-      </ul>
+          <li class="nav-item active">
+            <a style="color: #f34747;" class="nav-link" href="/carrinho/produtoServlet?acao=listaProdutos">
+              <i class="fas fa-tags"></i>
+              Produtos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/carrinho/carrinhoServlet?acao=mostraCarrinho">
+              <i class="fas fa-shopping-basket"></i>
+              Meu carrinho</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/carrinho/usuarioServlet?acao=exibeConta">
+              <i class="fas fa-user-cog"></i>
+              Conta</a>
+          </li>
+          <li class="nav-item">
+            <a style="color: black;text-shadow: .5px .5px 4px rgba(255,255,255,0.4);" class="nav-link" href="/carrinho/usuarioServlet?acao=fazLogout">
+              <i class="fas fa-sign-out-alt"></i>
+              Sair</a>
+          </li>
+        </ul>
     </div>
   </nav>
 

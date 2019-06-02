@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -109,6 +111,28 @@ public class ProdutoDAO implements DAO{
             fechaConexao();
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public List<Produto> listaTodos(){
+        try {
+            String sql = "SELECT * FROM produto";
+            PreparedStatement stmt = this.conn.prepareStatement(sql);
+            
+            ResultSet rs = stmt.executeQuery();    
+            List<Produto> listaProdutos = new ArrayList<>();
+            while(rs.next()){
+                listaProdutos.add(
+                    new Produto(rs.getInt("idProduto"), rs.getString("nome"), rs.getString("descricao"), rs.getFloat("preco"), rs.getString("imagePath"))
+                );
+            }
+            
+            rs.close();
+            stmt.close();
+            fechaConexao();
+            return listaProdutos;
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
         }
     }
     

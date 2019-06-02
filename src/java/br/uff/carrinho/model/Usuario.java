@@ -18,6 +18,14 @@ public class Usuario {
     public Usuario() {
     }
 
+    public Usuario(String nomeCompleto, String dataNascimento, String apelido, String email, String senha) {
+        this.nomeCompleto = nomeCompleto;
+        this.dataNascimento = dataNascimento;
+        this.apelido = apelido;
+        this.email = email;
+        this.senha = senha;
+    }
+    
     public Usuario(String nomeCompleto, String dataNascimento, String apelido, String email, String senha, Cartao cartao) {
         this.nomeCompleto = nomeCompleto;
         this.dataNascimento = dataNascimento;
@@ -26,7 +34,7 @@ public class Usuario {
         this.senha = senha;
         this.cartao = cartao;
     }
-
+    
     public Usuario(int idUsuario, String nomeCompleto, String dataNascimento, String apelido, String email, String senha, Cartao cartao) {
         this.idUsuario = idUsuario;
         this.nomeCompleto = nomeCompleto;
@@ -92,5 +100,16 @@ public class Usuario {
     public void setCartao(Cartao cartao) {
         this.cartao = cartao;
     }
+
+    @Override
+    public String toString() {
+        return "Nome: " + this.nomeCompleto + "\n" +
+                "Apelido: " + this.apelido + "\n" +
+                "Email: " + this.email + "\n" +
+                "DataNascimento: " + this.dataNascimento + "\n" +
+                "Senha: " + this.senha;
+    }
+    
+    
    
 }

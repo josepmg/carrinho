@@ -19,6 +19,12 @@ public class Item {
     public Item() {
     }
 
+    public Item(Produto produto, int quantidade, float preco) {
+        this.produto = produto;
+        this.quantidade = quantidade;
+        this.preco = preco;
+    }
+
     public Item(int idItem, Produto produto, int quantidade, float preco) {
         this.idItem = idItem;
         this.produto = produto;

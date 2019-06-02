@@ -1,4 +1,15 @@
+<%@page import="br.uff.carrinho.model.Pedido"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="br.uff.carrinho.model.Produto"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%
+    ArrayList<Produto> listaProdutos = (ArrayList<Produto>)request.getAttribute("listaProdutos");
+    // A lista de usuários é colocada no contexto da página. Assim o JSTL terá acesso a ela
+    pageContext.setAttribute("listaProdutos", listaProdutos);
+%>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -142,7 +153,7 @@
 
     <nav style="font-family: 'Montserrat Alternates', sans-serif;" class="navbar navbar-expand-lg navbar-dark bg-dark">
       <i style="color: white; font-size: 40px; padding: 1% 2%" class="fas fa-shopping-cart"></i>
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="/carrinho/produtoServlet?acao=listaProdutos">
         <span style="font-size: 28px; color: #f34747; font-weight: bold">MEU</span>carrinho</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
         aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -151,31 +162,23 @@
       <div style="margin-left: 15%;" class="collapse navbar-collapse" id="navbarText">
         <ul style="font-size: 18px" class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a style="color: #f34747;" class="nav-link" href="index.jsp">
+            <a style="color: #f34747;" class="nav-link" href="/carrinho/produtoServlet?acao=listaProdutos">
               <i class="fas fa-tags"></i>
               Produtos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="carrinho.jsp">
+            <a class="nav-link" href="/carrinho/carrinhoServlet?acao=mostraCarrinho">
               <i class="fas fa-shopping-basket"></i>
               Meu carrinho</a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="compra.jsp">
-              <i class="fas fa-receipt"></i>
-              Compra </a>
-          </li>
           <li class="nav-item">
-            <a class="nav-link" href="conta.jsp">
+            <a class="nav-link" href="/carrinho/usuarioServlet?acao=exibeConta">
               <i class="fas fa-user-cog"></i>
               Conta</a>
           </li>
           <li class="nav-item">
-            <a style="color: black;text-shadow: .5px .5px 4px rgba(255,255,255,0.4);" class="nav-link" href="#">
+            <a style="color: black;text-shadow: .5px .5px 4px rgba(255,255,255,0.4);" class="nav-link" href="/carrinho/usuarioServlet?acao=fazLogout">
               <i class="fas fa-sign-out-alt"></i>
-
-
-
               Sair</a>
           </li>
         </ul>
@@ -241,261 +244,30 @@
           <!-- FIM TITULOS CABEÇALHO -->
 
           <!-- INICIO PRODUTOS -->
-
+          
           <div style="margin-top: 4%;" class="row justify-content-md-center">
-
-            <!-- PRODUTO -->
-
-            <div
-              style="border: 1px solid black;height: 200px; margin-left: 5px; background-color: white; background-image: url('img/mouse.jpg'); background-size: 100%;"
-              class="col-xs-12 col-sm-5 col-md-4 col-lg-2 box">
-              <p style=" padding:0%;width: 100% ; background-color: white;">Produto 1</p>
-              <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-                class="btn btn-success">
-                <i class="fas fa-plus"></i>
-              </button>
-            </div>
-
-            <!-- PRODUTO -->
-
-            <div
-              style="border: 1px solid black;height: 200px; margin-left: 5px; background-color: white; background-image: url('img/teclado.jpg'); background-size: 100%;"
-              class="col-xs-12 col-sm-5 col-md-4 col-lg-2 box">
-              <p style=" padding:0%;width: 100% ; background-color: white;">Produto 2</p>
-              <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-                class="btn btn-success">
-                <i class="fas fa-plus"></i>
-              </button>
-            </div>
-
-            <!-- PRODUTO -->
-
-            <div
-              style="border: 1px solid black;height: 200px; margin-left: 5px; background-color: white; background-image: url('img/notebook.jpg'); background-size: 100%;"
-              class="col-xs-12 col-sm-5 col-md-4 col-lg-2 box">
-              <p style=" padding:0%;width: 100% ; background-color: white;">Produto 3</p>
-              <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-                class="btn btn-success">
-                <i class="fas fa-plus"></i>
-              </button>
-            </div>
-
-            <!-- PRODUTO -->
-
-            <div
-              style="border: 1px solid black;height: 200px; margin-left: 5px; background-color: white; background-image: url('img/roteador.jpg'); background-size: 100%;"
-              class="col-xs-12 col-sm-5 col-md-4 col-lg-2 box">
-              <p style=" padding:0%;width: 100% ; background-color: white;">Produto 4</p>
-              <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-                class="btn btn-success">
-                <i class="fas fa-plus"></i>
-              </button>
-            </div>
+              <c:if test="${listaProdutos != null}">
+                    <c:forEach var="p" items="${listaProdutos}">
+                        <div
+                          style="border: 1px solid black;height: 200px; margin-left: 5px; background-color: white; background-image: url(${p.imagePath}); background-size: 100%;"
+                          class="col-xs-12 col-sm-5 col-md-4 col-lg-2 box">
+                          <p style=" padding:0%;width: 100% ; background-color: white;">${p.nome}
+                              <br/>
+                              <fmt:setLocale value = "pt_BR"/>
+                              <fmt:formatNumber value = "${p.preco}" type = "currency"/></p>
+                          <form method="POST" action="/carrinho/carrinhoServlet?acao=adicionaProduto" id="formProduto">
+                                <input type="hidden" name="idProduto" value="${p.idProduto}"/>   
+<!--                                <input type="submit" value="Add"/>-->
+                                <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="submit"
+                                    class="btn btn-success">
+                                    <i class="fas fa-plus"></i>
+                          </form>
+                          
+                          </button>
+                        </div>
+                    </c:forEach>
+              </c:if>
           </div>
-
-          <!-- PRODUTO -->
-
-
-          <div style="margin-top: 1%;" class="row justify-content-md-center">
-            <div
-              style="border: 1px solid black;height: 200px; margin-left: 5px; background-color: white; background-image: url('img/cadeira.jpg'); background-size: 100%;"
-              class="col-xs-12 col-sm-5 col-md-4 col-lg-2 box">
-              <p style=" padding:0%;width: 100% ; background-color: white;">Produto 5</p>
-              <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-                class="btn btn-success">
-                <i class="fas fa-plus"></i>
-              </button>
-            </div>
-
-            <!-- PRODUTO -->
-
-            <div
-              style="border: 1px solid black;height: 200px; margin-left: 5px; background-color: white; background-image: url('img/hd.jpg'); background-size: 89%;"
-              class="col-xs-12 col-sm-5 col-md-4 col-lg-2 box">
-              <p style=" padding:0%;width: 100% ; background-color: white;">Produto 6</p>
-              <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-                class="btn btn-success">
-                <i class="fas fa-plus"></i>
-              </button>
-            </div>
-
-            <!-- PRODUTO -->
-
-            <div
-              style="border: 1px solid black;height: 200px; margin-left: 5px; background-color: white; background-image: url('img/tablet.jpg'); background-size: 89%;"
-              class="col-xs-12 col-sm-5 col-md-4 col-lg-2 box">
-              <p style=" padding:0%;width: 100% ; background-color: white;">Produto 7</p>
-              <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-                class="btn btn-success">
-                <i class="fas fa-plus"></i>
-              </button>
-            </div>
-
-            <!-- PRODUTO -->
-
-            <div
-              style="border: 1px solid black;height: 200px; margin-left: 5px; background-color: white; background-image: url('img/iphone.jpg'); background-size: 89%;"
-              class="col-xs-12 col-sm-5 col-md-4 col-lg-2 box">
-              <p style=" padding:0%;width: 100% ; background-color: white;">Produto 8</p>
-              <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-                class="btn btn-success">
-                <i class="fas fa-plus"></i>
-              </button>
-            </div>
-          </div>
-
-          <!-- PRODUTO -->
-
-          <div style="margin-top: 1%;" class="row justify-content-md-center">
-            <div style="border: 1px solid black;height: 200px; margin-left: 5px; background-color: white;"
-              class="col-xs-12 col-sm-5 col-md-4 col-lg-2 box">
-              Produto 9
-              <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-                class="btn btn-success">
-                <i class="fas fa-plus"></i>
-
-              </button>
-            </div>
-
-            <!-- PRODUTO -->
-
-            <div style="border: 1px solid black;height: 200px;margin-left: 5px; background-color: white;"
-              class="col-xs-12 col-sm-5 col-md-4 col-lg-2 box">
-              Produto 10
-              <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-                class="btn btn-success">
-                <i class="fas fa-plus"></i>
-
-              </button>
-            </div>
-
-            <!-- PRODUTO -->
-
-            <div style="border: 1px solid black;height: 200px;margin-left: 5px; background-color: white;"
-              class="col-xs-12 col-sm-5 col-md-4 col-lg-2 box">
-              Produto 11
-              <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-                class="btn btn-success">
-                <i class="fas fa-plus"></i>
-
-              </button>
-            </div>
-
-            <!-- PRODUTO -->
-
-            <div style="border: 1px solid black;height: 200px;margin-left: 5px; background-color: white;"
-              class="col-xs-12 col-sm-5 col-md-4 col-lg-2 box">
-              Produto 12
-              <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-                class="btn btn-success">
-                <i class="fas fa-plus"></i>
-
-              </button>
-            </div>
-          </div>
-
-          <!-- PRODUTO -->
-
-          <div style="margin-top: 1%;" class="row justify-content-md-center">
-            <div style="border: 1px solid black;height: 200px; margin-left: 5px; background-color: white;"
-              class="col-xs-12 col-sm-5 col-md-4 col-lg-2 box">
-              Produto 13
-              <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-                class="btn btn-success">
-                <i class="fas fa-plus"></i>
-
-              </button>
-            </div>
-
-            <!-- PRODUTO -->
-
-            <div style="border: 1px solid black;height: 200px;margin-left: 5px; background-color: white;"
-              class="col-xs-12 col-sm-5 col-md-4 col-lg-2 box">
-              Produto 14
-              <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-                class="btn btn-success">
-                <i class="fas fa-plus"></i>
-
-              </button>
-            </div>
-
-            <!-- PRODUTO -->
-
-            <div style="border: 1px solid black;height: 200px;margin-left: 5px; background-color: white;"
-              class="col-xs-12 col-sm-5 col-md-4 col-lg-2 box">
-              Produto 15
-              <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-                class="btn btn-success">
-                <i class="fas fa-plus"></i>
-
-              </button>
-            </div>
-
-            <!-- PRODUTO -->
-
-            <div style="border: 1px solid black;height: 200px;margin-left: 5px; background-color: white;"
-              class="col-xs-12 col-sm-5 col-md-4 col-lg-2 box">
-              Produto 16
-              <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-                class="btn btn-success">
-                <i class="fas fa-plus"></i>
-
-              </button>
-            </div>
-          </div>
-
-          <!-- PRODUTO -->
-
-          <div style="margin-top: 1%;" class="row justify-content-md-center">
-            <div style="border: 1px solid black;height: 200px; margin-left: 5px; background-color: white;"
-              class="col-xs-12 col-sm-5 col-md-4 col-lg-2 box">
-              Produto 17
-              <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-                class="btn btn-success">
-                <i class="fas fa-plus"></i>
-
-              </button>
-            </div>
-
-            <!-- PRODUTO -->
-
-            <div style="border: 1px solid black;height: 200px;margin-left: 5px; background-color: white;"
-              class="col-xs-12 col-sm-5 col-md-4 col-lg-2 box">
-              Produto 18
-              <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-                class="btn btn-success">
-                <i class="fas fa-plus"></i>
-
-              </button>
-            </div>
-
-            <!-- PRODUTO -->
-
-            <div style="border: 1px solid black;height: 200px;margin-left: 5px; background-color: white;"
-              class="col-xs-12 col-sm-5 col-md-4 col-lg-2 box">
-              Produto 19
-              <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-                class="btn btn-success">
-                <i class="fas fa-plus"></i>
-
-              </button>
-            </div>
-
-            <!-- PRODUTO -->
-
-            <div style="border: 1px solid black;height: 200px;margin-left: 5px; background-color: white;"
-              class="col-xs-12 col-sm-5 col-md-4 col-lg-2 box">
-              Produto 20
-              <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-                class="btn btn-success">
-                <i class="fas fa-plus"></i>
-
-              </button>
-            </div>
-          </div>
-        </div>
-
-      </div>
 
       <!-- FIM PRODUTOS -->
 

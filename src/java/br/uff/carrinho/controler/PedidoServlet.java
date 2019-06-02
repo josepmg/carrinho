@@ -127,6 +127,9 @@ public class PedidoServlet extends HttpServlet {
         }
     }
 
+    /* ------ */
+    /* TESTAR */
+    /* ------ */
     private void listaPedidos(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
         if (request.getSession().getAttribute("usuarioLogado") == null){
@@ -142,6 +145,9 @@ public class PedidoServlet extends HttpServlet {
         }
     }
 
+    /* ------ */
+    /* FAZER */
+    /* ------ */
     private void alteraEstado(HttpServletRequest request, HttpServletResponse response) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

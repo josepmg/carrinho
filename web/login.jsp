@@ -134,21 +134,21 @@
         <div class="row">
             <div class="esquerda col-lg-6">
                 <h2 class="text-center">Login</h2>
-                <form>
+                <form method="POST" action="/carrinho/usuarioServlet?acao=fazLogin">
                     <div style="margin: auto;" class="row col-lg-6">
                         <div class="form-group col-lg-12">
                             <label for="exampleFormControlInput1">E-mail</label>
                             <input style="border-bottom: 1px solid #f34747!important;" type="email" class="form-control"
-                                id="exampleFormControlInput1" placeholder="E-mail de login">
+                                   id="exampleFormControlInput1" placeholder="E-mail de login" name="email">
                         </div>
                         <div class="form-group col-lg-12">
                             <label for="exampleFormControlInput1">Senha</label>
                             <input style="border-bottom: 1px solid #f34747!important;" type="password"
-                                class="form-control" id="Example" placeholder="Senha">
+                                   class="form-control" id="Example" placeholder="Senha" name="senha">
                             <a style="color: #f34747; cursor: pointer">Esqueceu a senha?</a>
                         </div>
                         <button id="entrar" style="            background:#282725;
-                        border: 1px solid white!important;" type="button"
+                                border: 1px solid white!important;" type="submit"
                             class="btn btn-primary btnlogin">Entrar</button>
                     </div>
                 </form>
@@ -160,35 +160,35 @@
 
             <div class="direita col-lg-6">
                 <h2 style="padding-top:10%;" class="text-center">Cadastre-se</h2>
-                <form>
+                <form method="POST" action="/carrinho/usuarioServlet?acao=criaConta" id="formCadastro">
                     <div style="margin: auto;" class="row col-lg-10">
                         <div class="form-group col-lg-6">
                             <label for="exampleFormControlInput1">Nome</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nome">
+                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nome" name="nomeCompleto">
                         </div>
                         <div class="form-group col-lg-6">
-                            <label for="exampleFormControlInput1">Sobrenome</label>
+                            <label for="exampleFormControlInput1">Apelido</label>
                             <input type="text" class="form-control" id="exampleFormControlInput1"
-                                placeholder="Sobrenome">
+                                   placeholder="apelido" name="apelido">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="exampleFormControlInput1">E-mail</label>
-                            <input type="password" class="form-control" id="Example" placeholder="E-mail">
+                            <input type="text" class="form-control" id="Example" placeholder="E-mail" name="email">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="exampleFormControlInput1">Data de Nascimento</label>
-                            <input type="date" class="form-control" id="Example" placeholder="Data">
+                            <input type="date" class="form-control" id="Example" placeholder="Data" name="dataNascimento">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="exampleFormControlInput1">Senha</label>
-                            <input type="password" class="form-control" id="Example" placeholder="Senha">
+                            <input type="password" class="form-control" id="Example" placeholder="Senha" name="senha">
                         </div>
                         <div class="form-group col-lg-6 ">
                             <label for="exampleFormControlInput1">Confirma Senha</label>
                             <input type="password" class="form-control" id="Example" placeholder="Confirme a senha">
                         </div>
-                        <button id="cadastrar" style="border: 1px solid white!important;" type="button"
-                            class="btn btn-primary btnlogin">Cadastrar</button>
+                        <button id="cadastrar" style="border: 1px solid white!important;" type="submit"
+                                class="btn btn-primary btnlogin" form="formCadastro" >Cadastrar</button>
                     </div>
                 </form>
             </div>

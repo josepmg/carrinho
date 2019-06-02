@@ -5,6 +5,7 @@
  */
 package br.uff.carrinho.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,6 +30,7 @@ public class Pedido {
     private String estado;
 
     public Pedido() {
+        this.itensPedido = new ArrayList<>();
     }
 
     public Pedido(int idPedido, List<Item> itensPedido, float valorTotal, Usuario cliente, String enderecoEntrega, Cartao cartao, String dataCompra, String estado) {
@@ -40,6 +42,13 @@ public class Pedido {
         this.cartao = cartao;
         this.dataCompra = dataCompra;
         this.estado = estado;
+    }
+    
+    public void adicionaProduto(Produto p){
+        this.itensPedido.add(
+                new Item(p, 1, p.getPreco())
+        
+        );
     }
 
     public int getIdPedido() {

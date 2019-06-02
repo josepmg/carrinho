@@ -98,39 +98,28 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div style="margin-left: 15%;" class="collapse navbar-collapse" id="navbarText">
-      <ul style="font-size: 18px!important" class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="index.jsp">
-            <i class="fas fa-tags"></i>
-
-            Produtos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="carrinho.jsp">
-            <i class="fas fa-shopping-basket"></i>
-
-            Meu carrinho</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="compra.jsp">
-            <i class="fas fa-receipt"></i>
-
-            Compra </a>
-        </li>
-        <li class="nav-item active">
-          <a style="color: #f34747;" class="nav-link" href="conta.jsp">
-            <i class="fas fa-user-cog"></i>
-            Conta</a>
-        </li>
-        <li class="nav-item">
-          <a style="color: black; text-shadow: .5px .5px 4px rgba(255,255,255,0.4);" class="nav-link" href="#">
-            <i class="fas fa-sign-out-alt"></i>
-
-
-
-            Sair</a>
-        </li>
-      </ul>
+      <ul style="font-size: 18px" class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/carrinho/produtoServlet?acao=listaProdutos">
+              <i class="fas fa-tags"></i>
+              Produtos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/carrinho/carrinhoServlet?acao=mostraCarrinho">
+              <i class="fas fa-shopping-basket"></i>
+              Meu carrinho</a>
+          </li>
+          <li class="nav-item">
+            <a style="color: #f34747;" class="nav-link" href="/carrinho/usuarioServlet?acao=exibeConta">
+              <i class="fas fa-user-cog"></i>
+              Conta</a>
+          </li>
+          <li class="nav-item">
+            <a style="color: black;text-shadow: .5px .5px 4px rgba(255,255,255,0.4);" class="nav-link" href="/carrinho/usuarioServlet?acao=fazLogout">
+              <i class="fas fa-sign-out-alt"></i>
+              Sair</a>
+          </li>
+        </ul>
     </div>
   </nav>
 
@@ -144,45 +133,45 @@
         class="esquerda offset-lg-2 col-lg-4">
         <h2 style="font-family: 'Montserrat Alternates', sans-serif;">
           <i style="margin-right: 5%;" class="fas fa-user-cog"></i>Sua conta</h2>
-        <form>
+          <form method="POST" action="/carrinho/usuarioServlet?acao=alteraDados" id="formAlteraDados">
+              <input type="hidden" value="${usuarioLogado.idUsuario}" name="idUsuario">
           <div class="row">
             <div class="form-group col-lg-12">
               <label for="exampleFormControlInput1">Nome completo</label>
-              <input type="text" class="form-control" id="exampleFormControlInput1">
+              <input type="text" class="form-control" id="exampleFormControlInput1" value="${usuarioLogado.nomeCompleto}" name="nomeCompleto">
+            </div>
+            <div class="form-group col-lg-12">
+              <label for="exampleFormControlInput1">Apelido</label>
+              <input type="text" class="form-control" id="exampleFormControlInput1" value="${usuarioLogado.apelido}" name="apelido">
             </div>
             <div class="form-group col-lg-12">
               <label for="exampleFormControlInput1">E-mail</label>
-              <input type="email" class="form-control" id="Example">
+              <input type="email" class="form-control" id="Example" value="${usuarioLogado.email}" name="email">
             </div>
-
-          </div>
-          <div class="row">
-            <div class="form-group col-lg-6">
-              <label for="exampleFormControlInput1">Celular</label>
-              <input type="telefone" class="form-control" id="celular">
-            </div>
-            <div class="form-group col-lg-6">
-              <label for="exampleFormControlInput1">Senha</label>
-              <input type="password" class="form-control" id="Example">
+            <div class="form-group col-lg-12">
+              <label for="exampleFormControlInput1">Data de nascimento</label>
+              <input type="date" class="form-control" id="exampleFormControlInput1" value="${usuarioLogado.dataNascimento}" name="dataNascimento">
             </div>
           </div>
           <div class="row">
-            <div class="form-group col-lg-6">
-              <label for="exampleFormControlInput1">Nova Senha</label>
-              <input type="password" class="form-control" id="Example" ">
-            </div>
+              <div class="form-group col-lg-6">
+                <label for="exampleFormControlInput1">Senha</label>
+                <input type="password" class="form-control" id="Example" value="${usuarioLogado.senha}" name="senha">
+              </div>
             <div class=" form-group col-lg-6">
-              <label for="exampleFormControlInput1">Confirme a nova senha </label>
-              <input type="password" class="form-control" id="Example">
+              <label for="exampleFormControlInput1">Confirme a senha </label>
+              <input type="password" class="form-control" id="Example" value="${usuarioLogado.senha}">
             </div>
           </div>
         </form>
         <div class="row">
           <div class="form-group col-lg-4">
-            <button type="button" class="btn btn-secondary">Voltar</button>
+              <form method="POST" action="/carrinho/produtoServlet?acao=listaProdutos">
+                  <button type="submit" class="btn btn-secondary">Voltar</button>
+              </form>
           </div>
           <div class="form-group col-lg-8">
-            <button id="btnConf" style="background-color:#f34747;" type="button" class="btn btn-success">Enviar</button>
+              <button id="btnConf" style="background-color:#f34747;" type="submit" class="btn btn-success" form="formAlteraDados">Enviar</button>
           </div>
         </div>
       </div>

@@ -46,6 +46,9 @@ public class UsuarioServlet extends HttpServlet {
             case "criaConta":
                 criaUsuario(request, response);
                 break;
+            case "exibeConta":
+                exibeConta(request, response);
+                break;
             case "trocaSenha":
                 trocaSenha(request, response);
                 break;
@@ -96,9 +99,9 @@ public class UsuarioServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    /* ------ */ 
-    /* TESTAR */
-    /* ------ */
+    /* ----------- */ 
+    /* FUNCIONANDO */
+    /* ----------- */
     private void fazLogin(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
         Usuario usuario = (new UsuarioDAO()).buscaLogin(
@@ -112,23 +115,23 @@ public class UsuarioServlet extends HttpServlet {
                     .getSession()
                     .setAttribute("usuarioLogado", usuario);
             // Redireciona
-            getServletConfig().getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+            getServletConfig().getServletContext().getRequestDispatcher("/produtoServlet?acao=listaProdutos").forward(request, response);
         } else{
-            response.sendRedirect("/index.jsp");
+            response.sendRedirect("/carrinho/login.jsp");
         }
     }
 
-    /* ------ */ 
-    /* TESTAR */
-    /* ------ */
+    /* ----------- */ 
+    /* FUNCIONANDO */
+    /* ----------- */
     private void fazLogout(HttpServletRequest request, HttpServletResponse response) throws IOException {
         request.getSession().invalidate();
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("/carrinho/produtoServlet?acao=listaProdutos");
     }
 
-    /* ------ */ 
-    /* TESTAR */
-    /* ------ */
+    /* ----------- */ 
+    /* FUNCIONANDO */
+    /* ----------- */
     private void criaUsuario(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
         // Cria um novo usuário com os dados dos Form
@@ -146,7 +149,21 @@ public class UsuarioServlet extends HttpServlet {
         usuarioDAO.cria(usuario);
 
         request.getSession().setAttribute("usuarioLogado", usuario);
-        getServletConfig().getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+        getServletConfig().getServletContext().getRequestDispatcher("/produtoServlet?acao=listaProdutos").forward(request, response);
+    }
+    
+    /* ----------- */ 
+    /* FUNCIONANDO */
+    /* ----------- */
+    private void exibeConta(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
+        if (request.getSession().getAttribute("usuarioLogado") == null){
+           response.sendRedirect("/carrinho/login.jsp");
+           return;
+        } else{
+            // Usa o dispatcher pra trocar de tela
+            getServletConfig().getServletContext().getRequestDispatcher("/conta.jsp").forward(request, response);
+        }
     }
 
     /* ------ */ 
@@ -163,15 +180,15 @@ public class UsuarioServlet extends HttpServlet {
         // Chama método para cadastrar usuário
         usuarioDAO.alteraSenha(usuario);
 
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("/carrinho/usuarioServlet?acao=exibeConta");
     }
 
-    /* ------ */ 
-    /* TESTAR */
-    /* ------ */
+    /* ----------- */ 
+    /* FUNCIONANDO */
+    /* ----------- */
     private void alteraDados(HttpServletRequest request, HttpServletResponse response) throws IOException {
         if (request.getSession().getAttribute("usuarioLogado") == null){
-           response.sendRedirect("login.jsp");
+           response.sendRedirect("/carrinho/login.jsp");
            return;
        } else{        
             UsuarioDAO usuarioDAO = new UsuarioDAO();
@@ -183,13 +200,13 @@ public class UsuarioServlet extends HttpServlet {
                     request.getParameter("email"), 
                     request.getParameter("senha"));
             usuario.setIdUsuario(Integer.valueOf(request.getParameter("idUsuario")));
-
+            
+            System.out.println(request.getParameter("nomeCompleto"));
             // Chama método para cadastrar usuário
             usuarioDAO.altera(usuario);
 
             request.getSession().setAttribute("usuarioLogado", usuario);
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("/carrinho/produtoServlet?acao=listaProdutos");
         }
     }
-
 }

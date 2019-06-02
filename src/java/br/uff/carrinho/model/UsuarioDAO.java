@@ -70,7 +70,9 @@ public class UsuarioDAO implements DAO{
                         rs.getString("dataNascimento"), 
                         rs.getString("apelido"), 
                         rs.getString("email"), 
-                        rs.getString("senha"));
+                        rs.getString("senha"),
+                        (Cartao) (new CartaoDAO()).busca(rs.getInt("idCartao"))
+                );
             }
             // Encerra o ResultSet
             rs.close();
@@ -148,7 +150,9 @@ public class UsuarioDAO implements DAO{
                         rs.getString("dataNascimento"), 
                         rs.getString("apelido"), 
                         rs.getString("email"), 
-                        rs.getString("senha"));
+                        rs.getString("senha"),
+                        (Cartao) (new CartaoDAO()).busca(rs.getInt("idCartao"))
+                );
             }
             // Encerra o ResultSet
             rs.close();
@@ -181,7 +185,9 @@ public class UsuarioDAO implements DAO{
                         rs.getString("dataNascimento"), 
                         rs.getString("apelido"), 
                         rs.getString("email"), 
-                        rs.getString("senha"));
+                        rs.getString("senha"),
+                        (Cartao) (new CartaoDAO()).busca(rs.getInt("idCartao"))
+                );
             }
             // Encerra o ResultSet
             rs.close();
