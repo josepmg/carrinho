@@ -9,6 +9,10 @@
     ArrayList<Produto> listaProdutos = (ArrayList<Produto>)request.getAttribute("listaProdutos");
     // A lista de usuários é colocada no contexto da página. Assim o JSTL terá acesso a ela
     pageContext.setAttribute("listaProdutos", listaProdutos);
+
+    Pedido carrinho = (Pedido) request.getAttribute("carrinho");
+    // A lista de usuários é colocada no contexto da página. Assim o JSTL terá acesso a ela
+    pageContext.setAttribute("carrinho", carrinho);
 %>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -260,10 +264,9 @@
 <!--                                <input type="submit" value="Add"/>-->
                                 <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="submit"
                                     class="btn btn-success">
-                                    <i class="fas fa-plus"></i>
+                                    <i class="fas fa-plus"></i>  
+                                </button>
                           </form>
-                          
-                          </button>
                         </div>
                     </c:forEach>
               </c:if>
@@ -277,7 +280,10 @@
         class="subtotal">
         <span style="font-weight: bold;">Seu carrinho!</span>
         <span style="width: 250px;margin-top: 3%; display: inline-block; margin-top: 15%;margin-bottom: 15%;">
-          <i style="color: black; font-size: 40px; margin-right: 5%;" class="fas fa-cart-plus"></i>Subtotal: R$ xx,xx
+          <i style="color: black; font-size: 40px; margin-right: 5%;" class="fas fa-cart-plus"></i>
+          Subtotal: R$
+            <fmt:setLocale value = "pt_BR"/>
+            <fmt:formatNumber value = "${carrinho.valorTotal}" type = "currency"/>
         </span>
       </div>
       <button onClick="myFunction('#myCart','#myBtn')" id="myBtn" type="button" class="btn"><i class="fas fa-cart-plus"></i>

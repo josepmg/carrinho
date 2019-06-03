@@ -21,8 +21,8 @@ public class Pedido {
     
     
     private int idPedido;
-    private List<Item> itensPedido;
-    private float valorTotal;
+    private List<Item> itensPedido = new ArrayList<>();;
+    private float valorTotal = 0;
     private Usuario cliente;
     private String enderecoEntrega;
     private Cartao cartao;
@@ -30,7 +30,6 @@ public class Pedido {
     private String estado;
 
     public Pedido() {
-        this.itensPedido = new ArrayList<>();
     }
 
     public Pedido(int idPedido, List<Item> itensPedido, float valorTotal, Usuario cliente, String enderecoEntrega, Cartao cartao, String dataCompra, String estado) {
@@ -113,6 +112,13 @@ public class Pedido {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public void calculaValorTotal(){
+        this.valorTotal = 0;
+        for (Item i : itensPedido){
+            this.valorTotal+= i.getQuantidade()*i.getPreco();
+        }
     }
     
 }

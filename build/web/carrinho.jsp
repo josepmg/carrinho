@@ -1,4 +1,15 @@
-<!doctype html>
+<%@page import="br.uff.carrinho.model.Pedido"%>
+<%@page import="br.uff.carrinho.model.Item"%>
+<%@page import="java.util.ArrayList"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%
+    Pedido carrinho = (Pedido) request.getAttribute("carrinho");
+    // A lista de usuários é colocada no contexto da página. Assim o JSTL terá acesso a ela
+    pageContext.setAttribute("carrinho", carrinho);
+%>
 <html lang="pt-br">
 
 <head>
@@ -170,156 +181,33 @@
         <h2 style="font-family: 'Montserrat Alternates', sans-serif; padding-top: 2%; margin-left: 15%;">
           <i class="fas fa-shopping-basket"></i>
           Meu Carrinho</h2>
-        <div style="margin-top: 4%;" class="row justify-content-md-center">
+            
+            <!-- PRODUTOS -->
+          <div style="margin-top: 4%;" class="row justify-content-md-center">
 
           <!-- PRODUTO -->
 
-          <div style="border: 1px solid black; height: 150px; margin-left: 5px; background-color: white;"
-            class="col-xs-10 col-sm-5 col-md-4 col-lg-2 box">
-            Produto 1 - x quantd.
-            <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-              class="btn btn-danger">
-              <i class="fas fa-minus"></i>
-
-            </button>
-          </div>
-
-          <!-- PRODUTO -->
-
-          <div style="border: 1px solid black;width:300px; height: 150px; margin-left: 5px; background-color: white;"
-            class="col-xs-10 col-sm-6 col-sm-6 col-md-4 col-lg-2 box">
-            Produto 2 - x quantd.
-            <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-              class="btn btn-danger">
-              <i class="fas fa-minus"></i>
-
-            </button>
-          </div>
-
-          <!-- PRODUTO -->
-
-          <div style="border: 1px solid black;width:300px; height: 150px; margin-left: 5px; background-color: white;"
-            class="col-xs-10 col-sm-6 col-sm-6 col-md-4 col-lg-2 box">
-            Produto 3 - x quantd.
-            <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-              class="btn btn-danger">
-              <i class="fas fa-minus"></i>
-
-            </button>
-          </div>
-
-          <!-- PRODUTO -->
-
-          <div style="border: 1px solid black;width:300px; height: 150px; margin-left: 5px; background-color: white;"
-            class="col-xs-10 col-sm-6 col-sm-6 col-md-4 col-lg-2 box">
-            Produto 4 - x quantd.
-            <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-              class="btn btn-danger">
-              <i class="fas fa-minus"></i>
-
-            </button>
-          </div>
-        </div>
-
-        <!-- PRODUTO -->
-
-        <div style="margin-top: 1%;" class="row justify-content-md-center">
-          <div style="border: 1px solid black;width:300px; height: 150px; margin-left: 5px; background-color: white;"
-            class="col-xs-10 col-sm-6 col-sm-6 col-md-4 col-lg-2 box">
-            Produto 5 - x quantd.
-            <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-              class="btn btn-danger">
-              <i class="fas fa-minus"></i>
-
-            </button>
-          </div>
-
-          <!-- PRODUTO -->
-
-          <div style="border: 1px solid black;width:300px; height: 150px;margin-left: 5px; background-color: white;"
-            class="col-xs-10 col-sm-6 col-sm-6 col-md-4 col-lg-2 box">
-            Produto 6 - x quantd.
-            <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-              class="btn btn-danger">
-              <i class="fas fa-minus"></i>
-
-            </button>
-          </div>
-
-          <!-- PRODUTO -->
-
-          <div style="border: 1px solid black;width:300px; height: 150px;margin-left: 5px; background-color: white;"
-            class="col-xs-10 col-sm-6col-sm-6 col-md-4 col-lg-2 box">
-            Produto 7 - x quantd.
-            <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-              class="btn btn-danger">
-              <i class="fas fa-minus"></i>
-
-            </button>
-          </div>
-
-          <!-- PRODUTO -->
-
-          <div style="border: 1px solid black;width:300px; height: 150px;margin-left: 5px; background-color: white;"
-            class=" col-xs-10 col-sm-6 col-sm-6 col-md-4 col-lg-2 box">
-            Produto 8 - x quantd.
-            <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-              class="btn btn-danger">
-              <i class="fas fa-minus"></i>
-
-            </button>
-          </div>
-        </div>
-
-        <!-- PRODUTO -->
-
-        <div style="margin-top: 1%; " class="row justify-content-md-center">
-          <div style="border: 1px solid black;width:300px; height: 150px; margin-left: 5px; background-color: white;"
-            class="col-sm-6 col-md-4 col-lg-2 box">
-            Produto 9 - x quantd.
-            <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-              class="btn btn-danger">
-              <i class="fas fa-minus"></i>
-
-            </button>
-          </div>
-
-          <!-- PRODUTO -->
-
-          <div style="border: 1px solid black;width:300px; height: 150px; margin-left: 5px; background-color: white;"
-            class="col-xs-10 col-sm-6 col-sm-6 col-md-4 col-lg-2 box">
-            Produto 10 - x quantd.
-            <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-              class="btn btn-danger">
-              <i class="fas fa-minus"></i>
-
-            </button>
-          </div>
-
-          <!-- PRODUTO -->
-
-          <div style="border: 1px solid black;width:300px; height: 150px; margin-left: 5px; background-color: white;"
-            class="col-xs-10 col-sm-6 col-sm-6 col-md-4 col-lg-2 box">
-            Produto 11 - x quantd.
-            <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-              class="btn btn-danger">
-              <i class="fas fa-minus"></i>
-
-            </button>
-          </div>
-
-          <!-- PRODUTO -->
-
-          <div style="border: 1px solid black;width:300px; height: 150px; margin-left: 5px; background-color: white;"
-            class="col-xs-10 col-sm-6 col-sm-6 col-md-4 col-lg-2 box">
-            Produto 10 - x quantd.
-            <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-              class="btn btn-danger">
-              <i class="fas fa-minus"></i>
-
-            </button>
-          </div>
-        </div>
+          <c:if test="${carrinho != null}">
+              <c:forEach var="i" items="${carrinho.itensPedido}" varStatus="loop">
+                  <div
+                          style="border: 1px solid black;height: 200px; margin-left: 5px; background-color: white; background-image: url(${i.produto.imagePath}); background-size: 100%;"
+                          class="col-xs-12 col-sm-5 col-md-4 col-lg-2 box">
+                      <p style=" padding:0%;width: 100% ; background-color: white;">${i.produto.nome}
+                              <br/>
+                              <fmt:setLocale value = "pt_BR"/>
+                              <fmt:formatNumber value = "${i.preco}" type = "currency"/></p>
+                      <form method="POST" action="/carrinho/carrinhoServlet?acao=alteraQuantidade" id="formItemCarrinho">
+                                <input type="hidden" name="itemPos" value="${loop.index}"/>   
+                                <input type="number" name="quantidade" value="${i.quantidade}" />
+                                <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="submit"
+                                        class="btn btn-danger" form="formItemCarrinho">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                          </form>
+                  </div>
+              </c:forEach>
+          </c:if>
+            </div>
       </div>
     </div>
   </div>
@@ -332,7 +220,11 @@
     style="border:0.5px solid black; padding: 1% 1% ;bottom:0; position: fixed; margin-bottom: 2%; display: block; width: 250px; border-radius: 0px 5px 5px 0px; background: white;"
     class="subtotal">
     <span style="width: 250px;margin-top: 3%; display: inline-block;">
-      <i style="color: black; font-size: 40px" class="fas fa-cart-plus"></i>Subtotal: R$ xx,xx
+      <i style="color: black; font-size: 40px" class="fas fa-cart-plus"></i>
+      Subtotal: R$ 
+            <fmt:setLocale value = "pt_BR"/>
+            <fmt:formatNumber value = "${carrinho.valorTotal}" type = "currency"/>
+ 
     </span>
     <button
       style="float: right; font-size: 14px; padding:5px; color: black; margin-top: 10%!important; bottom: 5%;display: inline-block;"

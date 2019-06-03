@@ -119,7 +119,12 @@ public class CarrinhoServlet extends HttpServlet {
     /* ------ */
     private void mostraCarrinho(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            getServletConfig().getServletContext().getRequestDispatcher("/carrinho.jsp").forward(request, response);
+        // Verifica se já há um carrinho
+        if(request.getSession().getAttribute("carrinho") == null){
+            Pedido carrinhoLocal = new Pedido();
+            request.getSession().setAttribute("carrinho", carrinhoLocal);
+        }
+        getServletConfig().getServletContext().getRequestDispatcher("/carrinho.jsp").forward(request, response);
     }
 
     /* ------ */
@@ -142,6 +147,8 @@ public class CarrinhoServlet extends HttpServlet {
                 (Produto) (new ProdutoDAO()).busca(Integer.valueOf(request.getParameter("idProduto")))
         );
         
+        // Atualiza valor total do carrinho
+        carrinhoLocal.calculaValorTotal();
         // Coloca o carrinho atualziado na sessão
         request.getSession().setAttribute("carrinho", carrinhoLocal);
         
@@ -159,20 +166,29 @@ public class CarrinhoServlet extends HttpServlet {
             getServletConfig().getServletContext().getRequestDispatcher("/carrinho/produtoServlet?acao=listaProdutos").forward(request, response);
         }
         
-        Pedido carrinhoLocal = (Pedido) request.getSession().getAttribute("carrinho");
+        if(request.getParameter("quantidade").equals("0")){
+            removeProduto(request, response);
+        } else{
+            Pedido carrinhoLocal = (Pedido) request.getSession().getAttribute("carrinho");
 
-        // Recupera posição do item no array do pedido
-        int itemPos = Integer.valueOf(request.getParameter("itemPos"));
-        // Recupera quantidade informada no form
-        int qntItem = Integer.valueOf(request.getParameter("qtdItem"));
-        // Altera a quantidade do item
-        ((carrinhoLocal.getItensPedido()).get(itemPos)).setQuantidade(qntItem);
+            // Recupera posição do item no array do pedido
+            int itemPos = Integer.valueOf(request.getParameter("itemPos"));
+            System.out.println("pos: " + itemPos);
+            // Recupera quantidade informada no form
+            int qtdItem=  Integer.valueOf(request.getParameter("quantidade"));
+            System.out.println("qtdItem: " + qtdItem);
+            // Altera a quantidade do item
+            ((carrinhoLocal.getItensPedido()).get(itemPos)).setQuantidade(qtdItem);
+
+            // Atualiza valor total do carrinho
+            carrinhoLocal.calculaValorTotal();
+            // Coloca o carrinho atualziado na sessão
+            request.getSession().setAttribute("carrinho", carrinhoLocal);
+
+            // Mostra o carrinho
+            mostraCarrinho(request, response);
+        }
         
-        // Coloca o carrinho atualziado na sessão
-        request.getSession().setAttribute("carrinho", carrinhoLocal);
-        
-        // Mostra o carrinho
-        mostraCarrinho(request, response);
     }
 
     /* ------ */
@@ -193,6 +209,8 @@ public class CarrinhoServlet extends HttpServlet {
         // Altera a quantidade do item
         (carrinhoLocal.getItensPedido()).remove(itemPos);
         
+        // Atualiza valor total do carrinho
+        carrinhoLocal.calculaValorTotal();
         // Coloca o carrinho atualziado na sessão
         request.getSession().setAttribute("carrinho", carrinhoLocal);
         
