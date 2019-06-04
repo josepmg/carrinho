@@ -10,6 +10,7 @@
     // A lista de usuários é colocada no contexto da página. Assim o JSTL terá acesso a ela
     pageContext.setAttribute("carrinho", carrinho);
 %>
+<!doctype html>
 <html lang="pt-br">
 
 <head>
@@ -20,32 +21,60 @@
     integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      background-color: #c3c3c3 !important;
-    }
-
-    .container {
-      background-color: #c3c3c3 !important;
-    }
-  </style>
-
-
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="css/bootstrap.min.css">
 
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
 
   <link rel="stylesheet" type="text/css" href="css/style.css">
 
   <title>Meu carrinho - MeuCarrinho!</title>
 
-  <!-- INICIO PAGINA DE ESTILO -->
 
+  <!-- INICIO PAGINA DE ESTILO -->
   <style>
+    body {
+      background-color: #c3c3c3 !important;
+    }
+
+    .container-fluid {
+      background-color: white !important;
+      height: auto !important;
+    }
+
+    .box {
+      justify-content: center !important;
+    }
+
+    #btnConf {
+      width: 273px;
+      margin-left: 15px;
+    }
+
+    #Voltar {
+      width: 150px;
+    }
+
+    .logo {
+      margin-left: 10%;
+    }
+
+    @media screen and (max-width: 507px){
+      .logo {
+        width:100px!important;
+      margin-left: 5%!important;
+    }
+    }
     @media screen and (max-width:600px) {
-      .fundoProdutos {
+      .container-fluid {
         width: 100% !important;
         padding: 0;
+        height: 100%;
       }
 
       .box {
@@ -60,10 +89,15 @@
       text-align: center !important;
     }
 
+    .logo {
+      min-width: 300px!important;
+    }
+
     @media screen and (max-width:768px) {
-      .fundoProdutos {
+      .container-fluid {
         width: 100% !important;
         padding: 0;
+        height: 100%;
       }
 
       .box {
@@ -73,17 +107,14 @@
     }
 
     @media screen and (max-width:992px) {
-      .container {
-        width: 100%;
-      }
-
       .fundoHome {
         width: 100% !important;
       }
 
-      .fundoProdutos {
+      .container-fluid {
         width: 100% !important;
         padding: 0;
+        height: 100% !important;
       }
 
       .box {
@@ -98,48 +129,151 @@
       #navbarText {
         margin-left: 0px !important;
       }
+      .logo {
+        margin-left: 35%;
+      }
     }
   </style>
 
   <!-- FIM PAGINA DE ESTILO -->
 
+  <!-- JS -->
+  <script type="text/javascript">
+    $("#cpf").mask("000.000.000-00");
+  </script>
+  <script type="text/javascript">
+    $("#cartao").mask("0000.0000.0000.0000");
+  </script>
+  <script type="text/javascript">
+    $("#cv").mask("000");
+  </script>
+  <!-- Fim JS -->
 </head>
 
 <body>
 
+  <!-- MODAL COMPRA -->
+
+  <div  class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+
+      <div style="padding: 15px 10px!important;" class="modal-content">
+        <div class="modal-header">
+          <h2 style="width: 300px;font-family: 'Montserrat Alternates', sans-serif;font-size: 30px;">
+            <i style="font-size: 30px;margin-right: 5%;" class="fas fa-receipt"></i>Dados da compra</h2>
+          <button
+            style="margin-left: 0px!important;width:50px!important;font-size: 25px!important;color: black!important;"
+            type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span style="float:right; color: black!important;" aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <!-- FIM MODAL COMPRA -->
+
+          <!-- FORM COMPRA -->
+
+
+          <form>
+            <div class="row">
+              <div class="form-group col-lg-6">
+                <label for="exampleFormControlInput1">Número do cartão</label>
+                <input type="email" class="form-control" id="cartao">
+              </div>
+              <div class="form-group col-lg-6">
+                <label for="exampleFormControlInput1">Validade</label>
+                <input type="month" class="form-control" id="exampleFormControlInput1">
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-lg-9">
+                <label for="exampleFormControlInput1">Nome completo</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1">
+              </div>
+              <div class="form-group col-lg-3">
+                <label for="exampleFormControlInput1">CV</label>
+                <input type="email" class="form-control" id="cv">
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-lg-6">
+                <label for="exampleFormControlInput1">Data de nascimento</label>
+                <input type="date" class="form-control" id="datanasc">
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-lg-7">
+                <label for="exampleFormControlInput1">CPF </label>
+                <input type="text" class="form-control" id="cpf">
+              </div>
+              <div class="form-group col-lg-5">
+                <label for="exampleFormControlSelect1">Parcelas</label>
+                <select class="form-control" id="exampleFormControlSelect1">
+                  <option>x1 R$ 00,00</option>
+                  <option>x2 R$ 00,00</option>
+                  <option>x3 R$ 00,00</option>
+                  <option>x4 R$ 00,00</option>
+                  <option>x5 R$ 00,00</option>
+                </select>
+              </div>
+            </div>
+          </form>
+          <div class="row">
+            <div class="form-group col-lg-4">
+              <button id="Voltar" type="button" class="btn btn-secondary"class="close" data-dismiss="modal" aria-label="Close">Voltar</button>
+            </div>
+            <div class="form-group col-lg-8">
+              <button id="btnConf" 
+                style="background-color:#f34747; color: white" type="button" class="btn" class="close" data-dismiss="modal" aria-label="Close"><a>Confirmar</a></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- FIM RECUPERAÇÃO DE SENHA -->
+
+      </div>
+    </div>
+  </div>
+
   <!-- INICIO MENU -->
 
   <nav style="font-family: 'Montserrat Alternates', sans-serif;" class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <i style="color: white; font-size: 40px; padding: 1% 2%" class="fas fa-shopping-cart"></i>
-    <a class="navbar-brand" href="#">
-      <span style="font-size: 28px; color: #f34747; font-weight: bold">MEU</span>carrinho</a>
+    <div class="logo"><i style="color: white; font-size: 40px; padding: 1% 2%!important;" class="fas fa-shopping-cart text-center"></i>
+      <a class="navbar-brand" href="#">
+          <span style="font-size: 28px; color: #f34747; font-weight: bold">MEU</span>carrinho</a></div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div style="margin-left: 15%; justify-content: center;" class="collapse navbar-collapse" id="navbarText">
+    <div style="margin-left: 10%; justify-content: center;" class="collapse navbar-collapse" id="navbarText">
       <ul style="font-size: 18px" class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="/carrinho/produtoServlet?acao=listaProdutos">
-              <i class="fas fa-tags"></i>
-              Produtos</a>
-          </li>
-          <li class="nav-item">
-            <a style="color: #f34747;" class="nav-link" href="/carrinho/carrinhoServlet?acao=mostraCarrinho">
-              <i class="fas fa-shopping-basket"></i>
-              Meu carrinho</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/carrinho/usuarioServlet?acao=exibeConta">
-              <i class="fas fa-user-cog"></i>
-              Conta</a>
-          </li>
-          <li class="nav-item">
-            <a style="color: black;text-shadow: .5px .5px 4px rgba(255,255,255,0.4);" class="nav-link" href="/carrinho/usuarioServlet?acao=fazLogout">
-              <i class="fas fa-sign-out-alt"></i>
-              Sair</a>
-          </li>
-        </ul>
+        <li class="nav-item">
+          <a class="nav-link" href="/carrinho/produtoServlet?acao=listaProdutos">
+            <i class="fas fa-tags"></i>
+
+            Produtos</a>
+        </li>
+        <li class="nav-item active">
+          <a style="color: #f34747;" class="nav-link"href="/carrinho/carrinhoServlet?acao=mostraCarrinho">
+            <i class="fas fa-shopping-basket"></i>
+
+            Meu carrinho</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/carrinho/usuarioServlet?acao=exibeConta">
+            <i class="fas fa-user-cog"></i>
+            Conta</a>
+        </li>
+        <li class="nav-item">
+          <a style="color: black;" class="nav-link" href="/carrinho/usuarioServlet?acao=fazLogout">
+            <i class="fas fa-sign-out-alt"></i>
+
+
+
+            Sair</a>
+        </li>
+      </ul>
     </div>
   </nav>
 
@@ -173,42 +307,32 @@
 
   <!-- INICIO PRODUTOS -->
 
-  <div style="padding:0!important; " class="container">
-    <div class="fundoHome">
+  <div style="padding:0!important;margin:0x!important " class="container-fluid">
+    <h2 style="font-family: 'Montserrat Alternates', sans-serif; padding-top: 2%; margin-left: 15%;">
+      <i class="fas fa-shopping-basket"></i>
+      Meu Carrinho</h2>
+    <div style="margin-top: 4%;" class="row justify-content-md-center">
+
+      <!-- PRODUTO -->
+      <c:if test="${carrinho != null}">
+        <c:forEach var="i" items="${carrinho.itensPedido}" varStatus="loop">
       <div
-        style="width:100%; height: 100vh; background-color: white; padding-top: 1%;margin-top: 5%!important; padding-bottom: 5%;z"
-        class="fundoProdutos">
-        <h2 style="font-family: 'Montserrat Alternates', sans-serif; padding-top: 2%; margin-left: 15%;">
-          <i class="fas fa-shopping-basket"></i>
-          Meu Carrinho</h2>
-            
-            <!-- PRODUTOS -->
-          <div style="margin-top: 4%;" class="row justify-content-md-center">
-
-          <!-- PRODUTO -->
-
-          <c:if test="${carrinho != null}">
-              <c:forEach var="i" items="${carrinho.itensPedido}" varStatus="loop">
-                  <div
-                          style="border: 1px solid black;height: 200px; margin-left: 5px; background-color: white; background-image: url(${i.produto.imagePath}); background-size: 100%;"
-                          class="col-xs-12 col-sm-5 col-md-4 col-lg-2 box">
-                      <p style=" padding:0%;width: 100% ; background-color: white;">${i.produto.nome}
-                              <br/>
-                              <fmt:setLocale value = "pt_BR"/>
-                              <fmt:formatNumber value = "${i.preco}" type = "currency"/></p>
-                      <form method="POST" action="/carrinho/carrinhoServlet?acao=alteraQuantidade" id="formItemCarrinho">
-                                <input type="hidden" name="itemPos" value="${loop.index}"/>   
+        style="border: 1px solid black;width:300px; height: 300px!important; margin-left: 5px; background-color: white; background-image: url(${i.produto.imagePath}); " 
+        class="col-sm-6 col-md-2 col-lg-2 box"><p style=" padding:0%;width: 100% ; background-color: white;">${i.produto.nome}
+          <br/>
+          <fmt:setLocale value = "pt_BR"/>
+          <fmt:formatNumber value = "${i.preco}" type = "currency"/></p>
+  <form method="POST" action="/carrinho/carrinhoServlet?acao=alteraQuantidade" id="formItemCarrinho">
+    <input type="hidden" name="itemPos" value="${loop.index}"/>   
                                 <input type="number" name="quantidade" value="${i.quantidade}" />
-                                <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="submit"
-                                        class="btn btn-danger" form="formItemCarrinho">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                          </form>
-                  </div>
-              </c:forEach>
-          </c:if>
-            </div>
+        <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button" class="btn btn-danger"form="formItemCarrinho">
+          <i class="fas fa-minus"></i>
+
+        </button>
+  </form>
       </div>
+    </c:forEach>
+  </c:if>
     </div>
   </div>
 
@@ -217,18 +341,17 @@
   <!-- INICIO SUBTOTAL -->
 
   <div
-    style="border:0.5px solid black; padding: 1% 1% ;bottom:0; position: fixed; margin-bottom: 2%; display: block; width: 250px; border-radius: 0px 5px 5px 0px; background: white;"
+    style="border:0.5px solid black; padding: 1% 1% ;bottom:0; position: fixed; margin-bottom: 2%; display: block; width: 250px; border-radius: 0px 5px 5px 0px; background: white;box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2)!important;"
     class="subtotal">
     <span style="width: 250px;margin-top: 3%; display: inline-block;">
-      <i style="color: black; font-size: 40px" class="fas fa-cart-plus"></i>
-      Subtotal: R$ 
-            <fmt:setLocale value = "pt_BR"/>
-            <fmt:formatNumber value = "${carrinho.valorTotal}" type = "currency"/>
- 
+      <i style="color: black; font-size: 40px" class="fas fa-cart-plus"></i>Subtotal:
+      <fmt:setLocale value = "pt_BR"/>
+      <fmt:formatNumber value = "${carrinho.valorTotal}" type = "currency"/>
     </span>
     <button
-      style="float: right; font-size: 14px; padding:5px; color: black; margin-top: 10%!important; bottom: 5%;display: inline-block;"
-      class="btn btn btn-success my-2 my-sm-0" type="submit">Finalizar</button>
+      style="margin-left: 33%; font-size: 14px; padding:5px; color: black; margin-top: 10%!important; bottom: 5%;display: inline-block;"
+      class="btn btn btn-success my-2 my-sm-0" type="submit"><a data-toggle="modal"
+        data-target="#exampleModal">Finalizar</a></button>
   </div>
 
   <!-- FIM SUBTOTAL -->

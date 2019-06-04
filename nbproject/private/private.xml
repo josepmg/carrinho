@@ -3,8 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/NetBeansProjects/carrinho/src/java/br/uff/carrinho/model/Produto.java</file>
+            <file>file:/D:/NetBeansProjects/carrinho/web/conta.jsp</file>
             <file>file:/D:/NetBeansProjects/carrinho/src/java/br/uff/carrinho/controler/CarrinhoServlet.java</file>
+            <file>file:/D:/NetBeansProjects/carrinho/web/carrinho.jsp</file>
             <file>file:/D:/NetBeansProjects/carrinho/web/index.jsp</file>
+            <file>file:/D:/NetBeansProjects/carrinho/web/compra.jsp</file>
             <file>file:/D:/NetBeansProjects/carrinho/src/java/br/uff/carrinho/model/Cartao.java</file>
         </group>
     </open-files>
