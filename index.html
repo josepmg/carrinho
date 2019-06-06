@@ -173,6 +173,12 @@
     }
   </script>
 
+<script>
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
   <!-- FIM JS -->
 
 </head>
@@ -285,7 +291,7 @@
 
           <div
             style="border: 1px solid black;height: 200px; margin-left: 5px; background-color: white; background-image: url('img/mouse.jpg'); background-size: 80%; background-repeat: no-repeat"
-            class=" col-sm-5 col-md-4 col-lg-2 box">
+            class=" col-sm-5 col-md-4 col-lg-2 box" data-toggle="tooltip" data-placement="top" title="Item x Valor y Funções z Item x Valor y Funções z Item x Valor y Funções z ">
             <p style=" padding:0%;width: 100% ; background-color: white;">Produto 1</p>
             <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
               class="btn btn-success">
@@ -297,7 +303,7 @@
 
           <div
             style="border: 1px solid black;height: 200px; margin-left: 5px; background-color: white; background-image: url('img/teclado.jpg'); background-size: 100%;"
-            class=" col-sm-5 col-md-4 col-lg-2 box">
+            class=" col-sm-5 col-md-4 col-lg-2 box" data-toggle="tooltip" data-placement="top" title="Item x Valor y Funções">
             <p style=" padding:0%;width: 100% ; background-color: white;">Produto 2</p>
             <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
               class="btn btn-success">
@@ -309,7 +315,7 @@
 
           <div
             style="border: 1px solid black;height: 200px; margin-left: 5px; background-color: white; background-image: url('img/notebook.jpg'); background-size: 100%;"
-            class=" col-sm-5 col-md-4 col-lg-2 box">
+            class=" col-sm-5 col-md-4 col-lg-2 box" data-toggle="tooltip" data-placement="top" title="Item x Valor y Funções">
             <p style=" padding:0%;width: 100% ; background-color: white;">Produto 3</p>
             <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
               class="btn btn-success">
@@ -321,7 +327,7 @@
 
           <div
             style="border: 1px solid black;height: 200px; margin-left: 5px; background-color: white; background-image: url('img/roteador.jpg'); background-size: 100%;"
-            class=" col-sm-5 col-md-4 col-lg-2 box">
+            class=" col-sm-5 col-md-4 col-lg-2 box" data-toggle="tooltip" data-placement="top" title="Item x Valor y Funções">
             <p style=" padding:0%;width: 100% ; background-color: white;">Produto 4</p>
             <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
               class="btn btn-success">
@@ -330,205 +336,6 @@
           </div>
         </div>
 
-        <!-- PRODUTO -->
-
-
-        <div style="margin-top: 1%;" class="row justify-content-md-center">
-          <div
-            style="border: 1px solid black;height: 200px; margin-left: 5px; background-color: white; background-image: url('img/cadeira.jpg'); background-size: 100%;"
-            class=" col-sm-5 col-md-4 col-lg-2 box">
-            <p style=" padding:0%;width: 100% ; background-color: white;">Produto 5</p>
-            <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-              class="btn btn-success">
-              <i class="fas fa-plus"></i>
-            </button>
-          </div>
-
-          <!-- PRODUTO -->
-
-          <div
-            style="border: 1px solid black;height: 200px; margin-left: 5px; background-color: white; background-image: url('img/hd.jpg'); background-size: 89%;"
-            class=" col-sm-5 col-md-4 col-lg-2 box">
-            <p style=" padding:0%;width: 100% ; background-color: white;">Produto 6</p>
-            <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-              class="btn btn-success">
-              <i class="fas fa-plus"></i>
-            </button>
-          </div>
-
-          <!-- PRODUTO -->
-
-          <div
-            style="border: 1px solid black;height: 200px; margin-left: 5px; background-color: white; background-image: url('img/tablet.jpg'); background-size: 89%;"
-            class=" col-sm-5 col-md-4 col-lg-2 box">
-            <p style=" padding:0%;width: 100% ; background-color: white;">Produto 7</p>
-            <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-              class="btn btn-success">
-              <i class="fas fa-plus"></i>
-            </button>
-          </div>
-
-          <!-- PRODUTO -->
-
-          <div
-            style="border: 1px solid black;height: 200px; margin-left: 5px; background-color: white; background-image: url('img/iphone.jpg'); background-size: 89%;"
-            class=" col-sm-5 col-md-4 col-lg-2 box">
-            <p style=" padding:0%;width: 100% ; background-color: white;">Produto 8</p>
-            <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-              class="btn btn-success">
-              <i class="fas fa-plus"></i>
-            </button>
-          </div>
-        </div>
-
-        <!-- PRODUTO -->
-
-        <div style="margin-top: 1%;" class="row justify-content-md-center">
-          <div style="border: 1px solid black;height: 200px; margin-left: 5px; background-color: white;"
-            class=" col-sm-5 col-md-4 col-lg-2 box">
-            Produto 9
-            <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-              class="btn btn-success">
-              <i class="fas fa-plus"></i>
-
-            </button>
-          </div>
-
-          <!-- PRODUTO -->
-
-          <div style="border: 1px solid black;height: 200px;margin-left: 5px; background-color: white;"
-            class=" col-sm-5 col-md-4 col-lg-2 box">
-            Produto 10
-            <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-              class="btn btn-success">
-              <i class="fas fa-plus"></i>
-
-            </button>
-          </div>
-
-          <!-- PRODUTO -->
-
-          <div style="border: 1px solid black;height: 200px;margin-left: 5px; background-color: white;"
-            class=" col-sm-5 col-md-4 col-lg-2 box">
-            Produto 11
-            <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-              class="btn btn-success">
-              <i class="fas fa-plus"></i>
-
-            </button>
-          </div>
-
-          <!-- PRODUTO -->
-
-          <div style="border: 1px solid black;height: 200px;margin-left: 5px; background-color: white;"
-            class=" col-sm-5 col-md-4 col-lg-2 box">
-            Produto 12
-            <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-              class="btn btn-success">
-              <i class="fas fa-plus"></i>
-
-            </button>
-          </div>
-        </div>
-
-        <!-- PRODUTO -->
-
-        <div style="margin-top: 1%;" class="row justify-content-md-center">
-          <div style="border: 1px solid black;height: 200px; margin-left: 5px; background-color: white;"
-            class=" col-sm-5 col-md-4 col-lg-2 box">
-            Produto 13
-            <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-              class="btn btn-success">
-              <i class="fas fa-plus"></i>
-
-            </button>
-          </div>
-
-          <!-- PRODUTO -->
-
-          <div style="border: 1px solid black;height: 200px;margin-left: 5px; background-color: white;"
-            class=" col-sm-5 col-md-4 col-lg-2 box">
-            Produto 14
-            <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-              class="btn btn-success">
-              <i class="fas fa-plus"></i>
-
-            </button>
-          </div>
-
-          <!-- PRODUTO -->
-
-          <div style="border: 1px solid black;height: 200px;margin-left: 5px; background-color: white;"
-            class=" col-sm-5 col-md-4 col-lg-2 box">
-            Produto 15
-            <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-              class="btn btn-success">
-              <i class="fas fa-plus"></i>
-
-            </button>
-          </div>
-
-          <!-- PRODUTO -->
-
-          <div style="border: 1px solid black;height: 200px;margin-left: 5px; background-color: white;"
-            class=" col-sm-5 col-md-4 col-lg-2 box">
-            Produto 16
-            <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-              class="btn btn-success">
-              <i class="fas fa-plus"></i>
-
-            </button>
-          </div>
-        </div>
-
-        <!-- PRODUTO -->
-
-        <div style="margin-top: 1%;" class="row justify-content-md-center">
-          <div style="border: 1px solid black;height: 200px; margin-left: 5px; background-color: white;"
-            class=" col-sm-5 col-md-4 col-lg-2 box">
-            Produto 17
-            <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-              class="btn btn-success">
-              <i class="fas fa-plus"></i>
-
-            </button>
-          </div>
-
-          <!-- PRODUTO -->
-
-          <div style="border: 1px solid black;height: 200px;margin-left: 5px; background-color: white;"
-            class=" col-sm-5 col-md-4 col-lg-2 box">
-            Produto 18
-            <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-              class="btn btn-success">
-              <i class="fas fa-plus"></i>
-
-            </button>
-          </div>
-
-          <!-- PRODUTO -->
-
-          <div style="border: 1px solid black;height: 200px;margin-left: 5px; background-color: white;"
-            class=" col-sm-5 col-md-4 col-lg-2 box">
-            Produto 19
-            <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-              class="btn btn-success">
-              <i class="fas fa-plus"></i>
-
-            </button>
-          </div>
-
-          <!-- PRODUTO -->
-
-          <div style="border: 1px solid black;height: 200px;margin-left: 5px; background-color: white;"
-            class=" col-sm-5 col-md-4 col-lg-2 box">
-            Produto 20
-            <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
-              class="btn btn-success">
-              <i class="fas fa-plus"></i>
-
-            </button>
-          </div>
         </div>
       </div>
 

@@ -31,7 +31,6 @@
     }
 
     .container-fluid {
-      background-color: white !important;
       height: auto !important;
     }
 
@@ -98,6 +97,10 @@
       .fundoHome {
         width: 100% !important;
       }
+      .fundoProdutos {
+        width: 100% !important;
+        padding: 0;
+      }
 
       .container-fluid {
         width: 100% !important;
@@ -134,6 +137,16 @@
   </script>
   <script type="text/javascript">
     $("#cv").mask("000");
+  </script>
+
+
+  <script>
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+  <script>
+      $('#example').tooltip({ boundary: 'window' })
   </script>
   <!-- Fim JS -->
 </head>
@@ -293,171 +306,87 @@
 
   <!-- FIM CARROSSEL -->
 
-  <!-- INICIO PRODUTOS -->
+  <!-- TITULOS CABEÇALHO -->
 
-  <div style="padding:0!important;margin:0x!important " class="container-fluid">
-    <h2 style="font-family: 'Montserrat Alternates', sans-serif; padding-top: 2%; margin-left: 15%;">
-      <i class="fas fa-shopping-basket"></i>
-      Meu Carrinho</h2>
-    <div style="margin-top: 4%;" class="row justify-content-md-center">
-
-      <!-- PRODUTO -->
-
-      <div
-        style="border: 1px solid black;width:300px; height: 300px!important; margin-left: 5px; background-color: white;"
-        class="col-sm-6 col-md-2 col-lg-2 box">
-        Produto 1 - x quantd.
-        <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button" class="btn btn-danger">
-          <i class="fas fa-minus"></i>
-
-        </button>
+  <div class="container-fluid">
+      <div style="padding-top: 3%;" class="fundoHome">
+        <div
+          style="width:70%;height: 100%; background-color: white; padding-top: 1%;padding-bottom: 10%; margin: auto;box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);"
+          class="fundoProdutos">
+          <nav class="navbar navbar-dark">
+            <div class="row col-lg-12">
+              <div class="nomeProdutos  col-lg-10">
+                  <h2 style="font-family: 'Montserrat Alternates', sans-serif; padding-top: 2%; margin-left: 15%;">
+                      <i class="fas fa-shopping-basket"></i>
+                      Meu Carrinho</h2>
+              </div>
+          </nav>
+  
+          <!-- FIM TITULOS CABEÇALHO -->
+  
+          <!-- INICIO PRODUTOS -->
+  
+          <div style="margin-top: 4%;" class="row justify-content-md-center">
+  
+            <!-- PRODUTO -->
+  
+            <div
+              style="border: 1px solid black;height: 200px; margin-left: 5px; background-color: white; background-image: url('img/mouse.jpg'); background-size: 80%; background-repeat: no-repeat"
+              class=" col-sm-5 col-md-4 col-lg-2 box" data-toggle="tooltip" data-placement="top" title="Item x Valor y Funções z Item x Valor y Funções z Item x Valor y Funções z ">
+              <p style=" padding:0%;width: 100% ; background-color: white;">Produto 1</p>
+              <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
+                class="btn btn-danger">
+                <i class="fas fa-sync-alt"></i>
+              </button>
+            </div>
+  
+            <!-- PRODUTO -->
+  
+            <div
+              style="border: 1px solid black;height: 200px; margin-left: 5px; background-color: white; background-image: url('img/teclado.jpg'); background-size: 100%;"
+              class=" col-sm-5 col-md-4 col-lg-2 box" data-toggle="tooltip" data-placement="top" title="Item x Valor y Funções">
+              <p style=" padding:0%;width: 100% ; background-color: white;">Produto 2</p>
+              <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
+                class="btn btn-danger">
+                <i class="fas fa-sync-alt"></i>
+              </button>
+            </div>
+  
+            <!-- PRODUTO -->
+  
+            <div
+              style="border: 1px solid black;height: 200px; margin-left: 5px; background-color: white; background-image: url('img/notebook.jpg'); background-size: 100%;"
+              class=" col-sm-5 col-md-4 col-lg-2 box" data-toggle="tooltip" data-placement="top" title="Item x Valor y Funções">
+              <p style=" padding:0%;width: 100% ; background-color: white;">Produto 3</p>
+              <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
+                class="btn btn-danger">
+                <i class="fas fa-sync-alt"></i>
+              </button>
+            </div>
+  
+            <!-- PRODUTO -->
+  
+            <div
+              style="border: 1px solid black;height: 200px; margin-left: 5px; background-color: white; background-image: url('img/roteador.jpg'); background-size: 100%;"
+              class=" col-sm-5 col-md-4 col-lg-2 box" data-toggle="tooltip" data-placement="top" title="Item x Valor y Funções">
+              <p style=" padding:0%;width: 100% ; background-color: white;">Produto 4</p>
+              <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button"
+                class="btn btn-danger">
+                <i class="fas fa-sync-alt"></i>
+              </button>
+            </div>
+          </div>
+  
+          </div>
+        </div>
+  
       </div>
-
-      <!-- PRODUTO -->
-
-      <div
-        style="border: 1px solid black;width:300px; height: 300px!important; margin-left: 5px; background-color: white;"
-        class="col-xs-10 col-sm-6 col-sm-6 col-md-2 col-lg-2 box">
-        Produto 2 - x quantd.
-        <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button" class="btn btn-danger">
-          <i class="fas fa-minus"></i>
-
-        </button>
-      </div>
-
-      <!-- PRODUTO -->
-
-      <div
-        style="border: 1px solid black;width:300px; height: 300px!important; margin-left: 5px; background-color: white;"
-        class="col-xs-10 col-sm-6 col-sm-6 col-md-2 col-lg-2 box">
-        Produto 3 - x quantd.
-        <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button" class="btn btn-danger">
-          <i class="fas fa-minus"></i>
-
-        </button>
-      </div>
-
-      <!-- PRODUTO -->
-
-      <div
-        style="border: 1px solid black;width:300px; height: 300px!important; margin-left: 5px; background-color: white;"
-        class="col-xs-10 col-sm-6 col-sm-6 col-md-2 col-lg-2 box">
-        Produto 4 - x quantd.
-        <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button" class="btn btn-danger">
-          <i class="fas fa-minus"></i>
-
-        </button>
-      </div>
-    </div>
-
-    <!-- PRODUTO -->
-
-    <div style="margin-top: 1%;" class="row justify-content-md-center">
-      <div
-        style="border: 1px solid black;width:300px; height: 300px!important; margin-left: 5px; background-color: white;"
-        class="col-xs-10 col-sm-6 col-sm-6 col-md-2 col-lg-2 box">
-        Produto 5 - x quantd.
-        <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button" class="btn btn-danger">
-          <i class="fas fa-minus"></i>
-
-        </button>
-      </div>
-
-      <!-- PRODUTO -->
-
-      <div
-        style="border: 1px solid black;width:300px; height: 300px!important;margin-left: 5px; background-color: white;"
-        class="col-xs-10 col-sm-6 col-sm-6 col-md-2 col-lg-2 box">
-        Produto 6 - x quantd.
-        <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button" class="btn btn-danger">
-          <i class="fas fa-minus"></i>
-
-        </button>
-      </div>
-
-      <!-- PRODUTO -->
-
-      <div
-        style="border: 1px solid black;width:300px; height: 300px!important;margin-left: 5px; background-color: white;"
-        class="col-xs-10 col-sm-6col-sm-6 col-md-2 col-lg-2 box">
-        Produto 7 - x quantd.
-        <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button" class="btn btn-danger">
-          <i class="fas fa-minus"></i>
-
-        </button>
-      </div>
-
-      <!-- PRODUTO -->
-
-      <div
-        style="border: 1px solid black;width:300px; height: 300px!important;margin-left: 5px; background-color: white;"
-        class=" col-xs-10 col-sm-6 col-sm-6 col-md-2 col-lg-2 box">
-        Produto 8 - x quantd.
-        <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button" class="btn btn-danger">
-          <i class="fas fa-minus"></i>
-
-        </button>
-      </div>
-    </div>
-
-    <!-- PRODUTO -->
-
-    <div style="margin-top: 1%; " class="row justify-content-md-center">
-      <div
-        style="border: 1px solid black;width:300px; height: 300px!important; margin-left: 5px; background-color: white;"
-        class="col-sm-6 col-md-2 col-lg-2 box">
-        Produto 9 - x quantd.
-        <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button" class="btn btn-danger">
-          <i class="fas fa-minus"></i>
-
-        </button>
-      </div>
-
-      <!-- PRODUTO -->
-
-      <div
-        style="border: 1px solid black;width:300px; height: 300px!important; margin-left: 5px; background-color: white;"
-        class="col-xs-10 col-sm-6 col-sm-6 col-md-2 col-lg-2 box">
-        Produto 10 - x quantd.
-        <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button" class="btn btn-danger">
-          <i class="fas fa-minus"></i>
-
-        </button>
-      </div>
-
-      <!-- PRODUTO -->
-
-      <div
-        style="border: 1px solid black;width:300px; height: 300px!important; margin-left: 5px; background-color: white;"
-        class="col-xs-10 col-sm-6 col-sm-6 col-md-2 col-lg-2 box">
-        Produto 11 - x quantd.
-        <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button" class="btn btn-danger">
-          <i class="fas fa-minus"></i>
-
-        </button>
-      </div>
-
-      <!-- PRODUTO -->
-
-      <div
-        style="border: 1px solid black;width:300px; height: 300px!important; margin-left: 5px; background-color: white;"
-        class="col-xs-10 col-sm-6 col-sm-6 col-md-2 col-lg-2 box">
-        Produto 10 - x quantd.
-
-        <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button" class="btn btn-danger">
-          <i class="fas fa-minus"></i>
-
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- FIM PRODUTOS -->
-
+  
+      <!-- FIM PRODUTOS -->
   <!-- INICIO SUBTOTAL -->
 
   <div
-    style="border:0.5px solid black; padding: 1% 1% ;bottom:0; position: fixed; margin-bottom: 2%; display: block; width: 250px; border-radius: 0px 5px 5px 0px; background: white;box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2)!important;"
+    style="border:0.5px solid black; padding: 1% 1% ;bottom:0; left :0; position: fixed; margin-bottom: 2%; display: block; width: 250px; border-radius: 0px 5px 5px 0px; background: white;box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2)!important;"
     class="subtotal">
     <span style="width: 250px;margin-top: 3%; display: inline-block;">
       <i style="color: black; font-size: 40px" class="fas fa-cart-plus"></i>Subtotal: R$ xx,xx
