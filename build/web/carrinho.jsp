@@ -43,7 +43,6 @@
     }
 
     .container-fluid {
-      background-color: white !important;
       height: auto !important;
     }
 
@@ -75,6 +74,10 @@
         width: 100% !important;
         padding: 0;
         height: 100%;
+      }
+
+      #carouselInicio{
+        display:none!important;
       }
 
       .box {
@@ -109,6 +112,10 @@
     @media screen and (max-width:992px) {
       .fundoHome {
         width: 100% !important;
+      }
+      .fundoProdutos {
+        width: 100% !important;
+        padding: 0;
       }
 
       .container-fluid {
@@ -146,6 +153,16 @@
   </script>
   <script type="text/javascript">
     $("#cv").mask("000");
+  </script>
+
+
+  <script>
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+  <script>
+      $('#example').tooltip({ boundary: 'window' })
   </script>
   <!-- Fim JS -->
 </head>
@@ -316,19 +333,19 @@
       <!-- PRODUTO -->
       <c:if test="${carrinho != null}">
         <c:forEach var="i" items="${carrinho.itensPedido}" varStatus="loop">
-      <div
-        style="border: 1px solid black;width:300px; height: 300px!important; margin-left: 5px; background-color: white; background-image: url(${i.produto.imagePath}); " 
-        class="col-sm-6 col-md-2 col-lg-2 box"><p style=" padding:0%;width: 100% ; background-color: white;">${i.produto.nome}
+          <div
+          style="border: 1px solid black;height: 200px; margin-left: 5px; background-color: white; background-image: url('img/mouse.jpg'); background-size: 80%; background-repeat: no-repeat"
+          class=" col-sm-5 col-md-4 col-lg-2 box" data-toggle="tooltip" data-placement="top" title="${i.descricao}">
+          <p style=" padding:0%;width: 100% ; background-color: white;">${i.produto.nome}</p>
           <br/>
           <fmt:setLocale value = "pt_BR"/>
-          <fmt:formatNumber value = "${i.preco}" type = "currency"/></p>
+          <fmt:formatNumber value = "${i.preco}" type = "currency"/>
   <form method="POST" action="/carrinho/carrinhoServlet?acao=alteraQuantidade" id="formItemCarrinho">
     <input type="hidden" name="itemPos" value="${loop.index}"/>   
-                                <input type="number" name="quantidade" value="${i.quantidade}" />
-        <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button" class="btn btn-danger"form="formItemCarrinho">
+    <input type="number" name="quantidade" value="${i.quantidade}" />
+    <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button" class="btn btn-danger" form="formItemCarrinho">
           <i class="fas fa-minus"></i>
-
-        </button>
+    </button>
   </form>
       </div>
     </c:forEach>
@@ -341,7 +358,7 @@
   <!-- INICIO SUBTOTAL -->
 
   <div
-    style="border:0.5px solid black; padding: 1% 1% ;bottom:0; position: fixed; margin-bottom: 2%; display: block; width: 250px; border-radius: 0px 5px 5px 0px; background: white;box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2)!important;"
+    style="border:0.5px solid black; padding: 1% 1% ;bottom:0; left :0; position: fixed; margin-bottom: 2%; display: block; width: 250px; border-radius: 0px 5px 5px 0px; background: white;box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2)!important;"
     class="subtotal">
     <span style="width: 250px;margin-top: 3%; display: inline-block;">
       <i style="color: black; font-size: 40px" class="fas fa-cart-plus"></i>Subtotal:
