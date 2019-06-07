@@ -1,10 +1,10 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="iso-8859-1"%>
 <!doctype html>
 <html lang="pt-br">
 
 <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
+    <meta charset="iso-8859-1">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
         crossorigin="anonymous">
@@ -175,7 +175,7 @@
                 <div class="modal-header">
                     <h5 style="font-size: 30px!important;"class="modal-title" id="exampleModalLabel"><i style="font-size: 25px!important;"class="fas fa-key"></i>
 
-                        RecuperaÃ§Ã£o de senha</h5>
+                        Recuperação de senha</h5>
                     <button style="width:50px!important;font-size: 25px!important;color: black!important;" type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span style="float:right; color: black!important;" aria-hidden="true">&times;</span>
                     </button>
@@ -184,7 +184,7 @@
 
     <!-- FIM MODAL -->
 
-    <!-- FORM RECUPERAÃ‡ÃƒO DE SENHA -->
+    <!-- FORM RECUPERAÇÃO DE SENHA -->
 
                     <form style="justify-content: center"method="POST">
                             <div class="form-group offset-lg-2 col-lg-7 formGroup">
@@ -201,7 +201,7 @@
                             </div>
                     </form>
 
-                    <!-- FIM RECUPERAÃ‡ÃƒO DE SENHA -->
+                    <!-- FIM RECUPERAÇÃO DE SENHA -->
 
                 </div>
                 <div class="modal-footer">

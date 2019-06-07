@@ -1,17 +1,17 @@
 <%@page import="br.uff.carrinho.model.Pedido"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="br.uff.carrinho.model.Produto"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="iso-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%
     ArrayList<Produto> listaProdutos = (ArrayList<Produto>)request.getAttribute("listaProdutos");
-    // A lista de usuÃ¡rios Ã© colocada no contexto da pÃ¡gina. Assim o JSTL terÃ¡ acesso a ela
+    // A lista de usuários é colocada no contexto da página. Assim o JSTL terá acesso a ela
     pageContext.setAttribute("listaProdutos", listaProdutos);
 
     Pedido carrinho = (Pedido) request.getAttribute("carrinho");
-    // A lista de usuÃ¡rios Ã© colocada no contexto da pÃ¡gina. Assim o JSTL terÃ¡ acesso a ela
+    // A lista de usuários é colocada no contexto da página. Assim o JSTL terá acesso a ela
     pageContext.setAttribute("carrinho", carrinho);
 %>
 <!doctype html>
@@ -19,7 +19,7 @@
 
 <head>
   <!-- Required meta tags -->
-  <meta charset="utf-8">
+  <meta charset="iso-8859-1">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
     integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
@@ -264,7 +264,7 @@
 
   <!-- FIM CARROSSEL -->
 
-  <!-- TITULOS CABEÃ‡ALHO -->
+  <!-- TITULOS CABEÇALHO -->
 
   <div class="container-fluid">
     <div style="padding-top: 3%;" class="fundoHome">
@@ -291,7 +291,7 @@
             </div>
         </nav>
 
-        <!-- FIM TITULOS CABEÃ‡ALHO -->
+        <!-- FIM TITULOS CABEÇALHO -->
 
         <!-- INICIO PRODUTOS -->
 
