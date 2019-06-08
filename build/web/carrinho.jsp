@@ -327,7 +327,7 @@
           <c:if test="${carrinho != null}">
             <c:forEach var="i" items="${carrinho.itensPedido}" varStatus="loop">
               <div
-                style="border: 1px solid black;width:300px; height: 300px!important; margin-left: 5px; background-color: white; background-image: url(${i.produto.imagePath}); "
+                style="border: 1px solid black;width:300px; height: 300px!important; margin-left: 5px; background-color: white; background-image: url(${i.produto.imagePath}); background-size: 80%; background-repeat: no-repeat""
                 class="col-sm-6 col-md-2 col-lg-2 box">
                 <p style=" padding:0%;width: 100% ; background-color: white;">${i.produto.nome}
                   <br />
@@ -339,7 +339,7 @@
                   <input type="number" name="qtdItem" value="${i.quantidade}" />
                   <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="submit"
                     class="btn btn-danger">
-                    <i class="fas fa-minus"></i>
+                    <i class="fas fa-sync-alt"></i>
                   </button>
                 </form>
               </div>
