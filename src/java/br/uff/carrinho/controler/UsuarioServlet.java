@@ -154,7 +154,7 @@ public class UsuarioServlet extends HttpServlet {
         // Chama método para cadastrar usuário
         usuarioDAO.cria(usuario);
 
-        request.getSession().setAttribute("usuarioLogado", usuario);
+        request.getSession().setAttribute("usuarioLogado", (Usuario) (new UsuarioDAO()).buscaPorEmail(usuario.getEmail()));
         getServletConfig().getServletContext().getRequestDispatcher("/produtoServlet?acao=listaProdutos").forward(request, response);
     }
     
@@ -183,6 +183,7 @@ public class UsuarioServlet extends HttpServlet {
             usuario.setSenha(request.getParameter("senha"));
             // Chama método para cadastrar usuário
             (new UsuarioDAO()).alteraSenha(usuario);
+            request.getSession().setAttribute("usuarioLogado", usuario);
             response.sendRedirect("/carrinho/usuarioServlet?acao=exibeConta");
         } else{
             response.sendRedirect("/carrinho/login.jsp");

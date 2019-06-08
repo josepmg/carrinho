@@ -236,19 +236,19 @@
                 <!-- INICIO FORM CADASTRO -->
                 <div class="direita col-lg-6">
                     <h2 style="padding-top:10%;" class="text-center">Cadastre-se</h2>
-                    <form>
+                    <form method="POST" action="/carrinho/usuarioServlet?acao=criaConta">
                         <div style="margin: auto; padding-bottom: 50px;" class="row col-lg-10">
                             <div class="form-group col-lg-6">
-                                <label for="exampleFormControlInput1">Nome</label>
+                                <label for="exampleFormControlInput1">Nome completo</label>
                                 <input type="text" class="form-control" id="exampleFormControlInput1" name="nomeCompleto">
                             </div>
                             <div class="form-group col-lg-6">
-                                <label for="exampleFormControlInput1">Sobrenome</label>
+                                <label for="exampleFormControlInput1">Apelido</label>
                                 <input type="text" class="form-control" id="exampleFormControlInput1" name="apelido">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="exampleFormControlInput1">E-mail</label>
-                                <input type="password" class="form-control" id="Example" name="email">
+                                <input type="email" class="form-control" id="Example" name="email">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="exampleFormControlInput1">Data de Nascimento</label>
@@ -263,7 +263,7 @@
                                 <input type="password" class="form-control" id="Example">
                             </div>
                             <button id="cadastrar" style="border: 1px solid white!important;" type="submit"
-                                form="formCadastro" class="btn btn-primary btnlogin">Cadastrar</button>
+                                class="btn btn-primary btnlogin">Cadastrar</button>
                         </div>
                     </form>
                 </div>
