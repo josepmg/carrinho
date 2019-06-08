@@ -213,14 +213,13 @@
               </div>
             </div>
             <div class="row">
-              <div class="form-group col-lg-5">
+              <div class="form-group col-lg-6">
                 <label for="exampleFormControlSelect1">Parcelas</label>
                 <select class="form-control" id="exampleFormControlSelect1">
-                  <option>x1 R$ 00,00</option>
-                  <option>x2 R$ 00,00</option>
-                  <option>x3 R$ 00,00</option>
-                  <option>x4 R$ 00,00</option>
-                  <option>x5 R$ 00,00</option>
+                    <fmt:setLocale value="pt_BR" /> 
+                    <c:forEach var="i" begin="1" end="5" >
+                        <option><c:out value="${i}"/>x de <fmt:formatNumber value="${carrinho.valorTotal/i}" type="currency" /></option>
+                    </c:forEach>
                 </select>
               </div>
             </div>
