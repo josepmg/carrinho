@@ -213,10 +213,23 @@ public class UsuarioDAO implements DAO{
             stmt.execute();
             stmt.close();
             fechaConexao();
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+    }
+        
+    public void adicionaCartao(int idCartao, int idUsuario){
+        try {
+        PreparedStatement stmt = this.conn.prepareStatement("UPDATE usuario SET "
+                + "idCartao = ? "
+                + "WHERE idUsuario = ?");
+        stmt.setInt(1, idCartao);
+        stmt.setInt(2, (idUsuario));
+        stmt.execute();
+        stmt.close();
+        fechaConexao();
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
-    }
-    
-    
+    }   
 }

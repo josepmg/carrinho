@@ -11,6 +11,7 @@ import br.uff.carrinho.model.Item;
 import br.uff.carrinho.model.Pedido;
 import br.uff.carrinho.model.PedidoDAO;
 import br.uff.carrinho.model.Usuario;
+import br.uff.carrinho.model.UsuarioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
@@ -140,6 +141,8 @@ public class PedidoServlet extends HttpServlet {
                         usuarioLogado.setCartao(
                                 (Cartao) ((new CartaoDAO()).buscaPorNumero(request.getParameter("numeroCartao")))
                         );
+                        // Associa o cartao ao usuario no BD
+                        (new UsuarioDAO()).adicionaCartao(usuarioLogado.getCartao().getIdCartao(), usuarioLogado.getIdUsuario());
                     }
                     // Adciona o cartão ao carrinho
                     carrinho.setCartao(usuarioLogado.getCartao());
