@@ -17,7 +17,7 @@ public class Pedido {
     public static String ESTADO_REALIZADO = "Realizado";
     public static String ESTADO_APROVADO = "Aprovado";
     public static String ESTADO_ENTREGUE = "Entregue";
-    public static String ESTADO_NEGADO = "Negado";
+    public static String ESTADO_NEGADO = "Negado";    
     
     
     private int idPedido;
@@ -26,13 +26,13 @@ public class Pedido {
     private Usuario cliente;
     private String enderecoEntrega;
     private Cartao cartao;
-    private String dataCompra;
+    private long dataCompra;
     private String estado;
 
     public Pedido() {
     }
 
-    public Pedido(int idPedido, List<Item> itensPedido, float valorTotal, Usuario cliente, String enderecoEntrega, Cartao cartao, String dataCompra, String estado) {
+    public Pedido(int idPedido, List<Item> itensPedido, float valorTotal, Usuario cliente, String enderecoEntrega, Cartao cartao, long dataCompra, String estado) {
         this.idPedido = idPedido;
         this.itensPedido = itensPedido;
         this.valorTotal = valorTotal;
@@ -98,11 +98,11 @@ public class Pedido {
         this.cartao = cartao;
     }
 
-    public String getDataCompra() {
+    public long getDataCompra() {
         return dataCompra;
     }
 
-    public void setDataCompra(String dataCompra) {
+    public void setDataCompra(long dataCompra) {
         this.dataCompra = dataCompra;
     }
 

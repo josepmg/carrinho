@@ -166,17 +166,15 @@ public class CarrinhoServlet extends HttpServlet {
             getServletConfig().getServletContext().getRequestDispatcher("/carrinho/produtoServlet?acao=listaProdutos").forward(request, response);
         }
         
-        if(request.getParameter("quantidade").equals("0")){
+        if(request.getParameter("qtdItem").equals("0")){
             removeProduto(request, response);
         } else{
             Pedido carrinhoLocal = (Pedido) request.getSession().getAttribute("carrinho");
 
             // Recupera posição do item no array do pedido
             int itemPos = Integer.valueOf(request.getParameter("itemPos"));
-            System.out.println("pos: " + itemPos);
             // Recupera quantidade informada no form
-            int qtdItem=  Integer.valueOf(request.getParameter("quantidade"));
-            System.out.println("qtdItem: " + qtdItem);
+            int qtdItem = Integer.valueOf(request.getParameter("qtdItem"));
             // Altera a quantidade do item
             ((carrinhoLocal.getItensPedido()).get(itemPos)).setQuantidade(qtdItem);
 

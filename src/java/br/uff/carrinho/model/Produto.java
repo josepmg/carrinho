@@ -13,7 +13,7 @@ public class Produto {
     
     private int idProduto;
     private String nome;
-    private String descicao;
+    private String descricao;
     private float preco;
     private String imagePath;
 
@@ -23,7 +23,7 @@ public class Produto {
     public Produto(int idProduto, String nome, String descicao, float preco, String imagePath) {
         this.idProduto = idProduto;
         this.nome = nome;
-        this.descicao = descicao;
+        this.descricao = descicao;
         this.preco = preco;
         this.imagePath = imagePath;
     }
@@ -44,12 +44,12 @@ public class Produto {
         this.nome = nome;
     }
 
-    public String getDescicao() {
-        return descicao;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setDescicao(String descicao) {
-        this.descicao = descicao;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public float getPreco() {

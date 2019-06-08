@@ -16,18 +16,23 @@ public class Cartao {
     private String validade;
     private String titular;
     private String ccv;
-    private String bandeira;
 
     public Cartao() {
     }
 
-    public Cartao(int idCartao, String numero, String validade, String titular, String ccv, String bandeira) {
+    public Cartao(String numero, String validade, String titular, String ccv) {
+        this.numero = numero;
+        this.validade = validade;
+        this.titular = titular;
+        this.ccv = ccv;
+    }
+
+    public Cartao(int idCartao, String numero, String validade, String titular, String ccv) {
         this.idCartao = idCartao;
         this.numero = numero;
         this.validade = validade;
         this.titular = titular;
         this.ccv = ccv;
-        this.bandeira = bandeira;
     }
 
     public int getIdCartao() {
@@ -68,16 +73,5 @@ public class Cartao {
 
     public void setCcv(String ccv) {
         this.ccv = ccv;
-    }
-
-    public String getBandeira() {
-        return bandeira;
-    }
-
-    public void setBandeira(String bandeira) {
-        this.bandeira = bandeira;
-    }
-    
-    
-    
+    }  
 }

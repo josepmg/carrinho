@@ -39,7 +39,7 @@ public class ProdutoDAO implements DAO{
                     + "VALUES (?, ?, ?, ?)";
             PreparedStatement stmt = this.conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             stmt.setString(1, p.getNome());
-            stmt.setString(2, p.getDescicao());
+            stmt.setString(2, p.getDescricao());
             stmt.setFloat(3, p.getPreco());
             stmt.setString(4, p.getImagePath());
             int generatedKey = stmt.executeUpdate();
@@ -85,7 +85,7 @@ public class ProdutoDAO implements DAO{
                     + "WHERE idProduto = ?";
             PreparedStatement stmt = this.conn.prepareStatement(sql);
             stmt.setString(1, p.getNome());
-            stmt.setString(2, p.getDescicao());
+            stmt.setString(2, p.getDescricao());
             stmt.setFloat(3, p.getPreco());
             stmt.setString(4, p.getImagePath());
             stmt.setInt(5, p.getIdProduto());

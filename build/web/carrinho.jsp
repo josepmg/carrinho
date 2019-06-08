@@ -1,13 +1,13 @@
 <%@page import="br.uff.carrinho.model.Pedido"%>
 <%@page import="br.uff.carrinho.model.Item"%>
 <%@page import="java.util.ArrayList"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="iso-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%
     Pedido carrinho = (Pedido) request.getAttribute("carrinho");
-    // A lista de usuÃ¡rios Ã© colocada no contexto da pÃ¡gina. Assim o JSTL terÃ¡ acesso a ela
+    // A lista de usu?rios ? colocada no contexto da p?gina. Assim o JSTL ter? acesso a ela
     pageContext.setAttribute("carrinho", carrinho);
 %>
 <!doctype html>
@@ -15,7 +15,7 @@
 
 <head>
   <!-- Required meta tags -->
-  <meta charset="utf-8">
+  <meta charset="iso-8859-1">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
     integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
@@ -63,12 +63,13 @@
       margin-left: 10%;
     }
 
-    @media screen and (max-width: 507px){
+    @media screen and (max-width: 507px) {
       .logo {
-        width:100px!important;
-      margin-left: 5%!important;
+        width: 100px !important;
+        margin-left: 5% !important;
+      }
     }
-    }
+
     @media screen and (max-width:600px) {
       .container-fluid {
         width: 100% !important;
@@ -76,8 +77,8 @@
         height: 100%;
       }
 
-      #carouselInicio{
-        display:none!important;
+      #carouselInicio {
+        display: none !important;
       }
 
       .box {
@@ -93,7 +94,7 @@
     }
 
     .logo {
-      min-width: 300px!important;
+      min-width: 300px !important;
     }
 
     @media screen and (max-width:768px) {
@@ -113,6 +114,7 @@
       .fundoHome {
         width: 100% !important;
       }
+
       .fundoProdutos {
         width: 100% !important;
         padding: 0;
@@ -136,6 +138,7 @@
       #navbarText {
         margin-left: 0px !important;
       }
+
       .logo {
         margin-left: 35%;
       }
@@ -154,15 +157,13 @@
   <script type="text/javascript">
     $("#cv").mask("000");
   </script>
-
-
   <script>
-  $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-  })
-</script>
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+  </script>
   <script>
-      $('#example').tooltip({ boundary: 'window' })
+    $('#example').tooltip({boundary: 'window'})
   </script>
   <!-- Fim JS -->
 </head>
@@ -171,8 +172,8 @@
 
   <!-- MODAL COMPRA -->
 
-  <div  class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-    aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
 
       <div style="padding: 15px 10px!important;" class="modal-content">
@@ -190,40 +191,28 @@
           <!-- FIM MODAL COMPRA -->
 
           <!-- FORM COMPRA -->
-
-
-          <form>
+          <form method="POST" action="/carrinho/pedidoServlet?acao=fazPedido" id="formCompra">
             <div class="row">
               <div class="form-group col-lg-6">
-                <label for="exampleFormControlInput1">NÃºmero do cartÃ£o</label>
-                <input type="email" class="form-control" id="cartao">
+                <label for="exampleFormControlInput1">Número do cartão</label>
+                <input type="text" class="form-control" id="cartao" name="numeroCartao" value="${usuarioLogado.cartao.numero}">
               </div>
               <div class="form-group col-lg-6">
                 <label for="exampleFormControlInput1">Validade</label>
-                <input type="month" class="form-control" id="exampleFormControlInput1">
+                <input type="date" class="form-control" id="exampleFormControlInput1" name="validadeCartao" value="${usuarioLogado.cartao.validade}">
               </div>
             </div>
             <div class="row">
               <div class="form-group col-lg-9">
-                <label for="exampleFormControlInput1">Nome completo</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1">
+                <label for="exampleFormControlInput1">Nome do titular</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" name="titularCartao" value="${usuarioLogado.cartao.titular}">
               </div>
               <div class="form-group col-lg-3">
-                <label for="exampleFormControlInput1">CV</label>
-                <input type="email" class="form-control" id="cv">
+                <label for="exampleFormControlInput1">CCV</label>
+                <input type="text" class="form-control" id="cv" name="ccvCartao" value="${usuarioLogado.cartao.ccv}">
               </div>
             </div>
             <div class="row">
-              <div class="form-group col-lg-6">
-                <label for="exampleFormControlInput1">Data de nascimento</label>
-                <input type="date" class="form-control" id="datanasc">
-              </div>
-            </div>
-            <div class="row">
-              <div class="form-group col-lg-7">
-                <label for="exampleFormControlInput1">CPF </label>
-                <input type="text" class="form-control" id="cpf">
-              </div>
               <div class="form-group col-lg-5">
                 <label for="exampleFormControlSelect1">Parcelas</label>
                 <select class="form-control" id="exampleFormControlSelect1">
@@ -235,30 +224,35 @@
                 </select>
               </div>
             </div>
+              <div class="row">
+              <div class="form-group col-lg-12">
+                <label for="exampleFormControlSelect1">Endereço de entrega</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" name="enderecoEntrega">
+              </div>
+            </div>
           </form>
           <div class="row">
             <div class="form-group col-lg-4">
-              <button id="Voltar" type="button" class="btn btn-secondary"class="close" data-dismiss="modal" aria-label="Close">Voltar</button>
+                <button id="Voltar" type="reset" class="btn btn-secondary" class="close" data-dismiss="modal"
+                aria-label="Close" form="formCompra">Voltar</button>
             </div>
             <div class="form-group col-lg-8">
-              <button id="btnConf" 
-                style="background-color:#f34747; color: white" type="button" class="btn" class="close" data-dismiss="modal" aria-label="Close"><a>Confirmar</a></button>
+                <button id="btnConf" style="background-color:#f34747; color: white" class="btn"
+                class="close" aria-label="Close" form="formCompra" type="submit"><a>Confirmar</a></button>
             </div>
           </div>
         </div>
-
-        <!-- FIM RECUPERAÃ‡ÃƒO DE SENHA -->
-
+        <!-- FIM RECUPERAÇÃO DE SENHA -->
       </div>
     </div>
   </div>
 
   <!-- INICIO MENU -->
-
   <nav style="font-family: 'Montserrat Alternates', sans-serif;" class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="logo"><i style="color: white; font-size: 40px; padding: 1% 2%!important;" class="fas fa-shopping-cart text-center"></i>
+    <div class="logo"><i style="color: white; font-size: 40px; padding: 1% 2%!important;"
+        class="fas fa-shopping-cart text-center"></i>
       <a class="navbar-brand" href="#">
-          <span style="font-size: 28px; color: #f34747; font-weight: bold">MEU</span>carrinho</a></div>
+        <span style="font-size: 28px; color: #f34747; font-weight: bold">MEU</span>carrinho</a></div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -268,13 +262,11 @@
         <li class="nav-item">
           <a class="nav-link" href="/carrinho/produtoServlet?acao=listaProdutos">
             <i class="fas fa-tags"></i>
-
             Produtos</a>
         </li>
         <li class="nav-item active">
-          <a style="color: #f34747;" class="nav-link"href="/carrinho/carrinhoServlet?acao=mostraCarrinho">
+          <a style="color: #f34747;" class="nav-link" href="/carrinho/carrinhoServlet?acao=mostraCarrinho">
             <i class="fas fa-shopping-basket"></i>
-
             Meu carrinho</a>
         </li>
         <li class="nav-item">
@@ -285,19 +277,14 @@
         <li class="nav-item">
           <a style="color: black;" class="nav-link" href="/carrinho/usuarioServlet?acao=fazLogout">
             <i class="fas fa-sign-out-alt"></i>
-
-
-
             Sair</a>
         </li>
       </ul>
     </div>
   </nav>
-
   <!-- FIM MENU -->
 
   <!-- INICIO CARROSSEL -->
-
   <div id="carouselInicio" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner" style="height:50vh;" role="listbox">
       <div class="carousel-item active carousel-fade">
@@ -319,51 +306,60 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
-
   <!-- FIM CARROSSEL -->
 
   <!-- INICIO PRODUTOS -->
+  <div class="container-fluid">
+    <div style="padding-top: 3%;" class="fundoHome">
+      <div
+        style="width:70%;height: 100%; background-color: white; padding-top: 1%;padding-bottom: 10%; margin: auto;box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);"
+        class="fundoProdutos">
+        <nav class="navbar navbar-dark">
+          <div class="row col-lg-12">
+            <div class="nomeProdutos  col-lg-10">
+              <h2 style="font-family: 'Montserrat Alternates', sans-serif; padding-top: 2%; margin-left: 15%;">
+                <i class="fas fa-shopping-basket"></i>
+                Meu Carrinho</h2>
+            </div>
+        </nav>
 
-  <div style="padding:0!important;margin:0x!important " class="container-fluid">
-    <h2 style="font-family: 'Montserrat Alternates', sans-serif; padding-top: 2%; margin-left: 15%;">
-      <i class="fas fa-shopping-basket"></i>
-      Meu Carrinho</h2>
-    <div style="margin-top: 4%;" class="row justify-content-md-center">
-
-      <!-- PRODUTO -->
-      <c:if test="${carrinho != null}">
-        <c:forEach var="i" items="${carrinho.itensPedido}" varStatus="loop">
-          <div
-          style="border: 1px solid black;height: 200px; margin-left: 5px; background-color: white; background-image: url('img/mouse.jpg'); background-size: 80%; background-repeat: no-repeat"
-          class=" col-sm-5 col-md-4 col-lg-2 box" data-toggle="tooltip" data-placement="top" title="${i.descricao}">
-          <p style=" padding:0%;width: 100% ; background-color: white;">${i.produto.nome}</p>
-          <br/>
-          <fmt:setLocale value = "pt_BR"/>
-          <fmt:formatNumber value = "${i.preco}" type = "currency"/>
-  <form method="POST" action="/carrinho/carrinhoServlet?acao=alteraQuantidade" id="formItemCarrinho">
-    <input type="hidden" name="itemPos" value="${loop.index}"/>   
-    <input type="number" name="quantidade" value="${i.quantidade}" />
-    <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="button" class="btn btn-danger" form="formItemCarrinho">
-          <i class="fas fa-minus"></i>
-    </button>
-  </form>
+        <div style="margin-top: 4%;" class="row justify-content-md-center">
+          <!-- PRODUTO -->
+          <c:if test="${carrinho != null}">
+            <c:forEach var="i" items="${carrinho.itensPedido}" varStatus="loop">
+              <div
+                style="border: 1px solid black;width:300px; height: 300px!important; margin-left: 5px; background-color: white; background-image: url(${i.produto.imagePath}); "
+                class="col-sm-6 col-md-2 col-lg-2 box">
+                <p style=" padding:0%;width: 100% ; background-color: white;">${i.produto.nome}
+                  <br />
+                  <fmt:setLocale value="pt_BR" />
+                  <fmt:formatNumber value="${i.preco}" type="currency" />
+                </p>
+                <form method="POST" action="/carrinho/carrinhoServlet?acao=alteraQuantidade" id="formItemCarrinho">
+                  <input type="hidden" name="itemPos" value="${loop.index}" />
+                  <input type="number" name="qtdItem" value="${i.quantidade}" />
+                  <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="submit"
+                    class="btn btn-danger">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                </form>
+              </div>
+            </c:forEach>
+          </c:if>
+        </div>
       </div>
-    </c:forEach>
-  </c:if>
     </div>
   </div>
-
   <!-- FIM PRODUTOS -->
 
   <!-- INICIO SUBTOTAL -->
-
   <div
     style="border:0.5px solid black; padding: 1% 1% ;bottom:0; left :0; position: fixed; margin-bottom: 2%; display: block; width: 250px; border-radius: 0px 5px 5px 0px; background: white;box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2)!important;"
     class="subtotal">
     <span style="width: 250px;margin-top: 3%; display: inline-block;">
-      <i style="color: black; font-size: 40px" class="fas fa-cart-plus"></i>Subtotal:
-      <fmt:setLocale value = "pt_BR"/>
-      <fmt:formatNumber value = "${carrinho.valorTotal}" type = "currency"/>
+      <i style="color: black; font-size: 40px" class="fas fa-cart-plus"></i>
+      <fmt:setLocale value="pt_BR" />
+      Subtotal: <fmt:formatNumber value="${carrinho.valorTotal}" type="currency" />
     </span>
     <button
       style="margin-left: 33%; font-size: 14px; padding:5px; color: black; margin-top: 10%!important; bottom: 5%;display: inline-block;"
@@ -372,7 +368,6 @@
   </div>
 
   <!-- FIM SUBTOTAL -->
-
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>

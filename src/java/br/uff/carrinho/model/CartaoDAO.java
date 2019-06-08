@@ -9,8 +9,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -34,20 +32,18 @@ public class CartaoDAO implements DAO{
         try {
             Cartao c = (Cartao) obj;
             String sql = "INSERT INTO cartao "
-                    + "(numero, validade, titular, ccv, bandeira) "
-                    + "values (?, ?, ?, ?, ?)";
+                    + "(numero, validade, titular, ccv) "
+                    + "values (?, ?, ?, ?)";
             
             PreparedStatement stmt = this.conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             stmt.setString(1, c.getNumero());
             stmt.setString(2, c.getValidade());
             stmt.setString(3, c.getTitular());
             stmt.setString(4, c.getCcv());
-            stmt.setString(5, c.getBandeira());
             
             int generatedKey = stmt.executeUpdate();
             stmt.close();
             fechaConexao();
-            
             return generatedKey;
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -71,8 +67,7 @@ public class CartaoDAO implements DAO{
                         rs.getString("numero"), 
                         rs.getString("validade"), 
                         rs.getString("titular"), 
-                        rs.getString("ccv"), 
-                        rs.getString("bandeira"));
+                        rs.getString("ccv"));
             }
             rs.close();
             stmt.close();
@@ -89,7 +84,7 @@ public class CartaoDAO implements DAO{
         try{
             Cartao c = (Cartao) obj;
             String sql = "UPDATE cartao "
-                    + "SET numero = ?, validade = ?, titular = ?, ccv = ?, bandeira = ? "
+                    + "SET numero = ?, validade = ?, titular = ?, ccv = ? "
                     + "WHERE idCartao = ?";
             PreparedStatement stmt = this.conn.prepareStatement(sql);
             stmt.setString(1, c.getNumero());
@@ -121,6 +116,34 @@ public class CartaoDAO implements DAO{
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }  
+    }
+    
+    public Cartao buscaPorNumero(String numero){
+         try {
+            String sql = "SELECT * FROM cartao "
+                    + "WHERE numero = ?";
+            PreparedStatement stmt = this.conn.prepareStatement(sql);
+            stmt.setString(1, numero);
+            
+            ResultSet rs = stmt.executeQuery();
+            
+            Cartao cartao = null;
+            if (rs.next()){
+                cartao = new Cartao(
+                        rs.getInt("idCartao"), 
+                        rs.getString("numero"), 
+                        rs.getString("validade"), 
+                        rs.getString("titular"), 
+                        rs.getString("ccv"));
+            }
+            rs.close();
+            stmt.close();
+            fechaConexao();
+            
+            return cartao;
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
     }
     
 }

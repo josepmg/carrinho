@@ -5,6 +5,7 @@
  */
 package br.uff.carrinho.controler;
 
+import br.uff.carrinho.model.PedidoDAO;
 import br.uff.carrinho.model.Usuario;
 import br.uff.carrinho.model.UsuarioDAO;
 import java.io.IOException;
@@ -114,6 +115,11 @@ public class UsuarioServlet extends HttpServlet {
             request
                     .getSession()
                     .setAttribute("usuarioLogado", usuario);
+            
+            // Recupera o usuário logado
+            Usuario usuarioLogado = (Usuario) request.getSession().getAttribute("usuarioLogado");
+            // Adiciona a lista de pedidos do usuario logado
+            request.getSession().setAttribute("historicoPedidos", (new PedidoDAO().listaPorUsuario(usuarioLogado)));
             // Redireciona
             getServletConfig().getServletContext().getRequestDispatcher("/produtoServlet?acao=listaProdutos").forward(request, response);
         } else{
@@ -170,17 +176,17 @@ public class UsuarioServlet extends HttpServlet {
     /* TESTAR */
     /* ------ */
     private void trocaSenha(HttpServletRequest request, HttpServletResponse response) 
-            throws IOException {
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
-        
+            throws IOException {        
         // Recupera o usuario da session http
-        Usuario usuario = usuarioDAO.buscaPorEmail(request.getParameter("email"));
-        usuario.setSenha(request.getParameter("senha"));
-        
-        // Chama método para cadastrar usuário
-        usuarioDAO.alteraSenha(usuario);
-
-        response.sendRedirect("/carrinho/usuarioServlet?acao=exibeConta");
+        Usuario usuario = (new UsuarioDAO()).buscaPorEmail(request.getParameter("email"));
+        if(request.getParameter("senha").equals(request.getParameter("confSenha"))){
+            usuario.setSenha(request.getParameter("senha"));
+            // Chama método para cadastrar usuário
+            (new UsuarioDAO()).alteraSenha(usuario);
+            response.sendRedirect("/carrinho/usuarioServlet?acao=exibeConta");
+        } else{
+            response.sendRedirect("/carrinho/login.jsp");
+        }
     }
 
     /* ----------- */ 

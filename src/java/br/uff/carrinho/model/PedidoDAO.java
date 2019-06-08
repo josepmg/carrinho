@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -42,15 +43,14 @@ public class PedidoDAO implements DAO{
                     + "VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = this.conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             stmt.setInt(1, (p.getCliente()).getIdUsuario());
+            
             stmt.setInt(2, (p.getCartao()).getIdCartao());
             stmt.setFloat(3, p.getValorTotal());
-            stmt.setString(4, p.getDataCompra());
+            stmt.setLong(4, (new Date()).getTime());
             stmt.setString(5, p.getEnderecoEntrega());
             stmt.setString(6, Pedido.ESTADO_REALIZADO);
             // Executa o comando SQL e guarda o ID do registro criado no BD
-            int pedidoKey = stmt.executeUpdate();
-            System.out.println("Id inserido: " + pedidoKey);
-            
+            int pedidoKey = stmt.executeUpdate();            
             
             int itemKey;
             // Instancia um objeto DAO para acessar a tabela itemPedidoDAO
@@ -93,7 +93,7 @@ public class PedidoDAO implements DAO{
                         (Usuario)(new UsuarioDAO()).busca(rs.getInt("idUsuario")),
                         rs.getString("enderecoEntrega"),
                         (Cartao)(new CartaoDAO()).busca(rs.getInt("idCartao")),
-                        rs.getString("dataCompra"),
+                        rs.getLong("dataCompra"),
                         rs.getString("estado"));
             }
             
@@ -163,7 +163,7 @@ public class PedidoDAO implements DAO{
                                 (Usuario)(new UsuarioDAO()).busca(rs.getInt("idUsuario")),
                                 rs.getString("enderecoEntrega"),
                                 (Cartao)(new CartaoDAO()).busca(rs.getInt("idCartao")),
-                                rs.getString("dataCompra"),
+                                rs.getLong("dataCompra"),
                                 rs.getString("estado")
                         ));
             }
