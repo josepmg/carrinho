@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+    <filter>
+        <filter-name>ExecucaoFilter</filter-name>
+        <filter-class>br.uff.carrinho.controler.ExecucaoFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ExecucaoFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
     <servlet>
         <servlet-name>PedidoServlet</servlet-name>
         <servlet-class>br.uff.carrinho.controler.PedidoServlet</servlet-class>
@@ -12,6 +20,10 @@
         <servlet-name>ProdutoServlet</servlet-name>
         <servlet-class>br.uff.carrinho.controler.ProdutoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProdutoService</servlet-name>
+        <servlet-class>br.uff.carrinho.controler.ProdudoService</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PedidoServlet</servlet-name>
         <url-pattern>/pedidoServlet</url-pattern>
@@ -23,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>ProdutoServlet</servlet-name>
         <url-pattern>/produtoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProdutoService</servlet-name>
+        <url-pattern>/produtoService</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
