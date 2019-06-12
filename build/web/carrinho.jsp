@@ -340,7 +340,7 @@
                 </p>
                 <form method="POST" action="/carrinho/carrinhoServlet?acao=alteraQuantidade" id="formItemCarrinho">
                   <input type="hidden" name="itemPos" value="${loop.index}" />
-                  <input style="position: absolute;width:30%; bottom: 10px!important; left: 10px;"type="number" name="qtdItem" value="${i.quantidade}" />
+                  <input style="position: absolute;width:30%; bottom: 10px!important; left: 10px;" type="number" name="qtdItem" value="${i.quantidade}" />
                   <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="submit"
                     class="btn btn-danger">
                     <i class="fas fa-sync-alt"></i>

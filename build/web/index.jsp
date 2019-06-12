@@ -256,14 +256,14 @@
                 </h2>
               </div>
               <div class="formProdutos offset-lg-3 col-lg-3" style="margin:auto;">
-                <form class="form-inline" style="min-width: 300px!important; margin:5% auto;">
+<!--                <form class="form-inline" style="min-width: 300px!important; margin:5% auto;">
                   <input style="border: 1px solid black!important;" class="form-control mr-sm-2" type="search"
                     placeholder="Buscar produto" aria-label="Search">
                   <button style="color: white; border-color: white;background-color: #f34747;"
                     class="btn btn-outline-danger my-2 my-sm-0" type="submit">
                     <i class="fas fa-search"></i>
                   </button>
-                </form>
+                </form>-->
               </div>
             </div>
           </nav>
@@ -278,14 +278,15 @@
                   class=" col-sm-5 col-md-4 col-lg-2 box" data-toggle="tooltip" data-placement="top"
                   title="${p.descricao}">
                   <p style=" padding:0%;width: 100% ; background-color: white;">
-                    ${p.idProduto} - ${p.nome}
+                    ${p.nome}
                     <br />
-                    <fmt:setLocale value="pt_BR" />
-                    <fmt:formatNumber value="${p.preco}" type="currency" />
                   </p>
                   <!-- form="formProduto" -->
                   <form method="POST" action="/carrinho/carrinhoServlet?acao=adicionaProduto" id="formProduto">
                     <input type="hidden" name="idProduto" value="${p.idProduto}" />
+                    <fmt:setLocale value="pt_BR" />
+                    <fmt:formatNumber value="${p.preco}" type="currency" var="preco"/>
+                    <label style="position: absolute;width:60%; bottom: 0px!important; left: 10px;" type="text" name="precoItem" ><fmt:formatNumber value="${p.preco}" type="currency"/></label>
                     <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="submit"
                       class="btn btn-success">
                       <i class="fas fa-plus"></i>
