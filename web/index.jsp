@@ -151,7 +151,7 @@
         var botao = document.getElementById('myCart');
         var botao2 = document.getElementById('myBtn');
         num = botao.style.left;
-        if (botao.style.left == '-500px') {
+        if (botao.style.left === '-500px') {
           botao.style.transition = '.4s';
           botao.style.left = '0';
           botao2.style.transition = '.45s';

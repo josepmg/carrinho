@@ -10,7 +10,6 @@ import br.uff.carrinho.model.ProdutoDAO;
 import com.google.gson.Gson;
 import com.thoughtworks.xstream.XStream;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;

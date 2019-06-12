@@ -154,6 +154,9 @@
         <script type="text/javascript">
             $("#cv").mask("000");
         </script>
+            <script type="text/javascript">
+    $("#nascimento").mask("00/00/0000");
+  </script>
         <!-- JS -->
     </head>
 
@@ -252,7 +255,7 @@
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="exampleFormControlInput1">Data de Nascimento</label>
-                                <input type="date" class="form-control" id="Example" name="dataNascimento">
+                                <input type="text" class="form-control" id="nascimento" name="dataNascimento">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="exampleFormControlInput1">Senha</label>

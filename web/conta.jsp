@@ -111,6 +111,9 @@
         <script type="text/javascript">
             $("#celular").mask("(00) 00000-0000");
         </script>
+                <script type="text/javascript">
+            $("#dataNasc").mask("00/00/0000");
+        </script>
         <!-- JS -->
 
         <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -220,7 +223,7 @@
                             </div>
                             <div class="form-group col-lg-6 col-md-12">
                                 <label for="exampleFormControlInput1">Data de nascimento</label>
-                                <input type="date" class="form-control" id="exampleFormControlInput1"
+                                <input type="text" class="form-control" id="dataNasc"
                                     value="${usuarioLogado.dataNascimento}" name="dataNascimento">
                             </div>
                         </div>

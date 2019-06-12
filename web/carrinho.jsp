@@ -165,6 +165,10 @@
   <script>
     $('#example').tooltip({boundary: 'window'})
   </script>
+    <script type="text/javascript">
+    $("#validade").mask("00/00");
+  </script>
+
   <!-- Fim JS -->
 </head>
 
@@ -199,7 +203,7 @@
               </div>
               <div class="form-group col-lg-6">
                 <label for="exampleFormControlInput1">Validade</label>
-                <input type="date" class="form-control" id="exampleFormControlInput1" name="validadeCartao" value="${usuarioLogado.cartao.validade}">
+                <input type="text" class="form-control data" id="validade" name="validadeCartao" value="${usuarioLogado.cartao.validade}"/>
               </div>
             </div>
             <div class="row">
@@ -208,8 +212,8 @@
                 <input type="text" class="form-control" id="exampleFormControlInput1" name="titularCartao" value="${usuarioLogado.cartao.titular}">
               </div>
               <div class="form-group col-lg-3">
-                <label for="exampleFormControlInput1">CCV</label>
-                <input type="text" class="form-control" id="cv" name="ccvCartao" value="${usuarioLogado.cartao.ccv}">
+                <label for="exampleFormControlInput1">CV</label>
+                <input type="text" class="form-control " id="cv" name="ccvCartao" value="${usuarioLogado.cartao.ccv}" >
               </div>
             </div>
             <div class="row">
@@ -327,7 +331,7 @@
           <c:if test="${carrinho != null}">
             <c:forEach var="i" items="${carrinho.itensPedido}" varStatus="loop">
               <div
-                style="border: 1px solid black;width:300px; height: 300px!important; margin-left: 5px; background-color: white; background-image: url(${i.produto.imagePath}); background-size: 80%; background-repeat: no-repeat""
+                style="border: 1px solid black;height: 200px; margin-left: 5px; background-color: white; background-image: url(${i.produto.imagePath}); background-size: 80%; background-repeat: no-repeat"
                 class="col-sm-6 col-md-2 col-lg-2 box">
                 <p style=" padding:0%;width: 100% ; background-color: white;">${i.produto.nome}
                   <br />
@@ -336,7 +340,7 @@
                 </p>
                 <form method="POST" action="/carrinho/carrinhoServlet?acao=alteraQuantidade" id="formItemCarrinho">
                   <input type="hidden" name="itemPos" value="${loop.index}" />
-                  <input type="number" name="qtdItem" value="${i.quantidade}" />
+                  <input style="position: absolute;width:30%; bottom: 10px!important; left: 10px;"type="number" name="qtdItem" value="${i.quantidade}" />
                   <button style="bottom: 5px; right: 5px; float: right; position: absolute;" type="submit"
                     class="btn btn-danger">
                     <i class="fas fa-sync-alt"></i>

@@ -7,20 +7,11 @@ package br.uff.carrinho.controler;
 
 import br.uff.carrinho.model.Cartao;
 import br.uff.carrinho.model.CartaoDAO;
-import br.uff.carrinho.model.Item;
 import br.uff.carrinho.model.Pedido;
 import br.uff.carrinho.model.PedidoDAO;
 import br.uff.carrinho.model.Usuario;
 import br.uff.carrinho.model.UsuarioDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -32,15 +23,6 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class PedidoServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -120,47 +102,39 @@ public class PedidoServlet extends HttpServlet {
                 return;
             } 
             else{
-                try {
-                    // Informa o usuario do pedido
-                    carrinho.setCliente(usuarioLogado);
-                    
-                    // Cria uma date com a data em String
-                    Date d = (new SimpleDateFormat("yyy-MM-dd")).parse(request.getParameter("validadeCartao"));
-                    
-                    // Se o cliente não possuir cartão cadastrado, o faz com os dados do formulário
-                    if(usuarioLogado.getCartao() == null){
-                        // Cria um cartão no BD e recupera o index dele
-                        int idCartao = (new CartaoDAO()).cria(
-                                new Cartao(
-                                        request.getParameter("numeroCartao"),
-                                        (new SimpleDateFormat("MM/yy")).format(d),
-                                        request.getParameter("titularCartao"),
-                                        request.getParameter("ccvCartao")
-                                ));
-                        // Adiciona o cartão recém criado ao usuário
-                        usuarioLogado.setCartao(
-                                (Cartao) ((new CartaoDAO()).buscaPorNumero(request.getParameter("numeroCartao")))
-                        );
-                        // Associa o cartao ao usuario no BD
-                        (new UsuarioDAO()).adicionaCartao(usuarioLogado.getCartao().getIdCartao(), usuarioLogado.getIdUsuario());
-                    }
-                    // Adciona o cartão ao carrinho
-                    carrinho.setCartao(usuarioLogado.getCartao());
-                    // Adciona o endereço de entrega ao pedido
-                    carrinho.setEnderecoEntrega(request.getParameter("enderecoEntrega"));
-                    // Cria um novo pedido no banco de dados
-                    (new PedidoDAO()).cria(carrinho);
-                    // Esvazia o carrinho na sessao Http (remove o atributo)
-                    request.getSession().removeAttribute("carrinho");
-                    // Vai para tela com todos os pedidos do usuario
-                    listaPedidos(request, response);
+                // Informa o usuario do pedido
+                carrinho.setCliente(usuarioLogado);                    
+                // Se o cliente não possuir cartão cadastrado, o faz com os dados do formulário
+                if(usuarioLogado.getCartao() == null){
+                    // Cria um cartão no BD e recupera o index dele
+                    int idCartao = (new CartaoDAO()).cria(
+                            new Cartao(
+                                    request.getParameter("numeroCartao"),
+                                    request.getParameter("validadeCartao"),
+                                    request.getParameter("titularCartao"),
+                                    request.getParameter("ccvCartao")
+                            ));
+                    // Adiciona o cartão recém criado ao usuário
+                    usuarioLogado.setCartao(
+                            (Cartao) ((new CartaoDAO()).buscaPorNumero(request.getParameter("numeroCartao")))
+                    );
+                    // Associa o cartao ao usuario no BD
+                    (new UsuarioDAO()).adicionaCartao(usuarioLogado.getCartao().getIdCartao(), usuarioLogado.getIdUsuario());
+                }
+                // Adciona o cartão ao carrinho
+                carrinho.setCartao(usuarioLogado.getCartao());
+                // Adciona o endereço de entrega ao pedido
+                carrinho.setEnderecoEntrega(request.getParameter("enderecoEntrega"));
+                // Cria um novo pedido no banco de dados
+                (new PedidoDAO()).cria(carrinho);
+                // Esvazia o carrinho na sessao Http (remove o atributo)
+                request.getSession().removeAttribute("carrinho");
+                // Vai para tela com todos os pedidos do usuario
+                listaPedidos(request, response);
 //                //Adiciona a lista de pedidos do usuario logado
 //                request.getSession().setAttribute("pedidos", (new PedidoDAO().listaPorUsuario(usuarioLogado)));
 //                //Troca de tela pelo Dispatcher (lado servidor)
 //                getServletConfig().getServletContext().getRequestDispatcher("/conta.jsp").forward(request, response);
-                } catch (ParseException ex) {
-                    Logger.getLogger(PedidoServlet.class.getName()).log(Level.SEVERE, null, ex);
-                }
             }
         }
     }

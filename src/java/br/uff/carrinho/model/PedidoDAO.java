@@ -154,7 +154,8 @@ public class PedidoDAO implements DAO{
             ResultSet rs = stmt.executeQuery();
             
             List<Pedido> listaPedidos = new ArrayList<>();
-            if(rs.next()){
+            while(rs.next()){
+                System.out.println("Pedidos: " + rs.getInt("idPedido"));
                 listaPedidos.add(
                         new Pedido(
                                 rs.getInt("idPedido"), 
