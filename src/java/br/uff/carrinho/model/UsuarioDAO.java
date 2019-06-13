@@ -37,7 +37,7 @@ public class UsuarioDAO implements DAO{
         try {
             PreparedStatement stmt = this.conn.prepareStatement(sql);
             stmt.setString(1, u.getNomeCompleto());
-            stmt.setString(2, u.getDataNascimento());
+            stmt.setLong(2, u.getDataNascimento());
             stmt.setString(3, u.getApelido());
             stmt.setString(4, u.getEmail());
             stmt.setString(5, u.getSenha());
@@ -67,7 +67,7 @@ public class UsuarioDAO implements DAO{
                 usuario = new Usuario(
                         rs.getInt("idUsuario"), 
                         rs.getString("nomeCompleto"), 
-                        rs.getString("dataNascimento"), 
+                        rs.getLong("dataNascimento"), 
                         rs.getString("apelido"), 
                         rs.getString("email"), 
                         rs.getString("senha"),
@@ -99,7 +99,7 @@ public class UsuarioDAO implements DAO{
                     + "senha = ? "
                     + "WHERE idUsuario = ?");
             stmt.setString(1, u.getNomeCompleto());
-            stmt.setString(2, u.getDataNascimento());
+            stmt.setLong(2, u.getDataNascimento());
             stmt.setString(3, u.getApelido());
             stmt.setString(4, u.getEmail());
             stmt.setString(5, u.getSenha());
@@ -147,7 +147,7 @@ public class UsuarioDAO implements DAO{
                 usuario = new Usuario(
                         rs.getInt("idUsuario"), 
                         rs.getString("nomeCompleto"), 
-                        rs.getString("dataNascimento"), 
+                        rs.getLong("dataNascimento"), 
                         rs.getString("apelido"), 
                         rs.getString("email"), 
                         rs.getString("senha"),
@@ -182,7 +182,7 @@ public class UsuarioDAO implements DAO{
                 usuario = new Usuario(
                         rs.getInt("idUsuario"), 
                         rs.getString("nomeCompleto"), 
-                        rs.getString("dataNascimento"), 
+                        rs.getLong("dataNascimento"), 
                         rs.getString("apelido"), 
                         rs.getString("email"), 
                         rs.getString("senha"),

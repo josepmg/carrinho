@@ -9,7 +9,7 @@ public class Usuario {
 
     private int idUsuario;
     private String nomeCompleto;
-    private String dataNascimento;
+    private long dataNascimento;
     private String apelido;
     private String email;
     private String senha;
@@ -18,7 +18,7 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String nomeCompleto, String dataNascimento, String apelido, String email, String senha) {
+    public Usuario(String nomeCompleto, long dataNascimento, String apelido, String email, String senha) {
         this.nomeCompleto = nomeCompleto;
         this.dataNascimento = dataNascimento;
         this.apelido = apelido;
@@ -26,7 +26,7 @@ public class Usuario {
         this.senha = senha;
     }
     
-    public Usuario(String nomeCompleto, String dataNascimento, String apelido, String email, String senha, Cartao cartao) {
+    public Usuario(String nomeCompleto, long dataNascimento, String apelido, String email, String senha, Cartao cartao) {
         this.nomeCompleto = nomeCompleto;
         this.dataNascimento = dataNascimento;
         this.apelido = apelido;
@@ -35,7 +35,7 @@ public class Usuario {
         this.cartao = cartao;
     }
     
-    public Usuario(int idUsuario, String nomeCompleto, String dataNascimento, String apelido, String email, String senha, Cartao cartao) {
+    public Usuario(int idUsuario, String nomeCompleto, long dataNascimento, String apelido, String email, String senha, Cartao cartao) {
         this.idUsuario = idUsuario;
         this.nomeCompleto = nomeCompleto;
         this.dataNascimento = dataNascimento;
@@ -61,11 +61,11 @@ public class Usuario {
         this.nomeCompleto = nomeCompleto;
     }
 
-    public String getDataNascimento() {
+    public long getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(String dataNascimento) {
+    public void setDataNascimento(long dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 

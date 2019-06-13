@@ -4,6 +4,11 @@ import br.uff.carrinho.model.PedidoDAO;
 import br.uff.carrinho.model.Usuario;
 import br.uff.carrinho.model.UsuarioDAO;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 public class UsuarioServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ParseException {
         response.setContentType("text/html;charset=UTF-8");
         switch(request.getParameter("acao")){
             case "fazLogin":
@@ -43,12 +48,20 @@ public class UsuarioServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ParseException ex) {
+            Logger.getLogger(UsuarioServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ParseException ex) {
+            Logger.getLogger(UsuarioServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     @Override
     public String getServletInfo() {
@@ -84,13 +97,15 @@ public class UsuarioServlet extends HttpServlet {
         request.getSession().invalidate();
         response.sendRedirect("/carrinho/produtoServlet?acao=listaProdutos");
     }
-
+    
     private void criaUsuario(HttpServletRequest request, HttpServletResponse response) 
-            throws ServletException, IOException {
+            throws ServletException, IOException, ParseException {
+        // Recupera a string da data de nascimento, e cria uma nova Data utilizando o padrão descrito abaixo
+        Date date = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("dataNascimento"));
         // Cria um novo usuário com os dados dos Form
         Usuario usuario = new Usuario(
                 request.getParameter("nomeCompleto"),
-                request.getParameter("dataNascimento"),
+                date.getTime(),
                 request.getParameter("apelido"), 
                 request.getParameter("email"), 
                 request.getParameter("senha")
@@ -132,15 +147,17 @@ public class UsuarioServlet extends HttpServlet {
         }
     }
     
-    private void alteraDados(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    private void alteraDados(HttpServletRequest request, HttpServletResponse response) throws IOException, ParseException {
         if (request.getSession().getAttribute("usuarioLogado") == null){
            response.sendRedirect("/carrinho/login.jsp");
            return;
        } else{   
+            // Recupera a string da data de nascimento, e cria uma nova Data utilizando o padrão descrito abaixo
+            Date date = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("dataNascimento"));   
             // Cria usuário temporário com dados do formulário
             Usuario usuario = new Usuario(
                     request.getParameter("nomeCompleto"),
-                    request.getParameter("dataNascimento"),
+                    date.getTime(),
                     request.getParameter("apelido"), 
                     request.getParameter("email"), 
                     request.getParameter("senha"));

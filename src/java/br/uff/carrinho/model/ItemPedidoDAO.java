@@ -54,14 +54,13 @@ public class ItemPedidoDAO{
             ResultSet rs = stmt.executeQuery();
             // Cria uma lista de Itens
             List<Item> listaItem = new ArrayList<>();
-            // Cria um DAO para buscar os Itens do ResultSet
-            ItemDAO itemDAO = new ItemDAO();
+
             // Enquanto houver itens no ResultSet
             while (rs.next()){
                 // Adiciona o Item da compra na lista de Itens
                 listaItem.add(
                         // Utiliza o DAO para buscar o item por id
-                        (Item) itemDAO.busca(rs.getInt("idItem"))
+                        (Item) (new ItemDAO()).busca(rs.getInt("idItem"))
                 );
             }
             // Encerra o resultSet

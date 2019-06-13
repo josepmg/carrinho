@@ -222,9 +222,11 @@
                                     name="email">
                             </div>
                             <div class="form-group col-lg-6 col-md-12">
+                                <jsp:useBean id="dateObject" class="java.util.Date"/>
+                                <jsp:setProperty name="dateObject" property="time" value="${usuarioLogado.dataNascimento}" />
                                 <label for="exampleFormControlInput1">Data de nascimento</label>
                                 <input type="text" class="form-control" id="dataNasc"
-                                    value="${usuarioLogado.dataNascimento}" name="dataNascimento">
+                                    value="<fmt:formatDate value="${dateObject}" pattern="dd/MM/yyyy"/>" name="dataNascimento">
                             </div>
                         </div>
                         <div class="row">

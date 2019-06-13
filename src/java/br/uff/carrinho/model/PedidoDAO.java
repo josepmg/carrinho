@@ -53,15 +53,13 @@ public class PedidoDAO implements DAO{
             int pedidoKey = stmt.executeUpdate();            
             
             int itemKey;
-            // Instancia um objeto DAO para acessar a tabela itemPedidoDAO
-            ItemPedidoDAO itemPedidoDAO = new ItemPedidoDAO();
             // Para cada item do pedido, cria um registro no BD e guarda o ID
             // Além disso, deve-se criar um registro da tabela itemPedido para cada item do pedido
             for (Item i : p.getItensPedido()){
                 // Cria um registro na tabela Item com os itens do pedido
                 itemKey = (new ItemDAO()).cria(i);
                 // Cria um registro na tabela itemPedido
-                itemPedidoDAO.cria(pedidoKey, itemKey);
+                (new ItemPedidoDAO()).cria(pedidoKey, itemKey);
             }
             
             stmt.close();
